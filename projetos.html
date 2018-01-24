@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>	<title>Rodrigo Sebastiao</title>
+<link rel="stylesheet" type="text/css" href="front.css">
+<meta charset="utf-8">
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon"/>
+<script>
+
+</script>
+</head>
+<body>
+<div class="fullPage">
+	
+	<iframe id="iframe" src="index.html" width="100%" onload="" style="display: none"></iframe>
+	<div class="navClearFix">
+	</div>
+
+<main id="main">
+	<section class="projects">
+			<article class="bikespeedlab">
+				<div>
+					<h1>Bike Speed Lab</h1>
+					<a href="http://www.bikespeedlab.com"><img src="images/bikelabproject.png" alt="Speed Bike Lab Project"></a>
+				</div>
+			
+			<div>
+				<h2>Programação:</h2>
+				<ul>
+					<li>HTML</li> 
+					<li>CSS</li>
+					<li>JavaScript</li>
+				</ul>
+
+				<h2>Conceitos</h2>
+				<ul>
+					<li>Animações em div</li> 
+					<li>Toggle buttons</li>
+					<li>Flag - Start/Stop</li>
+				</ul>
+			
+				<p>Projeto Pessoal Bike Speed Lab: meu primeiro projeto, no qual me inspirei a fim de desenvolver meus conhecimentos em Javascript, CSS, HTML, além de incorporar animações e conceitos de física básica.</p>
+
+				<p>Manterei o projeto, com o objetivo de alcançar níveis mais avançados nas disciplinas acima mencionadas, especialmente física e javascript.
+				</p>
+
+				<p>Atualmente com mais conhecimento estou removendo o DIV e aplicando os mesmos conceitos em CANVAS.
+				</p>
+			</div>
+			</article>
+
+			<article class="personalweb">
+			<div>
+				<h1>Web Site Pessoal</h1>
+				<a href="http://www.rodrigosebastiao.com"><img src="images/personalwebproject.png" alt="Personal Web Project"></a>
+			</div>
+			
+			<div>
+				<h2>Programação</h2>
+				<ul>
+					<li>HTML</li> 
+					<li>CSS</li>
+					<li>JavaScript</li>
+				</ul>
+
+				<h2>Conceitos</h2>
+				<ul>
+					<li>Animação div e ondas senoidais</li> 
+					<li>Estilização da página</li>
+				</ul>
+
+				<p>
+				A construção deste site o próprio! Treinei alguns conceitos de CSS, JavaScript e HTML. Implementação do NAV no menu superior, div hortizontal (vide foto), div em blocos verticais para as divisões, procurei entender e aplicar o Math.SIN com as clássicas ondas senoidais inserido na barra de progresso em CSS; balão de contato a direita (ainda faltando suavização na transição e rotação).
+				</p>
+			</div>
+			</article>
+	</section>
+</main>
+
+	<!--Chat Slider-->
+	<div id="chat" class="chatSlide">
+		<b>Chat Me Now!</b>
+		<audio src="media/whistle.mp3"></audio>
+
+		<a href="https://api.whatsapp.com/send?phone=5511985167571&text=Rodrigo%20Sebastiao" target="blank"><div id="wapp" class="subChat"><p>Whats app</p>
+		</div></a>
+		<div id="liveChat" class="subChat"><p>Live Chat</p>
+		</div>
+		<a href="mailto:rodrigodanielss@gmail.com" target="blank"><div id="email" class="subChat"><p>E-Mail</p>
+		</div></a>
+	</div>
+
+<footer class="footer">
+		<p><a href="mailto:rodrigodanielss@gmail.com" target="blank">Rodrigo Sebastião </a>© 2017</p>
+		<p><a href="https://www.linkedin.com/in/rodrigo-sebastiao" target="blank">LinkedIn</a></p>
+</footer>
+
+</div><!--End fullPage-->
+
+<script>//Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43685815-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<script>//Pure Chat
+var liveChat = document.getElementById("liveChat").onclick= trigLiveChat;
+var liveChat2 =  document.getElementById("liveChat2") ? document.getElementById("liveChat2").onclick= trigLiveChat : null;
+
+function trigLiveChat(){
+purechatApi = { l: [], t: [], on: function () {
+     this.l.push(arguments); } };
+      (function () {
+      var done = false; var script = document.createElement('script');
+      script.async = true; script.type = 'text/javascript';
+      script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript';
+      document.getElementsByTagName('HEAD').item(0).appendChild(script);
+      script.onreadystatechange = script.onload = function (e) {
+        if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+        var w = new PCWidget({c: '07b2dbc4-454c-440c-a203-865387dcfbe1', f: true }); done = true; } }; })();
+  console.log("PureChat acessado!");
+}
+</script>
+
+<script src="actions.js">//Main Script</script>
+</body>
+</html>

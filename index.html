@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>	<title>Rodrigo Sebastiao</title>
+<link rel="stylesheet" type="text/css" href="front.css">
+<meta charset="utf-8">
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon"/>
+</head>
+<body>
+
+<div class="navClearFix">
+	<div class="central">
+		<div class="navfix">
+			<header class="bar">
+				<a href="index.html">
+				<div id="owner">
+					Rodrigo Sebastião		
+				</div>
+				</a>
+				<nav class="navbar">
+					<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="sobre.html">Sobre</a></li>
+					<li><a href="projetos.html">Projetos</a></li>
+					<li><a href="social.html">Social</a></li>
+					</ul>
+				</nav>
+			</header>
+		</div>
+	</div>
+</div>
+
+
+<div class="subBar">
+	<div class="central">
+		<div class="div-holder">
+			<div class="triangtop"></div><div class="triangletxt txt1">Front-end</div>
+			<div class="triangbottom"></div><div class="triangletxt txt2">Desnvolvedor</div>
+		</div>
+	</div>
+</div>
+
+<main id="main">
+
+<section class="intro">
+	<div class="central">
+		<article class="brief">
+			<h1><span>Dev</span></h1>
+			<p>Desenvolvedor Web focado em animações e soluções</p>
+			<p>Veja  meus projetos: <a href="projetos.html">projetos</a></p>
+			
+		</article>
+		<div class="picture"><img class="photo" src="" alt="self photo">
+		</div>
+	</div>
+</section>
+
+
+<section class="boxList1">
+	<div class="central">
+		<h1><span>Habilidades</span></h1>
+		<article class="skills">
+		<ul id="list">
+			<div>	<h2>JavaScript</h2></div>
+			<li><canvas id="canvas" class="allCanvases" width="100%" height="12%" onclick="pause()" onMouseOver="mouseOver()" onMouseOut="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas><h3>30%</h3></li>
+
+			<h2>HTML5</h2>
+			<li><canvas id="canvas2" class="allCanvases" width="100%" height="12%" onclick="pause()" onMouseOver="mouseOver()" onMouseOut="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas>	<h3>40%</h3></li>
+
+			<h2>CSS</h2>
+			<li><canvas id="canvas3" class="allCanvases" width="100%" height="12%" onclick="pause()" onMouseOver="mouseOver()" onMouseOut ="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas>	<h3>20%</h3></li>
+
+			<h2>PHP</h2>
+			<li><canvas id="canvas4" class="allCanvases" width="100%" height="12%" onclick="pause()" onMouseOver="mouseOver()" onMouseOut ="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5!</canvas>	<h3>5%</h3></li>
+
+			<h2>MySQL</h2>
+			<li><canvas id="canvas5" class="allCanvases" width="100%" height="12%" onclick="pause()" onMouseOver="mouseOver()" onMouseOut ="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas>	<h3>10%</h3></li>
+
+			<h2>Photoshop</h2>
+			<li><canvas id="canvas6" class="allCanvases" width="100%" height="12%" onclick="pause()" onMouseOver="mouseOver()" onMouseOut ="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas><h3>50%</h3></li>
+		</ul>
+		</article>
+	</div>
+</section>
+
+<section class="boxList2">
+	<div class="central">
+		<article>
+		<h1><span>Conhecimentos</span></h1>
+		<h2>Inglês:</h2>
+		<p>Leitura, escrita e conversação  - Avançados</p>
+		</article>
+	</div>
+</section>
+
+<section class="boxList3">
+	<div class="central">
+		<h1><span>Interesses</span></h1>
+		<h2>Gráficos 2D, 3D</h2>
+		<h2>Física</h2>
+		<h2>After Effects</h2>
+		<h2>Bike</h2>
+	</div>
+</section>
+</main>
+
+<footer class="footer">
+	<div class="central">
+		<p><a href="mailto:rodrigodanielss@gmail.com" target="blank">Rodrigo Sebastião </a>©
+		<script>document.write((new Date()).getFullYear());
+		</script>
+		</p>
+		<p><a href="https://www.linkedin.com/in/rodrigo-sebastiao" target="blank">LinkedIn</a></p>
+	</div>
+</footer>
+
+	<!--Chat Slider-->
+	<div id="chat">
+		<b>Chat Me Now!</b>
+		<audio src="media/whistle.mp3"></audio>
+
+		<a href="https://api.whatsapp.com/send?phone=5511985167571&text=Rodrigo%20Sebastiao" target="blank"><div id="wapp" class="subChat"><p>Whats app</p>
+		</div></a>
+		<div id="liveChat" class="subChat"><p>Live Chat</p>
+		</div>
+		<a href="mailto:rodrigodanielss@gmail.com" target="blank"><div id="email" class="subChat"><p>E-Mail</p>
+		</div></a>
+	</div>
+
+<script>//Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43685815-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<script>//Pure Chat
+var liveChat = document.getElementById("liveChat").onclick= trigLiveChat;
+var liveChat2 =  document.getElementById("liveChat2") ? document.getElementById("liveChat2").onclick= trigLiveChat : null;
+
+function trigLiveChat(){
+purechatApi = { l: [], t: [], on: function () {
+     this.l.push(arguments); } };
+      (function () {
+      var done = false; var script = document.createElement('script');
+      script.async = true; script.type = 'text/javascript';
+      script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript';
+      document.getElementsByTagName('HEAD').item(0).appendChild(script);
+      script.onreadystatechange = script.onload = function (e) {
+        if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+        var w = new PCWidget({c: '07b2dbc4-454c-440c-a203-865387dcfbe1', f: true }); done = true; } }; })();
+  console.log("PureChat acessado!");
+}
+</script>
+
+<script src="actions.js">/*Main Script*/</script>
+</body>
+</html>
