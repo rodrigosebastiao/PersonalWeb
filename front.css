@@ -43,7 +43,7 @@ body {
   font-size: 22px;
 }
 
-.central{
+.central{/*controla largura do doc*/
   width: 70%;
   margin: 0 auto;
 }
@@ -62,47 +62,32 @@ main p a:hover  {
 }
 
 /*Superior Menu Navigation*/
-.wrapFix{/*Full width Fix yes or no*/
-  background: #FFF;
-  border-bottom: 2px solid #ddd;
-  position: fixed;
-  height: 80px;
-  width: 100%;
-  margin: 0 0 20px 0;
-}
-
-.navfix{
-  background: #FFF;	
-	overflow: hidden;
-  width: 100%;
-  z-index: 1;
-}
 
 .bar{
   position: relative;
-  width: 70%;
   height: 80px;
   font-family: "Cabin Sketch Bold";
 }
 
-.navbar{
+nav{
   float: right;
 }
 
-.navbar ul {
+nav ul {
   list-style: none;
   margin: 0;
   height: inherit;
 }
 
-.navbar ul li{
+nav ul li{
   display: inline;
   line-height: 80px;
-  padding: 0 50px;
+  padding: 0 0 0 100px;
 }
 
+
 @media screen and (max-width: 1360px){
-  .navbar ul li{
+  nav ul li{
     padding: 0 10px;
   }
 }
@@ -112,33 +97,32 @@ main p a:hover  {
     display: block;
     width: 0;
   }
-  .navbar ul li{
+  nav ul li{
     display: block;
   }
-  .navbar{
+  nav{
     float: left;
   }
 }
 
-.navbar ul li a{
+nav ul li a{
   text-decoration: none;
   color: #000;
 }
 
-.navbar ul li a:hover{
+nav ul li a:hover{
   text-decoration: none;
   color: #000;
 }
 
 #name{
-  color: #555;
+  color: #777;
   font-family:  "Merienda Regular", 'Trebuchet MS';
-  font-size: 30px;
+  font-size: 25px;
   width: auto;
   height: inherit;
   line-height: 80px;
   margin: 0;
-  padding: 0 20px;
   float: left;
 
 }
@@ -153,7 +137,7 @@ main p a:hover  {
   background: url('images/tribuild.jpg') white -6px -5px;
   background-size: cover;
   height: 450px;
-  padding: 50px 0 0;
+  padding: 150px 0 0;
 }
 
 .hidden-triangle{/*hidden triangle*/
