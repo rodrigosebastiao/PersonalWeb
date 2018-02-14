@@ -65,8 +65,10 @@ main p a:hover  {
 
 .bar{
   position: relative;
-  height: 80px;
+  height: 50px;
+  margin: 0 0 20px;
   font-family: "Cabin Sketch Bold";
+  box-shadow: 1px 1px 2px 1px#EEE;
 }
 
 nav{
@@ -81,7 +83,7 @@ nav ul {
 
 nav ul li{
   display: inline;
-  line-height: 80px;
+  line-height: 50px;
   padding: 0 0 0 100px;
 }
 
@@ -121,7 +123,7 @@ nav ul li a:hover{
   font-size: 25px;
   width: auto;
   height: inherit;
-  line-height: 80px;
+  line-height: 50px;
   margin: 0;
   float: left;
 
@@ -134,11 +136,17 @@ nav ul li a:hover{
 
 .subBar .central{
   position: relative;
-  background: url('images/tribuild.jpg') white -6px -5px;
+  background: url('images/tribuildSketch.jpg') white -6px -5px;
   background-size: cover;
   height: 450px;
   padding: 150px 0 0;
 }
+
+.subBar .central:hover{
+  background: url('images/archtectEffectBuild.gif') white -6px -5px;
+  background-size: cover;
+}
+
 
 .hidden-triangle{/*hidden triangle*/
   border-top: 0;
