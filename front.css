@@ -28,12 +28,20 @@ $color-picker {
   src: url("/fonts/Cabin_Sketch/CabinSketch-Bold.ttf");
 }
 
+@font-face{
+  font-family: "Cabin Sketch Regular";
+  src: url("/fonts/Cabin_Sketch/CabinSketch-Regular.ttf");
+}
 
 @font-face{
   font-family: "Merienda Regular";
   src: url("/fonts/Merienda/Merienda-Regular.ttf");
 }
 
+@font-face{
+  font-family: "Londrina Sketch Regular";
+  src: url("/fonts/Londrina_Sketch/LondrinaSketch-Regular.ttf");
+}
 
 body {
   margin: 0px;
@@ -121,6 +129,7 @@ nav ul li a:hover{
   color: #777;
   font-family:  "Merienda Regular", 'Trebuchet MS';
   font-size: 25px;
+  text-transform: uppercase;
   width: auto;
   height: inherit;
   line-height: 50px;
@@ -129,119 +138,43 @@ nav ul li a:hover{
 
 }
 
-.subBar{
-  position: relative;
-  background-size: cover;
-}
-
 .subBar .central{
   position: relative;
-  background: url('images/tribuildSketch.jpg') white -6px -5px;
-  background-size: cover;
-  height: 450px;
-  padding: 150px 0 0;
+  overflow: hidden;
+  height: 640px;
 }
 
-.subBar .central:hover{
-  background: url('images/archtectEffectBuild.gif') white -6px -5px;
-  background-size: cover;
-}
-
-
-.hidden-triangle{/*hidden triangle*/
-  border-top: 0;
-  border-left: 400px solid transparent;
-  border-right: 400px solid transparent;
-  border-bottom: 400px solid rgba(0, 0, 0, 0.096);
-  width: 0;
-  height: 0;
-  margin: 0 auto;
-}
-
-.div-holder{/*DIV HOLDER*/
+.div-holder{
   position: relative;
-  width: 800px;
-  height: 500px;
-  margin: -50px auto;
+  perspective: 310px;
 }
 
-DISABLED.triangtop{
-  position: relative;
-  left: -50px;
-  border-bottom: 0;
-  border-left: 300px solid transparent;
-  border-right: 300px solid transparent;
-  border-top: 300px solid rgba(0, 0, 0,0.1);
-  width: 300px;
-  height: 0;
+#archtect{
+  margin: -100px 0;
 }
 
-DISABLED.div-holder:hover .triangtop{
-  animation: rotationTop 1s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes rotationTop{
-  0%{ top: 0px; }
-  30%{ top: 150px; width: 350px; }
-  100%{ top: 200px; left: -150px; width: 500px; transform: scale(-1); }
-}
-
-DISABLED.triangbottom{
-  position: relative;
-  left: 250px;
-  border-bottom: 0;
-  border-left: 150px solid transparent;
-  border-right: 150px solid transparent;
-  border-top: 150px solid rgba(0, 0, 0,0.1);
-  width: 0;
-  height: 0;
-}
-
-DISABLED.div-holder:hover .triangbottom{
-  animation: rotationBottom 1s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes rotationBottom{
-  0%{ top: 0px; }
-  100%{ top: -250px; left: 150px; width: 190px; border-left: 150px solid transparent;
-  border-right: 150px solid transparent;  border-top: 150px solid rgba(0, 0, 0,0.1); transform: scale(-1); }
-}
-
-.triangletxt{
+.text{
   position: absolute;
-  width: 100%;
   margin: 0 auto;
+  color: rgb(161, 161, 161);
+  background: rgba(255, 255, 255, 0.5);
   text-align: center;
-  transition: 1s;
-
-}
-.triangletxt.txt1{
-  top: 100px;
-  transition: 1s;
-}
-.div-holder:hover .triangletxt.txt1{
-  top: 300px;
-  transition: 1s;
+  text-transform: uppercase;
+  font-size: 50px;
+  font-family: "Cabin Sketch Bold";
 }
 
-.triangletxt.txt2{
-  top: 300px;
-  transition: 1s;
-}
-.div-holder:hover .triangletxt.txt2{
-  top: 100px;
-  transition: 1s;
+.text.dev{
+  transform:  rotate3d(1.5,4,-1.6, 80deg);
+  top: 360px;
+  left: 400px;
 }
 
-  @media screen and (max-width: 1360px){
-    .triangtop,
-    .triangbottom
-    {
-      display: none;
-    }
-  }
+.text.front{
+  transform:  rotate3d(1,-3,1.0, 80deg);
+  top: 380px;
+  left: 700px;
+}
 
 /*Introduction-brief*/
 .intro {

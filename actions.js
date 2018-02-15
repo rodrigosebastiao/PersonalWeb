@@ -19,9 +19,9 @@ addEventListener("onkeyup",slider);
 
 
 function slider() {
-var balloon = document.getElementById("chat");
-var y = 200;    
-var pageSize = document.body.clientHeight;
+  var balloon = document.getElementById("chat");
+  var y = 200;    
+  var pageSize = document.body.clientHeight;
 
   if (y < 1500){/*avoid bottom enddless scrolling*/
     y += document.documentElement.scrollTop;
@@ -34,15 +34,21 @@ var pageSize = document.body.clientHeight;
 
 
 /*********************
-**COPY FOOTER HEADER**
+**ARCHTECT EFFECT**
 **********************/
-function footerHeader() {
-  var iframe = document.getElementById("iframe");
-  var iframeGet = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document;
-  var oldNode = iframeGet.document.getElementById("navClearFix");
-  //var test = iframeGet.getElementById("navClearFix");
-  console.log(iframeGet);
-};
+(function archtectEffects(){
+  var subBar = document.getElementsByClassName("subBar")[0];
+  var subCentral = subBar.getElementsByClassName("central")[0];
+  var archtect = document.getElementById("archtect");
+
+  subCentral.onmouseover = function(){
+    archtect.src = "images/archtectEffectBuild.gif";
+  };
+
+  archtect.onmouseout = function(){
+    archtect.src = "images/archtectEffectUnbuild.gif";
+  };
+})();
 
 /*****************
 **BALLON SPLITER**
@@ -50,7 +56,7 @@ function footerHeader() {
 var audio = document.getElementsByTagName("audio")[0];
 
 var chat = document.getElementById("chat");
-  var chatTXT = chat.getElementsByTagName("b")[0];
+var chatTXT = chat.getElementsByTagName("b")[0];
 var wapp = document.getElementById("wapp");
 var lchat = document.getElementById("liveChat");
 var email = document.getElementById("email");
