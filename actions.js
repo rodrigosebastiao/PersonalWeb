@@ -35,33 +35,34 @@ function slider() {
 /*********************
 **ARCHTECT EFFECT**
 **********************/
-(function archtectEffects(){
-  var subBar = document.getElementsByClassName("subBar")[0];
+
+
+
+(function archtectEffects() {
   var archtect = document.getElementById("archtect");
   var timeout1;
-  var delay = 1000;
+  var delay = 3000;
 
-    if (!timeout1){
-      timeout1 = null;
-      timeout1 = window.setTimeout(function () {
-        
-        subBar.onmouseover = function() {    
-          archtect.src = "images/archtectEffectBuild.gif";
-        }
-        
-        archtect.onmouseout = function(){
-          archtect.src = "images/archtectEffectUnbuild.gif";
+
+  if (!timeout1) {
+    timeout1 = null;
+    timeout1 = window.setTimeout(function archtectEffects(){
+
+      archtect.onmouseover = function() {
+        archtect.src = "images/archtectEffectBuild.gif";
         };
 
-        if (delay <= 14000) {
-          delay += 2000; console.log(delay);
-        }
+      archtect.onmouseout = function(){
+        archtect.src = "images/archtectEffectUnbuild.gif";
+      };
 
-      }, delay);
-
-    };
+    }), delay;
+    delay += 2000;
+  }
+  
 
 })();
+
 
 /*****************
 **BALLON SPLITER**
