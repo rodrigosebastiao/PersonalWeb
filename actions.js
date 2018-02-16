@@ -32,22 +32,35 @@ function slider() {
   }
 }
 
-
 /*********************
 **ARCHTECT EFFECT**
 **********************/
 (function archtectEffects(){
   var subBar = document.getElementsByClassName("subBar")[0];
-  var subCentral = subBar.getElementsByClassName("central")[0];
   var archtect = document.getElementById("archtect");
+  var timeout1;
+  var delay = 1000;
 
-  subCentral.onmouseover = function(){
-    archtect.src = "images/archtectEffectBuild.gif";
-  };
+    if (!timeout1){
+      timeout1 = null;
+      timeout1 = window.setTimeout(function () {
+        
+        subBar.onmouseover = function() {    
+          archtect.src = "images/archtectEffectBuild.gif";
+        }
+        
+        archtect.onmouseout = function(){
+          archtect.src = "images/archtectEffectUnbuild.gif";
+        };
 
-  archtect.onmouseout = function(){
-    archtect.src = "images/archtectEffectUnbuild.gif";
-  };
+        if (delay <= 14000) {
+          delay += 2000; console.log(delay);
+        }
+
+      }, delay);
+
+    };
+
 })();
 
 /*****************
@@ -184,5 +197,4 @@ function mouseOver(){
 function mouseOut(){
 
 }
-
 

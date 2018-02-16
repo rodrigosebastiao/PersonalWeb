@@ -19,7 +19,7 @@ $color-picker {
 }
 
 @font-face{
-  font-family: "Handlee Regular";
+  font-family: "Handlee";
   src: url("/fonts/Handlee/Handlee-Regular.ttf");
 }
 
@@ -29,18 +29,18 @@ $color-picker {
 }
 
 @font-face{
-  font-family: "Cabin Sketch Regular";
+  font-family: "Cabin Sketch";
   src: url("/fonts/Cabin_Sketch/CabinSketch-Regular.ttf");
 }
 
 @font-face{
-  font-family: "Merienda Regular";
+  font-family: "Merienda";
   src: url("/fonts/Merienda/Merienda-Regular.ttf");
 }
 
 @font-face{
-  font-family: "Londrina Sketch Regular";
-  src: url("/fonts/Londrina_Sketch/LondrinaSketch-Regular.ttf");
+  font-family: "Great Vibes";
+  src: url("/fonts/Great_Vibes/GreatVibes-Regular.ttf");
 }
 
 body {
@@ -75,12 +75,13 @@ main p a:hover  {
   position: relative;
   height: 50px;
   margin: 0 0 20px;
-  font-family: "Cabin Sketch Bold";
   box-shadow: 1px 1px 2px 1px#EEE;
 }
 
 nav{
   float: right;
+  font-family: "Sintony";
+  text-transform: uppercase;
 }
 
 nav ul {
@@ -125,55 +126,53 @@ nav ul li a:hover{
   color: #000;
 }
 
+
+
 #name{
   color: #777;
-  font-family:  "Merienda Regular", 'Trebuchet MS';
-  font-size: 25px;
-  text-transform: uppercase;
+  font-family: "Great Vibes", "Trebuchet MS";
+  font-size: 35px;
   width: auto;
   height: inherit;
   line-height: 50px;
   margin: 0;
   float: left;
-
 }
 
 .subBar .central{
   position: relative;
   overflow: hidden;
   height: 640px;
+  perspective: 800px;/*Text Perspective*/
 }
 
-.div-holder{
-  position: relative;
-  perspective: 310px;
-}
 
 #archtect{
   margin: -100px 0;
+  max-width: 100%;;
 }
 
-.text{
+.text p{
   position: absolute;
   margin: 0 auto;
-  color: rgb(161, 161, 161);
+  color: #333;
   background: rgba(255, 255, 255, 0.5);
   text-align: center;
   text-transform: uppercase;
-  font-size: 50px;
+  font-size: 40px;
   font-family: "Cabin Sketch Bold";
 }
 
-.text.dev{
-  transform:  rotate3d(1.5,4,-1.6, 80deg);
-  top: 360px;
-  left: 400px;
+.dev{
+  transform:  rotate3d(2,1,1, 90deg);
+  top: 65%;
+  left: 31%;
 }
 
-.text.front{
-  transform:  rotate3d(1,-3,1.0, 80deg);
-  top: 380px;
-  left: 700px;
+.front{
+  transform:  rotate3d(2,-1,-1, 90deg);
+  top: 69%;
+  left: 50%;
 }
 
 /*Introduction-brief*/
