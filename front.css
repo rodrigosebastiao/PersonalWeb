@@ -14,6 +14,11 @@ $color-picker {
 }
 
 @font-face{
+  font-family: "Roboto";
+  src: url("/fonts/Roboto/Roboto-Regular.ttf");
+}
+
+@font-face{
   font-family: "Sintony";
   src: url("/fonts/Sintony/Sintony-Regular.ttf");
 }
@@ -39,8 +44,13 @@ $color-picker {
 }
 
 @font-face{
-  font-family: "Great Vibes";
-  src: url("/fonts/Great_Vibes/GreatVibes-Regular.ttf");
+  font-family: "Qwigley Regular";
+  src: url("/fonts/MySignature/Qwigley-Regular.ttf");
+}
+
+@font-face{
+  font-family: "Bilbo Swash";
+  src: url("/fonts/MySignature/BilboSwashCaps-Regular.ttf");
 }
 
 body {
@@ -80,7 +90,8 @@ main p a:hover  {
 
 nav{
   float: right;
-  font-family: "Sintony";
+  font-family: Roboto;
+  font-size: 20px;
   text-transform: uppercase;
 }
 
@@ -98,21 +109,25 @@ nav ul li{
 
 
 @media screen and (max-width: 1360px){
+  nav ul{
+    margin: 0;
+  }
   nav ul li{
-    padding: 0 10px;
+    padding: 0 5px;
   }
 }
 
-@media screen and (max-width: 865px){
-  #name{
-    display: block;
-    width: 0;
-  }
-  nav ul li{
-    display: block;
-  }
+@media screen and (max-width: 940px){
   nav{
     float: left;
+  }
+  #signature{
+    display: inline;
+    width: 250px;
+  }
+
+  nav ul li{
+    display: block;
   }
 }
 
@@ -126,16 +141,15 @@ nav ul li a:hover{
   color: #000;
 }
 
-
-
-#name{
+#signature{
   color: #777;
-  font-family: "Great Vibes", "Trebuchet MS";
-  font-size: 35px;
+  font-family:  "Qwigley Regular", "Calligraffitti", "Trebuchet MS";
+  font-size: 40px;
   width: auto;
   height: inherit;
   line-height: 50px;
   margin: 0;
+  padding: 0;
   float: left;
 }
 
@@ -151,10 +165,17 @@ nav ul li a:hover{
   max-width: 100%;;
 }
 
-.text{border: 2px solid black;
+.text {
   position: absolute;
-  top: 0;
-  width: 100%;
+  min-width: 100%;
+  height: 100%;
+}
+
+.textwrap {
+  position: absolute;
+  height: 400px;
+  top: -40%;
+  left: 30%;
   margin: 0 auto;
   color: #333;
 }
@@ -164,20 +185,21 @@ nav ul li a:hover{
   background: rgba(255, 255, 255, 0.5);
   text-align: center;
   text-transform: uppercase;
-  font-size: 40px;
+  font-size: 2vw;
   font-family: "Cabin Sketch Bold";
 }
 
 .dev{
-  transform:  rotate3d(2,1,1, 90deg);
-  top: 40%;
-  left: 31%;
+  transform:  rotate3d(2,1,1, 85deg);
+  top: -5%;
+  left: 5%;
 }
 
 .front{
-  transform:  rotate3d(2,-1,-1, 90deg);
-  top: 69%;
-  left: 50%;
+  
+  transform:  rotate3d(2,-1,-1, 85deg);
+  top: -5%;
+  left: 90%;
 }
 
 /*Introduction-brief*/

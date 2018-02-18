@@ -41,12 +41,12 @@ function slider() {
 (function archtectEffects() {
   var archtect = document.getElementById("archtect");
   var timeout1;
-  var delay = 3000;
+  var delay = 8000;
 
 
   if (!timeout1) {
     timeout1 = null;
-    timeout1 = window.setTimeout(function archtectEffects(){
+    timeout1 = window.setTimeout(function(){
 
       archtect.onmouseover = function() {
         archtect.src = "images/archtectEffectBuild.gif";
@@ -60,9 +60,7 @@ function slider() {
     delay += 2000;
   }
   
-
 })();
-
 
 /*****************
 **BALLON SPLITER**
@@ -122,7 +120,7 @@ var amplitude = 0.5;
 var phase = 11;//height of wave
 var crispy = 0.0005;//the higher line crisper
 var stroke = 5; //line width
-var alpha = 0.5;
+var alpha = 0.2;
 var x = 0;//horizontal
 var y = 0;//is Vertical = sin(x)
 //var y = Amplitude*Math.Sin*Frequency*(x-Shift)*Math.PI
