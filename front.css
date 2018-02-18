@@ -10,54 +10,49 @@ $color-picker {
 
 @font-face{
   font-family: "Open Sans";
-  src: url("/fonts/Open_Sans/OpenSans-Regular.ttf");
+  src: url("/fonts/OpenSans-Regular.ttf");
 }
 
 @font-face{
   font-family: "Roboto";
-  src: url("/fonts/Roboto/Roboto-Regular.ttf");
-}
-
-@font-face{
-  font-family: "Sintony";
-  src: url("/fonts/Sintony/Sintony-Regular.ttf");
+  src: url("/fonts/Roboto-Regular.ttf");
 }
 
 @font-face{
   font-family: "Handlee";
-  src: url("/fonts/Handlee/Handlee-Regular.ttf");
+  src: url("/fonts/Handlee-Regular.ttf");
 }
 
 @font-face{
   font-family: "Cabin Sketch Bold";
-  src: url("/fonts/Cabin_Sketch/CabinSketch-Bold.ttf");
+  src: url("/fonts/CabinSketch-Bold.ttf");
 }
 
 @font-face{
   font-family: "Cabin Sketch";
-  src: url("/fonts/Cabin_Sketch/CabinSketch-Regular.ttf");
+  src: url("/fonts/CabinSketch-Regular.ttf");
 }
 
 @font-face{
   font-family: "Merienda";
-  src: url("/fonts/Merienda/Merienda-Regular.ttf");
+  src: url("/fonts/Merienda-Regular.ttf");
 }
 
 @font-face{
   font-family: "Qwigley Regular";
-  src: url("/fonts/MySignature/Qwigley-Regular.ttf");
+  src: url("/fonts/Qwigley-Regular.ttf");
 }
 
 @font-face{
   font-family: "Bilbo Swash";
-  src: url("/fonts/MySignature/BilboSwashCaps-Regular.ttf");
+  src: url("/fonts/BilboSwashCaps-Regular.ttf");
 }
 
 body {
   margin: 0px;
   /*background: url(images/build2.png); off
   background-size: cover; off*/
-	font-family: "Sintony", "Open Sans", Verdana;
+	font-family: Roboto, "Open Sans", Verdana;
   font-size: 22px;
 }
 
@@ -85,7 +80,7 @@ main p a:hover  {
   position: relative;
   height: 50px;
   margin: 0 0 20px;
-  box-shadow: 1px 1px 2px 1px#EEE;
+  box-shadow: 1px 1px 5px 1px#EFEFEF;
 }
 
 nav{
