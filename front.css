@@ -52,8 +52,7 @@ body {
   margin: 0px;
   /*background: url(images/build2.png); off
   background-size: cover; off*/
-	font-family: Roboto, "Open Sans", Verdana;
-  font-size: 22px;
+  font-family: Roboto, "Open Sans", Verdana;
 }
 
 .central{/*controla largura do doc*/
@@ -80,6 +79,8 @@ main p a:hover  {
   position: relative;
   height: 50px;
   margin: 0 0 20px;
+  font-family: Roboto, "Open Sans", Verdana;
+  font-size: 16px;
   box-shadow: 1px 1px 5px 1px#EFEFEF;
 }
 
@@ -191,7 +192,6 @@ nav ul li a:hover{
 }
 
 .front{
-  
   transform:  rotate3d(2,-1,-1, 85deg);
   top: -5%;
   left: 90%;
@@ -218,6 +218,8 @@ nav ul li a:hover{
 section {
   margin: 0 0 20px;
   padding: 20px 0px 10px;
+  font-family: Roboto, "Open Sans", Verdana;
+  font-size: 25px;
 }
 
 section:nth-child(odd) {
