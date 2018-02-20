@@ -3,7 +3,6 @@ window.onload = function(){
   slider();
 }
 
-
 /******************
 **BALLOON SLIDING**
 *******************/
@@ -35,31 +34,37 @@ function slider() {
 /*********************
 **ARCHTECT EFFECT**
 **********************/
-
-
-
 (function archtectEffects() {
-  var archtect = document.getElementById("archtect");
-  var timeout1;
-  var delay = 8000;
+/*1350/900 ->  675/450 -> 225/150 ->  75/50 -> 15/10 ->  3/2 
+divisão por 6 = 225/150*/ 
+  var archtectOver = document.getElementById("archtectOver");
+  var tiles = document.getElementsByClassName("tiles");
+  var sizeW = 1350;
+  var sizeH = 900;
+  var posX = 225;
+  var posY = 150;
+  var newDiv = document.createElement("DIV");
 
-
-  if (!timeout1) {
-    timeout1 = null;
-    timeout1 = window.setTimeout(function(){
-
-      archtect.onmouseover = function() {
-        archtect.src = "images/archtectEffectBuild.gif";
-        };
-
-      archtect.onmouseout = function(){
-        archtect.src = "images/archtectEffectUnbuild.gif";
-      };
-
-    }), delay;
-    delay += 2000;
+  for (var i = 0; i < 36; i++) {
+    newDiv = document.createElement("DIV");
+    archtectOver.appendChild(newDiv);
+    newDiv.className = "tiles";
+    newDiv.style.width = 225+"px";
+    newDiv.style.height = 150+"px";
+    newDiv.style.opacity = 0.9;
+    newDiv.style.background = "url(images/tribuild.jpg)" + posX+"px" + posX+"px" +"";
   }
+
+    tiles[2].onmouseover = function() {
+      tiles[2].style.opacity = 1;
+    };
   
+  
+
+  tiles.onmouseout = function () {//Reset
+    tiles.style.opacity = 0.2;
+  }; 
+
 })();
 
 /*****************

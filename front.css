@@ -1,11 +1,11 @@
-$color-picker {
-  white: rgba(255,255,255,1);/*white*/
-  grey: rgba(80, 100, 120,1);
-  light-blue: rgba(128,197,232,1);
-  blue: rgba(35,166,232,1);
-  marine-blue: rgba(0,78,117,1);
-  beige: rgba(191,143,83,1);
-  brown: rgba(102,61,10,1);
+color-picker {
+  -white: rgba(255,255,255,1);/*white*/
+  -grey: rgba(80, 100, 120,1);
+  -light-blue: rgba(128,197,232,1);
+  -blue: rgba(35,166,232,1);
+  -marine-blue: rgba(0,78,117,1);
+  -beige: rgba(191,143,83,1);
+  -brown: rgba(102,61,10,1);
 }
 
 @font-face{
@@ -117,9 +117,9 @@ nav ul li{
   nav{
     float: left;
   }
+
   #signature{
     display: inline;
-    width: 250px;
   }
 
   nav ul li{
@@ -132,9 +132,13 @@ nav ul li a{
   color: #000;
 }
 
+nav ul li svg {
+  color:#555;
+}
+
 nav ul li a:hover{
   text-decoration: none;
-  color: #000;
+  color: rgb(0, 68, 107);
 }
 
 #signature{
@@ -149,16 +153,35 @@ nav ul li a:hover{
   float: left;
 }
 
-.subBar .central{
-  position: relative;
-  overflow: hidden;
-  perspective: 800px;/*Text Perspective*/
+.subBar{
+  width: 100%;
+  height: 900px;/*avoid collapsing*/
 }
 
+.subBar .central{
+  position: relative;
+}
 
 #archtect{
-  margin: -100px 0;
-  max-width: 100%;;
+  background: url("images/archtect.jpg");
+  width: 1350px;
+  height: 900px;
+  z-index: -1;
+  position: absolute;
+  overflow: hidden;
+  perspective: 800px;/*Text Perspective for 3d*/
+}
+
+#archtectOver{
+  width: 1350px;
+}
+
+.tiles{/*createElement js*/
+  display: block;
+  z-index: 1;
+  float: left;
+  overflow: hidden;
+  transition: 1s;
 }
 
 .text {
@@ -545,7 +568,7 @@ canvas {
 **********/
 .footer {
   background: rgba(0,0,0,1);
-  height: 15vh;
+  height: 150px;
   padding: 20px 0;
 }
 
