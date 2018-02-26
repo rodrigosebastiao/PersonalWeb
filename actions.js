@@ -39,32 +39,7 @@ function slider() {
 divisão por 6 = 225/150*/ 
   var archtectOver = document.getElementById("archtectOver");
   var tiles = document.getElementsByClassName("tiles");
-  var sizeW = 1350;
-  var sizeH = 900;
-  var posX = 225;
-  var posY = 150;
-  var newDiv = document.createElement("DIV");
-
-  for (var i = 0; i < 36; i++) {
-    newDiv = document.createElement("DIV");
-    archtectOver.appendChild(newDiv);
-    newDiv.className = "tiles";
-    newDiv.style.width = 225+"px";
-    newDiv.style.height = 150+"px";
-    newDiv.style.opacity = 0.9;
-    newDiv.style.background = "url(images/tribuild.jpg)" + posX+"px" + posX+"px" +"";
-  }
-
-    tiles[2].onmouseover = function() {
-      tiles[2].style.opacity = 1;
-    };
   
-  
-
-  tiles.onmouseout = function () {//Reset
-    tiles.style.opacity = 0.2;
-  }; 
-
 })();
 
 /*****************
@@ -113,7 +88,6 @@ var turn = 2;
     },delay);
   }
 }
-
 
 
 /****************************
