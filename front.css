@@ -153,24 +153,25 @@ nav ul li a:hover{
   float: left;
 }
 
+.subBar .central{
+  overflow: hidden;
+}
+
 .subBar{
   display: block;
   width: 100%;
-  height: 900px;/*avoid collapsing*/
+  height: 750px;/*avoid collapsing*/
 }
 
 #archtect{
-  background: url("images/archtect.jpg") no-repeat;
+  background: url("images/archtect.jpg") no-repeat 0 0;
   background-size: 100%;
+  position: relative;
+  top: -50px;
   width: 100%;
-  height: 900px;
-  /*overflow: hidden;*/
+  height: 700px;/*Chop*/
+  overflow: hidden;
 }
-
-#svgContainer{
-  height: 0;
-}
-
 
 #svgGroup path{
   fill: url(#builtImg);/*image slices of svg path*/
@@ -178,7 +179,7 @@ nav ul li a:hover{
 
 .sliceLeft, .sliceRight {
   opacity: 0;
-  transition: 0ms 20s;
+  transition: 0ms 40s;/*hide again after 40secs*/
 }
 
 .sliceLeft:hover, .sliceRight:hover {
@@ -186,25 +187,18 @@ nav ul li a:hover{
   transition-delay: 0s;
 }
 
-
 .text {
   pointer-events: none;/*Transpass div on hover*/
   position: absolute;
+  margin-top: 36%;
   width: 100%;
-  height: 100%;
-}
-
-.textwrap {
-  position: absolute;
-  top: 60%;
-  left: 20%;
-  margin: 0 auto;
   color: #333;
 }
 
+
 .text p{
-  position: relative;
-  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
   text-align: center;
   text-transform: uppercase;
   font-size: 2vw;
@@ -212,15 +206,15 @@ nav ul li a:hover{
 }
 
 .dev{
-  transform:  rotate3d(2,1,1, 85deg);
-  top: -5%;
-  left: 5%;
+  transform:  rotate3d(2,1,1, 80deg);
+  top: 0px;
+  left: 30%;
 }
 
 .front{
-  transform:  rotate3d(2,-1,-1, 85deg);
-  top: -5%;
-  left: 90%;
+  transform:  rotate3d(2,-1,-1, 80deg);
+  top: 50px;
+  left: 50%;
 }
 
 /*Introduction-brief*/
