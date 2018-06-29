@@ -19,7 +19,7 @@ addEventListener("onkeyup",slider);
 
 function slider() {
   var balloon = document.getElementById("chat");
-  var y = 200;    
+  var y = 200;
   var pageSize = document.body.clientHeight;
 
   if (y < 1500){/*avoid bottom enddless scrolling*/
@@ -35,8 +35,6 @@ function slider() {
 **ARCHTECT EFFECT**
 **********************/
 (function archtectEffects() {
-/*1350/900 ->  675/450 -> 225/150 ->  75/50 -> 15/10 ->  3/2 
-divisão por 6 = 225/150*/ 
   var archtectOver = document.getElementById("archtectOver");
   var tiles = document.getElementsByClassName("tiles");
   
