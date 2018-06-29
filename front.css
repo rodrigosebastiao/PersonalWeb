@@ -178,9 +178,9 @@ nav ul li a:hover{
 
 }
 
-#signature .hand {
+#signature .fa-code {
   margin-left: 5px;
-  transform: rotate(-30deg);
+  transform: rotate(-15deg);
   font-size: 22px;
 }
 
@@ -200,9 +200,9 @@ nav ul li a:hover{
   background: url("images/archtect.jpg") no-repeat 0 0;
   background-size: 100%;
   position: relative;
-  top: -50px;
+  top: -400px;
   width: 100%;
-  height: 900px;/*Chop <=700*/
+  height: 1100px;/*Chop*/
   overflow: hidden;
 }
 
@@ -210,14 +210,14 @@ nav ul li a:hover{
   fill: url(#builtImg);/*image slices of svg path*/
 }
 
-.sliceLeft, 
-.sliceRight {
+.tile-left, 
+.tile-right {
   opacity: 0;
   transition: 0ms 30s;/*hide again after Xsecs*/
 }
 
-.sliceLeft:hover, 
-.sliceRight:hover {
+.tile-left:hover, 
+.tile-right:hover {
   opacity: 1;
   transition-delay: 0s;
 }

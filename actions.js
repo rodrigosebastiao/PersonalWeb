@@ -34,11 +34,10 @@ function slider() {
 /*********************
 **ARCHTECT EFFECT**
 **********************/
-(function archtectEffects() {
+function archtectEffect() {
   var archtectOver = document.getElementById("archtectOver");
   var tiles = document.getElementsByClassName("tiles");
-  
-})();
+};
 
 /*****************
 **BALLON SPLITER**
