@@ -37,42 +37,42 @@
 
 @font-face{
   font-family: "Open Sans";
-  src: url("/fonts/OpenSans-Regular.ttf");
+  src: url("../fonts/OpenSans-Regular.ttf");
 }
 
 @font-face{
   font-family: "Roboto";
-  src: url("/fonts/Roboto-Regular.ttf");
+  src: url("../fonts/Roboto-Regular.ttf");
 }
 
 @font-face{
   font-family: "Handlee";
-  src: url("/fonts/Handlee-Regular.ttf");
+  src: url("../fonts/Handlee-Regular.ttf");
 }
 
 @font-face{
   font-family: "Cabin Sketch Bold";
-  src: url("/fonts/CabinSketch-Bold.ttf");
+  src: url("../fonts/CabinSketch-Bold.ttf");
 }
 
 @font-face{
   font-family: "Cabin Sketch";
-  src: url("/fonts/CabinSketch-Regular.ttf");
+  src: url("../fonts/CabinSketch-Regular.ttf");
 }
 
 @font-face{
   font-family: "Merienda";
-  src: url("/fonts/Merienda-Regular.ttf");
+  src: url("../fonts/Merienda-Regular.ttf");
 }
 
 @font-face{
   font-family: "Qwigley Regular";
-  src: url("/fonts/Qwigley-Regular.ttf");
+  src: url("../fonts/Qwigley-Regular.ttf");
 }
 
 @font-face{
   font-family: "Bilbo Swash";
-  src: url("/fonts/BilboSwashCaps-Regular.ttf");
+  src: url("../fonts/BilboSwashCaps-Regular.ttf");
 }
 
 body {
