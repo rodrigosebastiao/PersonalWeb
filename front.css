@@ -103,7 +103,7 @@ main p a:hover  {
 /*Superior Menu Navigation*/
 
 .bar{
-  background: #152630;
+  background: #162934;
   color: #FFF;
   height: 70px;
   padding: 40px 0 0;
@@ -132,29 +132,18 @@ nav ul li{
   padding: 0 0 0 100px;
 }
 
-
-@media screen and (max-width: 1360px){
-  nav ul{
-    margin: 0;
-  }
-  nav ul li{
-    padding: 0 5px;
-  }
+.project-icon:hover .fa-vial {
+  display: none;
 }
 
-@media screen and (max-width: 940px){
-  nav{
-    float: left;
-  }
-
-  nav ul li{
-    display: block;
-  }
-  .bar{/*fix collapsing with subbar*/
-    display: block;
-    height: 200px;
-  }
+.project-icon .fa-vial-full {
+  display: none;
 }
+
+.project-icon:hover .fa-vial-full {
+  display: inline-block;
+}
+
 
 nav ul li a{
   text-decoration: none;
@@ -206,17 +195,19 @@ nav ul li a:hover{
   overflow: hidden;
 }
 
-#svgGroup path{
-  fill: url(#builtImg);/*image slices of svg path*/
+#svgGroup path {
+  fill: url(#builtImg);
+  /*image slices of svg path*/
 }
 
-.tile-left, 
+.tile-left,
 .tile-right {
   opacity: 0;
-  transition: 0ms 30s;/*hide again after Xsecs*/
+  transition: 0ms 30s;
+  /*hide again after Xsecs*/
 }
 
-.tile-left:hover, 
+.tile-left:hover,
 .tile-right:hover {
   opacity: 1;
   transition-delay: 0s;
@@ -490,7 +481,7 @@ canvas {
 }
 
 .subChat p {
-  margin: 7px;
+  margin: 6px;
   text-align: center;
   display: block;
 }
