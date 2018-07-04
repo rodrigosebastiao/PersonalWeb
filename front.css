@@ -68,6 +68,8 @@
 @font-face{
   font-family: "Qwigley Regular";
   src: url("../fonts/Qwigley-Regular.ttf");
+  src: url("../fonts/Qwigley-Regular.woff"), format('woff');
+  src: url("https://fonts.googleapis.com/css?family=Qwigley");
 }
 
 @font-face{
@@ -90,7 +92,7 @@ body {
 
 main a {
   text-decoration: none;
-  color: rgba(80, 100, 120,1);
+  color: #62727C;
 }
 
 main p a:hover  {
@@ -152,7 +154,7 @@ nav ul li a{
 
 nav ul li a:hover{
   text-decoration: none;
-  color: rgb(77, 160, 160);
+  color: rgba(106, 136, 121, 1);
 }
 
 #signature{
@@ -218,7 +220,7 @@ nav ul li a:hover{
   position: absolute;
   margin-top: 36%;
   width: 100%;
-  color: #333;
+  color: #3A3C54;
 }
 
 
@@ -228,18 +230,18 @@ nav ul li a:hover{
   text-align: center;
   text-transform: uppercase;
   font-size: 2vw;
-  font-family: "Cabin Sketch Bold";
+  font-family: "Cabin Sketch Bold", "impact", "Corbel";
 }
 
 .dev{
-  transform:  rotate3d(2,1,1, 80deg);
-  top: 0px;
-  left: 30%;
+  transform : rotate3d(2, 1, 1, 80deg) skew(-5deg);
+  top: 60px;
+  left: 35.5%;
 }
 
 .front{
-  transform:  rotate3d(2,-1,-1, 80deg);
-  top: 50px;
+  transform : rotate3d(2, -1, -1, 80deg) skew(-5deg);
+  top: 80px;
   left: 50%;
 }
 
