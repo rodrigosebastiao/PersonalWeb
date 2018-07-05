@@ -125,7 +125,7 @@ body {
 
 .central {
   /*controla largura do conteúdo*/
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -313,7 +313,8 @@ section {
 }
 
 section.index:nth-child(odd) {
-  background: #f9f9f9;
+  border-top: 1px solid #fcfcfc;
+  border-bottom: 1px solid #fcfcfc;
 }
 
 section h1 {
@@ -322,7 +323,7 @@ section h1 {
   padding: 2px 5px;
 }
 
-span {
+h1 span {
   box-shadow: 1px 2px 1px 2px #adadad;
   padding: 3px;
 }
@@ -366,10 +367,6 @@ h3.pct_val {
   text-align: center;
   color: rgb(100, 100, 100);/*Fallback*/
   color: rgba(0, 0, 0, 0.5);
-}
-
-span.pct_sign {
-  box-shadow: none;
 }
 
 canvas {
@@ -444,7 +441,6 @@ canvas {
 #list h2.mysql {
   color: rgba(0, 117, 143, 1);
 } #list span.sql {
-    box-shadow: none;
     border: 0;
     color: rgba(242, 147, 17, 1);
   }
