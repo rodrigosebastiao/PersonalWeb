@@ -13,8 +13,7 @@
 	
 <meta charset="utf-8">
 <link href="front.css" rel="stylesheet" type="text/css"/>
-<link href="images/favicon.bmp" rel="shortcut icon" type="image/x-icon"/>
-<link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet"/>
+<link href="images/favicon.png" rel="shortcut icon" type="image/x-icon"/>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
  crossorigin="anonymous">
 </script>
@@ -144,23 +143,31 @@
 				<h1><span>Habilidades</span></h1>
 				<article class="skills">
 				<ul id="list">
-					<div>	<h2>JavaScript</h2></div>
-					<li><canvas id="canvas" class="allCanvases" width="100%" height="12%" onclick="pause()" onMouseOver="mouseOver()" onMouseOut="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas><h3>30%</h3></li>
 
-					<h2>HTML5</h2>
-					<li><canvas id="canvas2" class="allCanvases" width="100%" height="12%" onclick="pause()" onMouseOver="mouseOver()" onMouseOut="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas>	<h3>40%</h3></li>
+					<h2 class="javascript">Javascript</h2>
+					<li class="skill javascript"><canvas id="javascript" class="allCanvases" onclick="pause()" onMouseOver="mouseOver()" onMouseOut="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas><h3 class="pct_val">50<span class="pct_sign">%</span></h3></li>
 
-					<h2>CSS</h2>
-					<li><canvas id="canvas3" class="allCanvases" width="100%" height="12%" onclick="pause()" onMouseOver="mouseOver()" onMouseOut ="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas>	<h3>20%</h3></li>
+					<h2 class="jquery">jQuery</h2>
+					<li class="skill jquery">
+						<canvas id="jquery" class="allCanvases" onclick="pause()" onMouseOver="mouseOver()" onMouseOut="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas>
+						<h3 class="pct_val">20<span class="pct_sign">%</span></h3>
+					</li>	
 
-					<h2>PHP</h2>
-					<li><canvas id="canvas4" class="allCanvases" width="100%" height="12%" onclick="pause()" onMouseOver="mouseOver()" onMouseOut ="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5!</canvas>	<h3>5%</h3></li>
+					<h2 class="html5">HTML5</h2>
+					<li class="skill html5"><canvas id="html5" class="allCanvases" onclick="pause()" onMouseOver="mouseOver()" onMouseOut="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas><h3 class="pct_val">40<span class="pct_sign">%</span></h3></li>
 
-					<h2>MySQL</h2>
-					<li><canvas id="canvas5" class="allCanvases" width="100%" height="12%" onclick="pause()" onMouseOver="mouseOver()" onMouseOut ="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas>	<h3>10%</h3></li>
+					<h2 class="css3">CSS3</h2>
+					<li class="skill css3"><canvas id="css3" class="allCanvases" onclick="pause()" onMouseOver="mouseOver()" onMouseOut ="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas>	<h3 class="pct_val">20<span class="pct_sign">%</span></h3></li>
 
-					<h2>Photoshop</h2>
-					<li><canvas id="canvas6" class="allCanvases" width="100%" height="12%" onclick="pause()" onMouseOver="mouseOver()" onMouseOut ="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas><h3>50%</h3></li>
+					<h2 class="php">PHP</h2>
+					<li class="skill php"><canvas id="php" class="allCanvases" onclick="pause()" onMouseOver="mouseOver()" onMouseOut ="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5!</canvas>	<h3 class="pct_val">5<span class="pct_sign">%</span></h3></li>
+
+					<h2 class="mysql">My<span class="sql">SQL</span></h2>
+					<li class="skill mysql"><canvas id="mysql" class="allCanvases" onclick="pause()" onMouseOver="mouseOver()" onMouseOut ="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas>	<h3 class="pct_val">10<span class="pct_sign">%</span></h3></li>
+
+					<h2 class="photoshop">Photoshop</h2>
+					<li class="skill photoshop"><canvas id="photoshop" class="allCanvases" onclick="pause()" onMouseOver="mouseOver()" onMouseOut ="mouseOut()">Este navegar parece não ser amigo do canvas para HTML5 !</canvas><h3 class="pct_val">50<span class="pct_sign">%</span></h3></li>
+					
 				</ul>
 				</article>
 			</div>

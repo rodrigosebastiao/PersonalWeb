@@ -1,20 +1,20 @@
-window.onload = function(){
+window.onload = function () {
   start();
   slider();
 }
 
 /******************
-**BALLOON SLIDING**
-*******************/
-addEventListener("wheel",slider);
-addEventListener("mousemove",slider);
-addEventListener("mouseover",slider);
-addEventListener("mouseout",slider);
-addEventListener("click",slider);
-addEventListener("onmousedown",slider);
-addEventListener("onmouseup",slider);
-addEventListener("onkeydown",slider);
-addEventListener("onkeyup",slider);
+ **BALLOON SLIDING**
+ *******************/
+addEventListener("wheel", slider);
+addEventListener("mousemove", slider);
+addEventListener("mouseover", slider);
+addEventListener("mouseout", slider);
+addEventListener("click", slider);
+addEventListener("onmousedown", slider);
+addEventListener("onmouseup", slider);
+addEventListener("onkeydown", slider);
+addEventListener("onkeyup", slider);
 
 
 function slider() {
@@ -22,26 +22,26 @@ function slider() {
   var y = 200;
   var pageSize = document.body.clientHeight;
 
-  if (y < 1500){/*avoid bottom enddless scrolling*/
+  if (y < 1500) { /*avoid bottom enddless scrolling*/
     y += document.documentElement.scrollTop;
-    if( y > 200 ){
-      y += (300);//a 4th of page
+    if (y > 200) {
+      y += (300); //a 4th of page
     }
-    balloon.style.top = y+'px';//dynamic var y
+    balloon.style.top = y + 'px'; //dynamic var y
   }
 }
 
 /*********************
-**ARCHTECT EFFECT**
-**********************/
+ **ARCHTECT EFFECT**
+ **********************/
 function archtectEffect() {
   var archtectOver = document.getElementById("archtectOver");
   var tiles = document.getElementsByClassName("tiles");
 };
 
 /*****************
-**BALLON SPLITER**
-******************/
+ **BALLON SPLITER**
+ ******************/
 var audio = document.getElementsByTagName("audio")[0];
 
 var chat = document.getElementById("chat");
@@ -54,122 +54,163 @@ chat.onmouseover = function () {
   chatTXT.style.opacity = "0";
 
   wapp.style.top = "-40%";
-    wapp.style.opacity = "1";
+  wapp.style.opacity = "1";
   lchat.style.left = "60%";
-    lchat.style.opacity = "1";
+  lchat.style.opacity = "1";
   email.style.left = "-30%";
-    email.style.opacity = "1";
-sound();
+  email.style.opacity = "1";
+  sound();
 }
 
-chat.onmouseout = function() {
+chat.onmouseout = function () {
   chatTXT.style.opacity = "";
 
   wapp.style.top = "";
-    wapp.style.opacity = "";
+  wapp.style.opacity = "";
   lchat.style.left = "";
-    lchat.style.opacity = "";
+  lchat.style.opacity = "";
   email.style.left = "";
-    email.style.opacity = "";
+  email.style.opacity = "";
 }
 
-function sound(){
-var delay = 5000;
-var turn = 2;
+function sound() {
+  var delay = 5000;
+  var turn = 2;
 
-  if (delay == 0 && turn%2 != 0){
-    setTimeout(function(){
+  if (delay == 0 && turn % 2 != 0) {
+    setTimeout(function () {
       console.log("sound!");
       turn++;
       delay++;
-    },delay);
+    }, delay);
   }
 }
 
 
 /****************************
-**SINUSOIDAL WAVES |CANVAS|**
-*****************************/
-var cycles = 200;//frequency, cycles/ms. More Slows
-var amplitude = 0.5;
-//the lower reduce line width and smoth bounce
-var phase = 11;//height of wave
-var crispy = 0.0005;//the higher line crisper
-var stroke = 5; //line width
-var alpha = 0.2;
-var x = 0;//horizontal
-var y = 0;//is Vertical = sin(x)
-//var y = Amplitude*Math.Sin*Frequency*(x-Shift)*Math.PI
-var isPaused = false;
-var control;
+ **SINUSOIDAL WAVES |CANVAS|**
+ *****************************/
 
-function sinusoidal(cvName,color,defW,defH) {
-var canvas = document.getElementById(cvName);
+function Sinusoidal(id, color, pct) { /*canvas name, color, width, height*/
+  var canvas = document.getElementById(id);
+  var stroke = 2; //line thickness
+  var alpha = 0.7;// general transparency
+  var cycles = 100; //frequency, cycles/ms. More = Slows
+  var amplitude = 0.05; //the lower reduce line width and smoth bounce
+  var crispy = 0.01; //the higher line crisper
+  var x = 0; //horizontal = x
+  var y = 0; //vertical = y = sin(x)
+  //var y = Amplitude*Math.Sin*Frequency*(x-Shift)*Math.PI
+  var control;
+  var isPaused = false;
+  var phase = canvas.height * 0.5;
+  var h2 = document.getElementById("list").getElementsByTagName("h2");
+  var liColor = window.getComputedStyle(h2[color], "").getPropertyValue("color");
 
-if(canvas != null){
-var ctx = canvas.getContext('2d');
+  if (canvas != null) {
+    var ctx = canvas.getContext('2d');
+    var PI = Math.PI;
+    control = setInterval(wave, cycles); //call wave() every x cycles
 
-canvas.width = defW;
-canvas.height = defH;
-
-control = setInterval(wave,cycles);
-  function wave() {
-      if(canvas.onclick == null) {
-      isPaused; console.log("Not Running");
+    function wave() {
+      if (canvas.onclick == null) {
+        isPaused;
       } else {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.beginPath();
-  ctx.moveTo(0, canvas.height * 0.5);
-    const len = canvas.width;
-      for(x = 0; x < len; x++){
-        amplitude += 0.0009;//tinier slower
-        x += 1.5;//bigger slower
-        y = canvas.height * 0.5 - (Math.random()*crispy + Math.sin(amplitude + x * 0.09))*phase;
-        ctx.lineTo(x, y);
-      }//end of for
+        ctx.save();
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.beginPath();
+          ctx.moveTo(0, canvas.height);
 
-        /*
-        ctx.shadowColor = 'rgba(0,200,0,0.5)';
-        ctx.shadowOffsetX = 3;
-        ctx.shadowColor = 'rgba(0,200,0,0.5)';
-        ctx.shadowBlur = 16;
-        ctx.font = "25px Calibri Light";
-        ctx.fillText(txt,sizeX/3,sizeY);
-        ctx.fillStyle = 'rgba(255,255,255,1)';*/
+          for (x = -5; x < canvas.width + 5; x += 4) { //when x bigger slower       
+            amplitude += 0.002; //smaller = slower
+            y = canvas.height * 0.5 - (Math.random() * crispy + Math.sin((x / PI / 2) + amplitude)) * phase;
+            ctx.lineTo(x, y);
+          } //end of for
 
-        var li = document.getElementById("list").getElementsByTagName("li");      
-        var liColor = window.getComputedStyle(li[color], "").getPropertyValue("border-color");
-        
-    ctx.globalAlpha = alpha;
-    ctx.lineWidth = stroke;
-    ctx.strokeStyle = liColor || 'grey';
-    ctx.stroke();
-      }//end of flag
-    }// end of wave()
-  }//if not null
-}// end of sinusoidal()
+          //Canvas elements assume same color as css border, if fail is grey
+          ctx.strokeStyle = liColor || 'grey';
+          ctx.globalAlpha = alpha * 0.3;
+          ctx.lineWidth = stroke;
+          ctx.stroke();
+
+          /*ctx.shadowColor = 'rgba(0,200,0,0.5)';
+          ctx.shadowOffsetX = 3;
+          ctx.shadowColor = 'rgba(0,200,0,0.5)';
+          ctx.shadowBlur = 16;
+          ctx.font = "25px Calibri Light";
+          ctx.fillText(txt,sizeX/3,sizeY);
+          ctx.fillStyle = 'rgba(255,255,255,1)';*/
+        ctx.restore();
+
+        //cover wave with pct_valage
+        ctx.save();
+          ctx.beginPath();
+          ctx.rect(0, 0, pct * canvas.width, canvas.height);
+          ctx.globalAlpha = alpha * 0.4;
+          ctx.fillStyle = liColor;
+          ctx.fill();
+        ctx.restore();
+
+        //cover wave w/ pct_valage remaining
+        ctx.save();
+          ctx.beginPath();
+          ctx.rect(pct * canvas.width, 0, (1 - pct) * canvas.width, canvas.height);
+          ctx.fillStyle = "#FFF";
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.globalAlpha = alpha * 0.1;
+          ctx.rect(pct * canvas.width, 0, (1 - pct) * canvas.width, canvas.height);
+          ctx.fillStyle = liColor;
+          ctx.fill();
+        ctx.restore();
+      } //end of else else
+    } //end of wave()
+  } //end of null verification
+
+} // end of Sinusoidal()
 
 
+/*Get Content # from page and turn into % pct_valage*/
+var pct0 = (parseInt(document.getElementsByClassName("pct_val")[0].textContent)) / 100;
+var pct1 = (parseInt(document.getElementsByClassName("pct_val")[1].textContent)) / 100;
+var pct2 = (parseInt(document.getElementsByClassName("pct_val")[2].textContent)) / 100;
+var pct3 = (parseInt(document.getElementsByClassName("pct_val")[3].textContent)) / 100;
+var pct4 = (parseInt(document.getElementsByClassName("pct_val")[4].textContent)) / 100;
+var pct5 = (parseInt(document.getElementsByClassName("pct_val")[5].textContent)) / 100;
+var pct6 = (parseInt(document.getElementsByClassName("pct_val")[6].textContent)) / 100;
+
+//set element to same position as its textContent
+document.getElementsByClassName("pct_val")[0].style.left = (pct0*100)+"%";
+document.getElementsByClassName("pct_val")[1].style.left = (pct1*100)+"%";
+document.getElementsByClassName("pct_val")[2].style.left = (pct2*100)+"%";
+document.getElementsByClassName("pct_val")[3].style.left = (pct3*100)+"%";
+document.getElementsByClassName("pct_val")[4].style.left = (pct4*100)+"%";
+document.getElementsByClassName("pct_val")[5].style.left = (pct5*100)+"%";
+document.getElementsByClassName("pct_val")[6].style.left = (pct6*100)+"%";
 
 function start() {
-    isPaused = false;
-    var sin = new sinusoidal("canvas",0,550*0.3,30);
-    var sin2 = new sinusoidal("canvas2",1,550*0.4,30);
-    var sin3 = new sinusoidal("canvas3",2,550*0.2,30);
-    var sin4 = new sinusoidal("canvas4",3,550*0.05,30);
-    var sin5 = new sinusoidal("canvas5",4,550*0.1,30);
-    var sin6 = new sinusoidal("canvas6",5,550*0.5,30);
+  isPaused = false;
+  /*Sinusoidal(id, color)*/
+  var sin0 = new Sinusoidal("javascript", 0, pct0);
+  var sin1 = new Sinusoidal("jquery", 1, pct1);
+  var sin2 = new Sinusoidal("html5", 2, pct2);
+  var sin3 = new Sinusoidal("css3", 3, pct3);
+  var sin4 = new Sinusoidal("php", 4, pct4);
+  var sin5 = new Sinusoidal("mysql", 5, pct5);//my
+  var sin6 = new Sinusoidal("photoshop", 6, pct6);
 }
 
-function pause() {//flag
+
+
+function pause() { //flag
   isPaused = true;
 }
 
-function mouseOver(){
+function mouseOver() {
 
 }
 
-function mouseOut(){
+function mouseOut() {
 
 }
-
