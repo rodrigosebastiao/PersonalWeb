@@ -127,9 +127,9 @@ function Sinusoidal(id, color, pct) { /*canvas name, color, width, height*/
             ctx.lineTo(x, y);
           } //end of for
 
-          //Canvas elements assume same color as css border, if fail is grey
+          //Canvas elements assume same color as css, if fail is grey
           ctx.strokeStyle = liColor || 'grey';
-          ctx.globalAlpha = alpha * 0.3;
+          ctx.globalAlpha = alpha * 0.2;
           ctx.lineWidth = stroke;
           ctx.stroke();
 
@@ -142,16 +142,16 @@ function Sinusoidal(id, color, pct) { /*canvas name, color, width, height*/
           ctx.fillStyle = 'rgba(255,255,255,1)';*/
         ctx.restore();
 
-        //cover wave with pct_valage
+        //cover wave with pct_val
         ctx.save();
           ctx.beginPath();
           ctx.rect(0, 0, pct * canvas.width, canvas.height);
-          ctx.globalAlpha = alpha * 0.4;
-          ctx.fillStyle = liColor;
+          ctx.globalAlpha = alpha * 0.3;
+          ctx.fillStyle = liColor || 'grey';
           ctx.fill();
         ctx.restore();
 
-        //cover wave w/ pct_valage remaining
+        //cover wave w/ pct_val remaining
         ctx.save();
           ctx.beginPath();
           ctx.rect(pct * canvas.width, 0, (1 - pct) * canvas.width, canvas.height);
@@ -161,7 +161,7 @@ function Sinusoidal(id, color, pct) { /*canvas name, color, width, height*/
           ctx.beginPath();
           ctx.globalAlpha = alpha * 0.1;
           ctx.rect(pct * canvas.width, 0, (1 - pct) * canvas.width, canvas.height);
-          ctx.fillStyle = liColor;
+          ctx.fillStyle = liColor  || 'grey';
           ctx.fill();
         ctx.restore();
       } //end of else else
@@ -172,36 +172,34 @@ function Sinusoidal(id, color, pct) { /*canvas name, color, width, height*/
 
 
 /*Get Content # from page and turn into % pct_valage*/
-var pct0 = (parseInt(document.getElementsByClassName("pct_val")[0].textContent)) / 100;
-var pct1 = (parseInt(document.getElementsByClassName("pct_val")[1].textContent)) / 100;
-var pct2 = (parseInt(document.getElementsByClassName("pct_val")[2].textContent)) / 100;
-var pct3 = (parseInt(document.getElementsByClassName("pct_val")[3].textContent)) / 100;
-var pct4 = (parseInt(document.getElementsByClassName("pct_val")[4].textContent)) / 100;
-var pct5 = (parseInt(document.getElementsByClassName("pct_val")[5].textContent)) / 100;
-var pct6 = (parseInt(document.getElementsByClassName("pct_val")[6].textContent)) / 100;
+var pct0 = (parseInt(document.getElementsByClassName("pct_val")[0].textContent));
+var pct1 = (parseInt(document.getElementsByClassName("pct_val")[1].textContent));
+var pct2 = (parseInt(document.getElementsByClassName("pct_val")[2].textContent));
+var pct3 = (parseInt(document.getElementsByClassName("pct_val")[3].textContent));
+var pct4 = (parseInt(document.getElementsByClassName("pct_val")[4].textContent));
+var pct5 = (parseInt(document.getElementsByClassName("pct_val")[5].textContent));
+var pct6 = (parseInt(document.getElementsByClassName("pct_val")[6].textContent));
 
 //set element to same position as its textContent
-document.getElementsByClassName("pct_val")[0].style.left = (pct0*100)+"%";
-document.getElementsByClassName("pct_val")[1].style.left = (pct1*100)+"%";
-document.getElementsByClassName("pct_val")[2].style.left = (pct2*100)+"%";
-document.getElementsByClassName("pct_val")[3].style.left = (pct3*100)+"%";
-document.getElementsByClassName("pct_val")[4].style.left = (pct4*100)+"%";
-document.getElementsByClassName("pct_val")[5].style.left = (pct5*100)+"%";
-document.getElementsByClassName("pct_val")[6].style.left = (pct6*100)+"%";
+document.getElementsByClassName("pct_val")[0].style.left = (pct0) + "%";
+document.getElementsByClassName("pct_val")[1].style.left = (pct1) + "%";
+document.getElementsByClassName("pct_val")[2].style.left = (pct2) + "%";
+document.getElementsByClassName("pct_val")[3].style.left = (pct3) + "%";
+document.getElementsByClassName("pct_val")[4].style.left = (pct4) + "%";
+document.getElementsByClassName("pct_val")[5].style.left = (pct5) + "%";
+document.getElementsByClassName("pct_val")[6].style.left = (pct6) + "%";
 
 function start() {
   isPaused = false;
   /*Sinusoidal(id, color)*/
-  var sin0 = new Sinusoidal("javascript", 0, pct0);
-  var sin1 = new Sinusoidal("jquery", 1, pct1);
-  var sin2 = new Sinusoidal("html5", 2, pct2);
-  var sin3 = new Sinusoidal("css3", 3, pct3);
-  var sin4 = new Sinusoidal("php", 4, pct4);
-  var sin5 = new Sinusoidal("mysql", 5, pct5);//my
-  var sin6 = new Sinusoidal("photoshop", 6, pct6);
+  var sin0 = new Sinusoidal("javascript", 0, pct0 / 100);
+  var sin1 = new Sinusoidal("jquery", 1, pct1 / 100);
+  var sin2 = new Sinusoidal("html5", 2, pct2 / 100);
+  var sin3 = new Sinusoidal("css3", 3, pct3 / 100);
+  var sin4 = new Sinusoidal("php", 4, pct4 / 100);
+  var sin5 = new Sinusoidal("mysql", 5, pct5 / 100);//my
+  var sin6 = new Sinusoidal("photoshop", 6, pct6 / 100);
 }
-
-
 
 function pause() { //flag
   isPaused = true;
