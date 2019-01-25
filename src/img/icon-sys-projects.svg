@@ -1,0 +1,38 @@
+<svg id="projects" xmlns="http://www.w3.org/2000/svg" width="38.75" height="31.563" viewBox="0 0 38.75 31.563">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke-width: 2px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #fff;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        stroke-width: 3px;
+      }
+
+      .cls-3 {
+        stroke-width: 1px;
+      }
+    </style>
+  </defs>
+  <path id="Retângulo_Arredondado_1" data-name="Retângulo Arredondado 1" class="cls-1" d="M379.741,23.986h11.013v7.649H379.741V23.986Z" transform="translate(-378.75 -22.5)"/>
+  <path id="Retângulo_Arredondado_1_copiar" data-name="Retângulo Arredondado 1 copiar" class="cls-1" d="M379.741,34.42h11.013v7.668H379.741V34.42Z" transform="translate(-378.75 -22.5)"/>
+  <path id="Retângulo_Arredondado_1_copiar_2" data-name="Retângulo Arredondado 1 copiar 2" class="cls-1" d="M379.741,44.475h11.013v7.649H379.741V44.475Z" transform="translate(-378.75 -22.5)"/>
+  <path id="Retângulo_Arredondado_1_copiar_3" data-name="Retângulo Arredondado 1 copiar 3" class="cls-1" d="M393.686,23.986H404.7v7.649H393.686V23.986Z" transform="translate(-378.75 -22.5)"/>
+  <path id="Retângulo_Arredondado_1_copiar_3-2" data-name="Retângulo Arredondado 1 copiar 3" class="cls-1" d="M393.686,34.42H404.7v7.668H393.686V34.42Z" transform="translate(-378.75 -22.5)"/>
+  <path id="Retângulo_Arredondado_1_copiar_3-3" data-name="Retângulo Arredondado 1 copiar 3" class="cls-1" d="M393.686,44.475H404.7v7.649H393.686V44.475Z" transform="translate(-378.75 -22.5)"/>
+  <path id="Forma_1" data-name="Forma 1" class="cls-2" d="M414,24.009h0.993V52.575H414V24.009Z" transform="translate(-378.75 -22.5)"/>
+  <circle id="Elipse_1" data-name="Elipse 1" class="cls-3" cx="35.75" cy="22" r="2.5"/>
+</svg>

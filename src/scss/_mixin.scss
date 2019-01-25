@@ -1,0 +1,12 @@
+$icon-size-md: 30px;
+
+
+@mixin clearfix {
+
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

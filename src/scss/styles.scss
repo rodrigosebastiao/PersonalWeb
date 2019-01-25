@@ -1,0 +1,405 @@
+@import 'mixin';
+
+/*Defaults | Resets*/
+ul,
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/*Defaults | Resets*/
+
+body {
+    background: url(../../src/img/bg-abstract-dots.jpg);
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+    background: #000;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 0 20px 0 40px;
+    @include clearfix;
+
+    .list {
+        height: 100%;
+
+        li {
+            display: inline-block;
+            margin-right: 0%;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &:hover {
+                background: #9199a2;
+            }
+
+            a {
+                display: inline-block;
+                cursor: auto;
+            }
+        }
+    }
+
+    .left {
+        float: left;
+
+        li {
+            margin-right: 0%;
+        }
+    }
+
+    .right {
+        float: right;
+
+        li {
+            margin-right: 0;
+        }
+    }
+
+}
+
+.icon {
+    /*general*/
+    font-size: 0;
+    text-indent: -9999px;
+
+    &:before {
+        font-family: "FontAwesome";
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+
+.icon-md {
+    padding: 20px;
+
+    &:before {
+        font-size: 25px;
+        width: 25px;
+        height: 25px;
+        background-size: 25px;
+    }
+}
+
+.icon-sm {
+    &:before {
+        font-size: 25px;
+        width: 25px;
+        height: 25px;
+        background-size: 25px;
+    }
+}
+
+.icon-xsm {
+    padding: 0 20px;
+    vertical-align: middle;
+
+    &:before {
+        font-size: 20px;
+        padding: 23px 0;
+    }
+}
+
+/*Global*/
+.start {
+    &:before {
+        content: "\f00a";
+    }
+}
+
+.home {
+    &:before {
+        content: "\f015";
+    }
+}
+
+.projects {
+    &:before {
+        content: "";
+        background-image: url(../../src/img/icon-sys-projects.svg);
+        background-repeat: no-repeat;
+    }
+}
+
+.info {
+    &:before {
+        content: "";
+        background-image: url(../../src/img/icon-sys-info.svg);
+        background-repeat: no-repeat;
+    }
+}
+
+.github {
+    &:before {
+        content: "\f09b";
+    }
+}
+
+.codepen {
+    &:before {
+        content: "\f1cb";
+    }
+}
+
+.linkedin {
+    &:before {
+        content: "\f0e1";
+    }
+}
+
+.whatsapp {
+    &:before {
+        content: "\f232";
+    }
+}
+
+.email {
+    &:before {
+        content: "\f0e0";
+    }
+}
+
+.eng.icon-xsm.icon {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding-top: 45px;
+    position: relative;
+    top: 0;
+    padding: 22px 10px;
+}
+
+.clock.icon.icon-xsm {
+    padding-top: 16px;
+    height: 50px;
+    position: relative;
+    top: -2px;
+    padding: 8px;
+
+    .timer {
+        display: block;
+        text-align: center;
+        letter-spacing: 0.1em;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}
+
+
+.main-menu {
+    background: #000;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 50px 0;
+    width: 70%;
+    @include clearfix;
+
+    &__user,
+    &__skills,
+    &__info {
+        float: left;
+        padding: 0 20px;
+        @include clearfix;
+    }
+
+    &__user {
+        width: 12%;
+        padding-right: 0;
+
+        &--img {
+            padding: 20px 0;
+            width: 40%;
+            position: relative;
+
+            .tooltip {
+                display: none;
+                white-space: nowrap;
+                padding: 5px 7px;
+                background: #333;
+                border: 2px solid #979797;
+                position: relative;
+                left: -10px;
+                top: -9px;
+
+                &active {
+                    display: block;
+                }
+            }
+
+            img {
+                border-radius: 100%;
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    &__skills {
+        &--group {
+            li {
+                line-height: 2;
+
+                &.title {
+                    margin: 0;
+                    padding: 0;
+                    .icon{
+                        display: none;
+                    }
+
+                    a {
+                        padding-right: 0;
+                        padding-left: 0;
+                    }
+                }
+
+                a {
+                    vertical-align: sub;
+                    padding-left: 10px;
+
+                }
+            }
+            margin-bottom: 20px;
+        }
+    }
+
+    &__info {
+        width: 61%;
+        padding-right: 0;
+        &--box {
+            .box {
+                li {
+                    float: left;
+                    margin: 4px;
+                    &.title {
+                        display: block;
+                        width: 100%;
+                        margin-bottom: 20px;
+                        &:not(.first-child){
+                            margin-top: 20px;
+                        }
+                        .icon{
+                            display: none;
+                        }
+                        a{
+                            font-size: 16px;
+                        }
+                    }
+                    a{
+                        font-size: 0;
+                        text-indent: -9999px;
+                    }
+                }
+            }
+        }
+    }
+
+    .icon{
+        background-color: #202020;
+    }
+
+    .icon-xsm {
+        padding: 0;
+        background-repeat: no-repeat;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-size: 60%;
+        background-position: center center;
+    }
+
+    .icon-md {
+        padding: 0;
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center center;
+        float: left;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/*Global*/
+.css3 {
+    background-image: url(../../src/img/icon-css3.png);
+}
+
+.js {
+    background-image: url(../../src/img/icon-js.png);
+}
+
+.jquery {
+    background-image: url(../../src/img/icon-jquery.png);
+}
+
+.gimp {
+    background-image: url(../../src/img/icon-gimp.png);
+}
+
+.adobe-xd {
+    background-image: url(../../src/img/icon-adobe-xd.png);
+}
+
+.adobe-ae {
+    background-image: url(../../src/img/icon-adobe-ae.png);
+}
+
+.html5 {
+    background-image: url(../../src/img/icon-html5.png);
+}
+
+.js {
+    background-image: url(../../src/img/icon-js.png);
+}
+
+.es6 {
+    background-image: url(../../src/img/icon-es6.png);
+}
+
+.git {
+    background-image: url(../../src/img/icon-gitbash.png);
+}
+
+.sass {
+    background-image: url(../../src/img/icon-sass.png);
+}
+
+
+.grunt {
+    background-image: url(../../src/img/icon-grunt.png);
+}
+
+.gulp {
+    background-image: url(../../src/img/icon-gulp.png);
+}
+
+
+.adobe-photoshop {
+    background-image: url(../../src/img/icon-photoshop.png);
+}
+
+.vtex {
+    background-image: url(../../src/img/icon-vtex.png);
+}
+
+.mysql {
+    background-image: url(../../src/img/icon-mysql.png);
+}
+
+.extra-menu {
+    display: none;
+}
+
+.footer {
+    width: 100%;
+}
