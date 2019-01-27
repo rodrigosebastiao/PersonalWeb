@@ -28,12 +28,14 @@
     "grunt-contrib-watch": "^1.1.0",
     "grunt-eslint": "^21.0.0",
     "grunt-sass": "^3.0.2",
+    "imagemin-jpegtran": "^6.0.0",
+    "imagemin-optipng": "^6.0.0",
     "imagemin-svgo": "^7.0.0",
     "jshint-stylish": "^2.2.1",
+    "load-grunt-tasks": "^4.0.0",
     "node-sass": "^4.11.0"
   },
   "dependencies": {
-    "imagemin-jpegtran": "^6.0.0",
-    "imagemin-optipng": "^6.0.0"
+    "html2canvas": "^1.0.0-alpha.12"
   }
 }

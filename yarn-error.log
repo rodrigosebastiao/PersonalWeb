@@ -1,0 +1,66 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\RodrigoDSS\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\RodrigoDSS\bin;C:\Python27;C:\Python27\Scripts;C:\ProgramData\Boxstarter;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Microsoft VS Code\bin;C:\Users\RodrigoDSS\AppData\Roaming\nvm;C:\ProgramData\chocolatey\bin;C:\Users\RodrigoDSS\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Ruby25-x64\bin;C:\Users\RodrigoDSS\AppData\Local\Microsoft\WindowsApps;C:\Users\RodrigoDSS\AppData\Local\Programs\Fiddler;C:\Users\RodrigoDSS\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\RodrigoDSS\AppData\Roaming\npm;C:\Users\RodrigoDSS\AppData\Local\GitHubDesktop\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps
+
+Yarn version: 
+  1.13.0
+
+Node version: 
+  11.4.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'd:\Meus Arquivos\Projetos\Pessoal\PersonalWeb\node_modules\node-sass\vendor\win32-x64-67\binding.node'
+
+npm manifest: 
+  {
+    "name": "personalweb",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/rodrigosebastiao/PersonalWeb.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/rodrigosebastiao/PersonalWeb/issues"
+    },
+    "homepage": "https://github.com/rodrigosebastiao/PersonalWeb#readme",
+    "devDependencies": {
+      "grunt": "^1.0.3",
+      "grunt-contrib-clean": "^2.0.0",
+      "grunt-contrib-concat": "^1.0.1",
+      "grunt-contrib-eslint": "0.0.5",
+      "grunt-contrib-imagemin": "^3.1.0",
+      "grunt-contrib-jshint": "^2.0.0",
+      "grunt-contrib-sass": "^1.0.0",
+      "grunt-contrib-uglify": "^4.0.0",
+      "grunt-contrib-watch": "^1.1.0",
+      "grunt-eslint": "^21.0.0",
+      "grunt-sass": "^3.0.2",
+      "imagemin-jpegtran": "^6.0.0",
+      "imagemin-optipng": "^6.0.0",
+      "imagemin-svgo": "^7.0.0",
+      "jshint-stylish": "^2.2.1",
+      "load-grunt-tasks": "^4.0.0",
+      "node-sass": "^4.11.0"
+    },
+    "dependencies": {
+      "html2canvas": "^1.0.0-alpha.12"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

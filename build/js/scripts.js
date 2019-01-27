@@ -1,1 +1,0 @@
-var startBtn=document.querySelector(".start"),startMenu=document.querySelector(".start-menu"),projectsModal=document.querySelector(".projects"),backgroundList=["bg-sky.png","bg-sky.png","bg-wavetube.jpg","bg-tree.jpg","bg-wave.jpg"];startBtn.onclick=function(){"block"==startMenu.style.display?startMenu.style.display="none":startMenu.style.display="block"};

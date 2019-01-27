@@ -11,7 +11,7 @@ module.exports = function (grunt) {
             },
             css: {
                 src: ['src/css/*.css', 'src/css/*.css'],
-                dest: 'build/css/styles.css',
+                dest: 'src/css/styles.css',
             },
         },
         sass: {
@@ -24,7 +24,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: 'src/scss',
                     src: ['**/*.scss'],
-                    dest: 'build/css',
+                    dest: 'src/css',
                     ext: '.css'
                 }],
             }
@@ -40,8 +40,8 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        jshint:{
-            files: ['Gruntfile.js','src/js/*.js'],
+        jshint: {
+            files: ['Gruntfile.js', 'src/js/*.js'],
         },
         watch: {
             js: {
@@ -66,6 +66,17 @@ module.exports = function (grunt) {
                 }
             },*/
         },
+        babel: {
+            options: {
+                sourceMap: true,
+                presets: ['@babel/preset-env']
+            },
+            dist: {
+                files: {
+                    'dist/app.js': 'src/app.js'
+                }
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
@@ -73,5 +84,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['clean', 'sass', 'jshint', 'uglify','watch']);
+    grunt.loadNpmTasks('grunt-babel');
+    //require('load-grunt-tasks')(grunt);
+    grunt.registerTask('default', ['sass', 'watch']);
 };

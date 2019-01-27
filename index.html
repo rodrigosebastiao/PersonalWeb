@@ -13,8 +13,8 @@
 	</script>
 
 	<meta charset="utf-8">
-	<link href="build/css/styles.css" rel="stylesheet" type="text/css" />
-	<link href="src/img/favicon.png" rel="shortcut icon" type="image/x-icon"/>
+	<link href="src/css/styles.css" rel="stylesheet" type="text/css" />
+	<link href="src/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
 	 crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
@@ -24,7 +24,7 @@
 
 <body>
 
-	<header class="header" role="banner">
+	<header class="header tastk-bar blur" role="banner">
 		<nav class="left list">
 			<ul>
 				<li><a href="#" data-role="start" class="start icon-md icon">Start</a></li>
@@ -41,21 +41,20 @@
 				<li><a href="#" data-role="start" class="whatsapp icon-xsm icon">Whatsapp</a></li>
 				<li><a href="#" data-role="start" class="email icon-xsm icon">Email</a></li>
 				<li><a href="#" data-role="start" class="eng icon-xsm icon">Eng</a></li>
-				<li><a href="#" data-role="start" class="clock icon-xsm icon"><span class="timer hour">20:10</span><span class="timer date">23/01/2019</span></a></li>
+				<li><a href="#" data-role="start" class="clock icon-xsm icon"><span class="timer hour" id="hour">00:00</span><span class="timer date" id="date">00/00/0000</span></a></li>
 			</ul>
 		</nav>
 	</header>
 
 	<main class="main" role="main">
-		<section class="start-menu">
+		<section class="start-menu blur">
 			<div class="start-menu__user">
 				<span class="tooltip">Rodrigo Sebastião</span>
 				<div class="start-menu__user--img">
-					<img src="src/img/pciture.png" alt="me">
+					<img src="src/img/picture.png" alt="me">
 				</div>
 			</div>
 			<div class="start-menu__skills">
-
 				<ul class="start-menu__skills--group g-1">
 					<li class="title title-1"><span class="icon-xsm icon"></span><a href="#">Main Strengths:</a></lic>
 					<li><span class="css3 icon-xsm icon"></span><a href="#">CSS</a></li>
@@ -102,10 +101,20 @@
 		</section>
 
 		<section class="projects-modal">
-			<div class="project"><img src="" alt=""></div>
+			<ul class="projects-group">
+				<li class="group-name"><h2>Professional projects</h2></li>
+				<li class="project"><a href="https://www.bagaggio.com.br/"></a><div class="tile"><h3>Baggagio</h3><span class="info"></span><img class="icon" src="src/img/project-baggagio.png" alt="projeto baggagio"></div></li>
+				<li class="project"><a href="https://www.fattoamanouomo.com.br/"></a><div class="tile"><h3>Fatto a Mano</h3><span class="info"></span><img class="icon" src="src/img/project-fatto-a-mano.png" alt="projeto fatto a-mano"></div></li>
+				<li class="project"><a href="https://www.vilaromana.com.br/"></a><div class="tile"><h3>Vila Romana</h3><span class="info"></span><img class="icon" src="src/img/project-vila-romana.png" alt="projeto vila romana"></div></li>
+			</ul>
+			<ul class="projects-group">
+				<li class="group-name"><h2>Personal Projects</h2></li>
+				<li class="project"><a href="#"></a><div class="tile"><h3>Merlin's Potion</h3><span class="info"></span><img class="icon full" src="src/img/project-merilinspotions.png" alt="Merlin's Potion"></div></li>
+				<li class="project"><a href="#"></a><div class="tile"><h3>Carousel Sky Dive</h3><span class="info"></span><img class="icon" src="src/img/project-carousel-sky-dive.png" alt="Carousel Sky Dive"></div></li>
+			</ul>
 		</section>
 
-		<section class="right-click-menu extra-menu is-hidden">
+		<section class="right-click-menu extra-menu blur is-hidden">
 			<ul class="row row-1">
 				<li><span class="info icon-sm icon"></span><a href="#">Rodrigo Sebastião</a></li>
 				<li><span class="github icon-sm icon"></span><a href="http://www.github.com/rodrigosebastiao">github.com/rodrigosebastiao</a></li>
@@ -128,10 +137,12 @@
 		</ul>
 	</footer>
 
-	<script src="build/js/scripts.js"></script>
 	<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	 crossorigin="anonymous">
 	</script>
+	<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+	<script src="node_modules/html2canvas/dist/html2canvas.js"></script>
+	<script src="src/js/scripts.js"></script>
 </body>
 
 </html>
