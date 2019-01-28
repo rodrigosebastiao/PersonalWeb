@@ -2,11 +2,36 @@ $icon-size-md: 30px;
 
 
 @mixin clearfix {
-
     &:before,
     &:after {
         content: "";
         display: table;
         clear: both;
     }
+}
+
+@mixin slideToggleHidden {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition-delay: 0.2s; // no delay when reversing (hiding)
+}
+
+@mixin slideToggle {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.4s top 0s left 0s;
+}
+
+@mixin transparency{
+    background: #111;
+    backdrop-filter: blur(10px);
+    //padding: 5px 40px 25px 20px;
+}
+
+@mixin shadow{
+    box-shadow: 5px 2px 15px 2px #000;/*fall back*/
+    box-shadow: 5px 2px 15px 2px rgba(0,0,0,0.2);
 }
