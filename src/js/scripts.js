@@ -66,8 +66,8 @@ document.addEventListener("mouseup", customMenuChoosen);
 
 function offerCustomMenu(event){
     if (event.button == 2) {// ritght click = 2
-        rcMenuTarget.style.top = -20 + event.clientY + "px";
-        rcMenuTarget.style.left = -60 + event.clientX + "px";
+        rcMenuTarget.style.top = -60 + event.clientY + "px";
+        rcMenuTarget.style.left = -20 + event.clientX + "px";
         rcMenuTarget.classList.add("active");
     }
 }
@@ -90,7 +90,7 @@ function customMenuChoosen(event){
         rcMenuTarget.classList.remove("active");
         //return event.type == "contextmenu";
         window.oncontextmenu = function(event){
-            return true;
+            return true;// remove preventDefault();
         }
     } 
 }
