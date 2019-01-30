@@ -153,24 +153,59 @@ function expand(element) {
 expand(".set li");
 
 
-
-
 function copyInfo(copyText) {
     var copyText = document.querySelectorAll(copyText);
-    copyText.forEach(function (index) {  
+
+    copyText.forEach(function (index) {
         index.addEventListener("click", function (event) {
             event.preventDefault();
             var allowCopy = document.createElement("TEXTAREA");
             allowCopy.value = index.getAttribute("data-title");
+            document.documentElement.appendChild(allowCopy);
             allowCopy.select();
             document.execCommand("copy");
-            console.log(allowCopy.value);
-            return false;
+            document.documentElement.removeChild(allowCopy);
+            if (allowCopy) { //Feedback for copied
+                var feedBack = document.createElement("SPAN");
+                feedBack.classList.add("feedback");
+                feedBack.style.position = "absolute";
+                feedBack.style.display = "block";
+                feedBack.style.fontSize = "12px";
+                feedBack.style.color = "#fff";
+                feedBack.style.background = "#222";
+                feedBack.style.background = "rgba(0, 0, 0, 0.6)";
+                feedBack.style.padding = "15px 30px";
+                feedBack.style.left = event.clientX + "px"; //show close to element position clicked
+                feedBack.style.top = 30 + event.clientY + "px"; //show close to element position clicked
+                console.log(event.clientY)
+                feedBack.innerHTML = "Information Copied!";
+                document.body.appendChild(feedBack);
+                var timer = 1000;
+                var opacity = 1;
+
+                fadeIn();
+                function fadeIn() {
+                    setTimeout(function () {
+                        if (timer > 0 || opacity > 0) {
+                            feedBack.style.opacity = opacity;
+                            opacity -= 0.1;
+                            console.log(opacity)
+                            timer -= 200;
+                            fadeIn();
+                        } else if (timer == 0) {
+                            document.body.removeChild(feedBack);
+                        }
+                    }, timer);
+                }
+            }
         });
     });
+
 }
 
 copyInfo(".right li a");
+
+
 
 
 window.takeScreenShot = function () {

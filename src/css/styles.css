@@ -70,41 +70,51 @@ body {
         position: relative; }
         .header .right li a.icon {
           position: relative; }
-        .header .right li a:hover:after {
-          content: " " attr(data-title) " ";
-          transition: 0.4s;
-          font-size: 16px;
-          background: #222;
-          background: rgba(0, 0, 0, 0.6);
-          backdrop-filter: blur(10px);
-          padding: 15px 30px 15px 50px;
-          white-space: nowrap;
-          position: absolute;
-          top: 70px;
-          left: -25%; }
-        .header .right li a:hover .tooltip {
-          position: absolute;
-          top: 70px;
-          display: block;
-          z-index: 10; }
-          .header .right li a:hover .tooltip::before {
-            content: "";
+        .header .right li a:hover {
+          /* .feedback{//created in javascript
+              display: block;
+              position: absolute;
+              font-size: 12px;
+              color: #fff;
+              background: #222;
+              background: rgba(0, 0, 0, 0.6);
+              padding: 15px 30px;
+          } */ }
+          .header .right li a:hover:after {
+            content: " " attr(data-title) " ";
+            font-size: 16px;
+            background: #222;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px 15px 50px;
+            white-space: nowrap;
             position: absolute;
-            bottom: -10;
-            border-width: 8px;
-            border-style: solid;
-            border-color: transparent transparent #222 transparent;
-            border-color: transparent transparent rgba(0, 0, 0, 0.6) transparent; }
-          .header .right li a:hover .tooltip::after {
-            content: "\f0c5";
+            top: 72px;
+            left: -25%; }
+          .header .right li a:hover .tooltip {
             position: absolute;
-            bottom: -30px;
-            left: -20px;
-            font-size: 14px;
-            color: #bebebe;
-            font-family: "FontAwesome";
-            font-weight: 900;
-            display: block; }
+            top: 70px;
+            display: block;
+            z-index: 10; }
+            .header .right li a:hover .tooltip::before {
+              content: "";
+              position: absolute;
+              bottom: -15px;
+              left: -13px;
+              border-width: 20px;
+              border-style: solid;
+              border-color: transparent transparent #222 transparent;
+              border-color: transparent transparent rgba(0, 0, 0, 0.6) transparent; }
+            .header .right li a:hover .tooltip::after {
+              content: "\f0c5";
+              position: absolute;
+              bottom: -30px;
+              left: -20px;
+              font-size: 14px;
+              color: #bebebe;
+              font-family: "FontAwesome";
+              font-weight: 900;
+              display: block; }
 
 .icon {
   font-size: 0;
