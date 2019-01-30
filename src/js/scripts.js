@@ -13,6 +13,7 @@ function openAndClose(button, element) {
     var element = document.querySelector(element);
     button.onclick = function () {
         element.classList.toggle("active");
+        //element.classList.toggle("inactive");
     };
 }
 
@@ -64,17 +65,17 @@ document.addEventListener("mousedown", offerCustomMenu);
 document.addEventListener("mouseup", customMenuChoosen);
 //document.addEventListener("contextmenu", customMenuChoosen);
 
-function offerCustomMenu(event){
-    if (event.button == 2) {// ritght click = 2
-        rcMenuTarget.style.top = -60 + event.clientY + "px";
-        rcMenuTarget.style.left = -20 + event.clientX + "px";
+function offerCustomMenu(event) {
+    if (event.button == 2) { // ritght click = 2
+        rcMenuTarget.style.top = -30 + event.clientY + "px";
+        rcMenuTarget.style.left = -50 + event.clientX + "px";
         rcMenuTarget.classList.add("active");
     }
 }
 
-function customMenuChoosen(event){
-    event.preventDefault();//for custom no default contextmenu
-    if( event.target == rcMenuTarget ){ //if drag on target activate Custom Menu
+function customMenuChoosen(event) {
+    event.preventDefault(); //for custom no default contextmenu
+    if (event.target == rcMenuTarget) { //if drag on target activate Custom Menu
         righClickMenu.style.top = event.clientY + "px";
         righClickMenu.style.left = event.clientX + "px";
         righClickMenu.classList.add("active");
@@ -82,17 +83,17 @@ function customMenuChoosen(event){
         /* rcMenuTarget.style.top = -40 + event.clientY + "px";
         rcMenuTarget.style.left = -40 + event.clientX + "px"; */
         rcMenuTarget.classList.remove("active");
-        window.oncontextmenu = function(event){
+        window.oncontextmenu = function (event) {
             event.preventDefault();
         }
     } else { //normal rick click, don't show custom menu
         righClickMenu.classList.remove("active");
         rcMenuTarget.classList.remove("active");
         //return event.type == "contextmenu";
-        window.oncontextmenu = function(event){
-            return true;// remove preventDefault();
+        window.oncontextmenu = function (event) {
+            return true; // remove preventDefault();
         }
-    } 
+    }
 }
 
 
@@ -125,19 +126,51 @@ function clock() {
     if (MM < 10) {
         MM = '0' + MM;
     }
-  
+
     hour.innerHTML = hh + ":" + mm;
     date.innerHTML = DD + "/" + MM + "/" + YYYY;
 
-    setTimeout(clock, 60000);//update every minute instead of second
+    setTimeout(clock, 60000); //update every minute instead of second
 }
 clock();
 
 
-function copyInfo(element, copyThis){
-    var element = document.querySelector(element);
-    var copyThis = document.querySelector(copyThis);
+function expand(element) {
+    var element = document.querySelectorAll(element);
+
+    element.forEach(function (index, item) {
+        index.addEventListener("mouseenter", function () {
+            index.classList.add("active");
+        }, true);
+        index.addEventListener("mouseleave", function () {
+            setTimeout(function () {
+                index.classList.remove("active");
+            }, 1000);
+        }, true);
+    });
 }
+
+expand(".set li");
+
+
+
+
+function copyInfo(copyText) {
+    var copyText = document.querySelectorAll(copyText);
+    copyText.forEach(function (index) {  
+        index.addEventListener("click", function (event) {
+            event.preventDefault();
+            var allowCopy = document.createElement("TEXTAREA");
+            allowCopy.value = index.getAttribute("data-title");
+            allowCopy.select();
+            document.execCommand("copy");
+            console.log(allowCopy.value);
+            return false;
+        });
+    });
+}
+
+copyInfo(".right li a");
 
 
 window.takeScreenShot = function () {
