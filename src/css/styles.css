@@ -27,15 +27,15 @@ body {
   height: 100%; }
 
 body {
-  background: url(../../src/img/bg-alone-beach.jpg) no-repeat;
+  background: url(../../src/img/bg-beach-bird.jpg) no-repeat;
   background-size: cover;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0; }
 
 .header {
   background: #222;
   background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
   color: #fff;
   padding: 0 20px 0 40px;
   position: relative;
@@ -70,51 +70,41 @@ body {
         position: relative; }
         .header .right li a.icon {
           position: relative; }
-        .header .right li a:hover {
-          /* .feedback{//created in javascript
-              display: block;
-              position: absolute;
-              font-size: 12px;
-              color: #fff;
-              background: #222;
-              background: rgba(0, 0, 0, 0.6);
-              padding: 15px 30px;
-          } */ }
-          .header .right li a:hover:after {
-            content: " " attr(data-title) " ";
-            font-size: 16px;
-            background: #222;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 15px 20px 15px 50px;
-            white-space: nowrap;
+        .header .right li a:hover:after {
+          content: " " attr(data-title) " ";
+          font-size: 16px;
+          background: #222;
+          background: rgba(0, 0, 0, 0.6);
+          backdrop-filter: blur(15px);
+          padding: 15px 20px 15px 50px;
+          white-space: nowrap;
+          position: absolute;
+          top: 72px;
+          left: -25%; }
+        .header .right li a:hover .tooltip {
+          position: absolute;
+          top: 70px;
+          display: block;
+          z-index: 10; }
+          .header .right li a:hover .tooltip::before {
+            content: "";
             position: absolute;
-            top: 72px;
-            left: -25%; }
-          .header .right li a:hover .tooltip {
+            bottom: -15px;
+            left: -13px;
+            border-width: 20px;
+            border-style: solid;
+            border-color: transparent transparent #222 transparent;
+            border-color: transparent transparent rgba(0, 0, 0, 0.6) transparent; }
+          .header .right li a:hover .tooltip::after {
+            content: "\f0c5";
             position: absolute;
-            top: 70px;
-            display: block;
-            z-index: 10; }
-            .header .right li a:hover .tooltip::before {
-              content: "";
-              position: absolute;
-              bottom: -15px;
-              left: -13px;
-              border-width: 20px;
-              border-style: solid;
-              border-color: transparent transparent #222 transparent;
-              border-color: transparent transparent rgba(0, 0, 0, 0.6) transparent; }
-            .header .right li a:hover .tooltip::after {
-              content: "\f0c5";
-              position: absolute;
-              bottom: -30px;
-              left: -20px;
-              font-size: 14px;
-              color: #bebebe;
-              font-family: "FontAwesome";
-              font-weight: 900;
-              display: block; }
+            bottom: -30px;
+            left: -20px;
+            font-size: 14px;
+            color: #bebebe;
+            font-family: "FontAwesome";
+            font-weight: 900;
+            display: block; }
 
 .icon {
   font-size: 0;
@@ -252,14 +242,13 @@ body {
 .main {
   height: 100%; }
   .main .start-menu {
-    height: 0;
-    opacity: 0;
-    visibility: hidden;
-    overflow: hidden;
-    transition-delay: 0.2s;
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.4s top 0s left 0s;
     background: #000;
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     color: #fff;
     padding: 50px 0;
     width: 70%;
@@ -273,10 +262,11 @@ body {
       margin-top: -40px;
       transition: all 0.4s; }
     .main .start-menu.active {
-      height: auto;
-      opacity: 1;
-      visibility: visible;
-      transition: 0.4s top 0s left 0s; }
+      height: 0;
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+      transition-delay: 0.2s; }
       .main .start-menu.active .start-menu--group {
         margin-top: 0;
         transition: all 0.4s; }
@@ -350,7 +340,7 @@ body {
           vertical-align: sub;
           padding-left: 10px; }
     .main .start-menu__info {
-      width: 61%;
+      width: 57%;
       padding-right: 0; }
       .main .start-menu__info--box .box li {
         float: left;
@@ -386,7 +376,6 @@ body {
       background-repeat: no-repeat;
       background-size: 50%;
       background-position: center center;
-      float: left;
       width: 100px;
       height: 100px; }
   .main .projects-modal {
@@ -422,7 +411,7 @@ body {
       .main .projects-modal .projects-group li.group-name {
         display: block;
         width: 100%;
-        height: iniital; }
+        height: inital; }
         .main .projects-modal .projects-group li.group-name h2 {
           font-size: 22px;
           font-weight: 700;
@@ -457,7 +446,7 @@ body {
     z-index: 20;
     background: #222;
     background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     padding: 20px 0; }
     .main .right-click-menu.active {
       height: auto;
@@ -491,19 +480,109 @@ body {
       font-size: 30px;
       font-family: 'Font Awesome 5 Free';
       font-weight: 900;
-      animation: animate 0.6s alternate infinite; }
+      animation: animate 0.6s alternate infinite ease-in-out; }
 
 @keyframes animate {
   from {
     transform: scale(1); }
   to {
-    transform: scale(1.4); } }
+    transform: scale(1.1); } }
 .right-click-menu .icon,
 .footer .icon {
   display: inline-block; }
   .right-click-menu .icon:before,
   .footer .icon:before {
     color: #fff; }
+
+.settings {
+  position: absolute;
+  top: 50%;
+  transform: translate(108%, -80%);
+  right: 20px;
+  z-index: 20;
+  /* margin-right: 20px; */
+  border: 2px solid #222;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  padding: 15px 10px;
+  transition: all 1s; }
+  .settings.active {
+    transform: translate(0, -80%); }
+  .settings h2 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    background: #222;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    display: inline-block;
+    padding: 5px 20px;
+    transform: rotate(-90deg) translate(-110px, -122px); }
+  .settings .controller {
+    background: #222;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    color: #fff;
+    padding: 10px 20px; }
+    .settings .controller:not(:last-child) {
+      margin-bottom: 30px; }
+  .settings .title {
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0.1em;
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px solid #9199a2; }
+  .settings .control {
+    text-align: center; }
+  .settings .button {
+    background: #222;
+    background: transparent;
+    color: #fff;
+    margin: 20px 0 10px;
+    padding: 0 40px;
+    transform: scale(1, 1.5);
+    border: none;
+    outline: none;
+    display: inline-block;
+    user-select: none;
+    font-size: 0;
+    cursor: pointer; }
+    .settings .button:before, .settings .button:after {
+      font-size: 40px;
+      color: #fff;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900; }
+    .settings .button.prev:before {
+      content: "\f104"; }
+    .settings .button.next:before {
+      content: "\f105"; }
+  .settings #background-options {
+    padding: 10px 0; }
+    .settings #background-options input[type="radio"] {
+      position: absolute;
+      margin: 15px 30px;
+      height: 1px;
+      width: 1px;
+      border: 0;
+      overflow: hidden;
+      cursor: pointer; }
+      .settings #background-options input[type="radio"]:checked + label {
+        background: #fff; }
+    .settings #background-options label {
+      font-size: 14px;
+      font-weight: 700;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      transform: scale(1);
+      float: left;
+      padding: 5px 15px;
+      margin: 0 0 5px;
+      border: 1px solid #444;
+      color: #818181;
+      background: #313131;
+      -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+      user-select: none;
+      cursor: pointer; }
 
 .footer {
   position: fixed;
@@ -514,15 +593,15 @@ body {
     display: inline-block;
     background: #222;
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     padding: 0 20px;
     margin-bottom: 20px;
-    transition: all 1s;
+    transition: all 0.4s;
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); }
     .footer ul li {
       display: inline-block;
       padding: 20px;
-      transition: all 1s;
+      transition: all 0.4s;
       transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
       cursor: pointer;
       position: relative; }
@@ -530,20 +609,20 @@ body {
         background: #eee;
         background: rgba(255, 255, 255, 0.3); }
       .footer ul li.active {
-        padding: 30px 40px;
-        transition: 1s; }
+        padding: 20px 40px;
+        transition: 0.4s; }
         .footer ul li.active .icon-sm:before {
           font-size: 45px;
           width: 45px;
           height: 45px;
           background-size: 45px;
-          transition: 1s; }
+          transition: 0.4s; }
         .footer ul li.active .icon-sm + a {
           font-size: 16px;
           position: relative;
           display: block;
-          bottom: -20px;
-          transition: 1s; }
+          bottom: -15px;
+          transition: 0.4s; }
       .footer ul li .email:before {
         content: "\f2b6";
         color: #fff;

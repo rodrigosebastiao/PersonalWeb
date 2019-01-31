@@ -1,5 +1,7 @@
 $icon-size-md: 30px;
 
+$fontMain: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$fontSupport: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 @mixin clearfix {
     &:before,

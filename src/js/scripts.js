@@ -1,13 +1,3 @@
-var info = document.querySelector(".info");
-
-var backgroundList = ["bg-sky.png", "bg-sky.png", "bg-wavetube.jpg", "bg-tree.jpg", "bg-wave.jpg", "bg-alone-beach.jpg",
-    "bg-alpine-alps-autumn.jpg", "bg-beach-bird.jpg", "bg-beach-bora-bora.jpg", "bg-beach-calm.jpg",
-    "bg-beautiful-daylight-environment.jpg", "bg-bird-s-eye-view.jpg", "bg-bridge-clouds-cloudy.jpg",
-    "bg-clouds-daylight-environment.jpg", "bg-clouds-daylight.jpg", "bg-daylight-environment-forest.jpg",
-    "bg-tree.jpg", "bg-wave.jpg", "bg-wavetube.jpg"
-];
-
-
 function openAndClose(button, element) {
     var button = document.querySelector(button);
     var element = document.querySelector(element);
@@ -177,26 +167,13 @@ function copyInfo(copyText) {
                 feedBack.style.padding = "15px 30px";
                 feedBack.style.left = event.clientX + "px"; //show close to element position clicked
                 feedBack.style.top = 30 + event.clientY + "px"; //show close to element position clicked
-                console.log(event.clientY)
-                feedBack.innerHTML = "Information Copied!";
+                feedBack.innerHTML = "Copied to Clipboard!";
                 document.body.appendChild(feedBack);
-                var timer = 1000;
-                var opacity = 1;
-
-                fadeIn();
-                function fadeIn() {
-                    setTimeout(function () {
-                        if (timer > 0 || opacity > 0) {
-                            feedBack.style.opacity = opacity;
-                            opacity -= 0.1;
-                            console.log(opacity)
-                            timer -= 200;
-                            fadeIn();
-                        } else if (timer == 0) {
-                            document.body.removeChild(feedBack);
-                        }
-                    }, timer);
-                }
+                var timer = 2000;
+                setTimeout(function () {
+                    document.body.removeChild(feedBack);
+                    timer -= 100;
+                }, timer);
             }
         });
     });
@@ -206,6 +183,49 @@ function copyInfo(copyText) {
 copyInfo(".right li a");
 
 
+function activateSettings(){
+    document.querySelector(".settings");
+}
+activateSettings();
+
+var checkedInput = document.querySelectorAll("#background-options input");
+console.log(checkedInput);
+
+function backgroundControl() {
+    var backgroundList = ["bg-sky.png", "bg-sky.png", "bg-wavetube.jpg", "bg-tree.jpg", "bg-wave.jpg", "bg-alone-beach.jpg",
+        "bg-alpine-alps-autumn.jpg", "bg-beach-bird.jpg", "bg-beach-bora-bora.jpg", "bg-beach-calm.jpg",
+        "bg-beautiful-daylight-environment.jpg", "bg-bird-s-eye-view.jpg", "bg-bridge-clouds-cloudy.jpg",
+        "bg-clouds-daylight-environment.jpg", "bg-clouds-daylight.jpg", "bg-daylight-environment-forest.jpg",
+        "bg-tree.jpg", "bg-wave.jpg", "bg-wavetube.jpg", "bg-stone-beach.jpg", "bg-wave-jump.jpg"
+    ];
+    var prev = document.querySelector(".prev");
+    var next = document.querySelector(".next");
+    var bgImage = window.getComputedStyle(document.body, null).getPropertyValue("background-image");
+    var i = Math.floor( Math.random()* backgroundList.length);//rand * ( max - min ) + min;
+
+    document.body.style.backgroundImage = "url(src/img/"+backgroundList[i]+")";// first run: random load
+
+    prev.addEventListener("click", function () {
+        if(i > 1 && i != null){
+            document.body.style.backgroundImage = "url(src/img/"+backgroundList[i]+")";
+            i--;
+        }
+    });
+
+    next.addEventListener("click", function () {
+        if(i < backgroundList.length - 1){
+            document.body.style.backgroundImage = "url(src/img/"+backgroundList[i]+")";
+            i++;
+        }
+    });
+}
+backgroundControl();
+
+
+function themeControl() {
+
+}
+themeControl();
 
 
 window.takeScreenShot = function () {
