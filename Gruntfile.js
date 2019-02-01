@@ -14,6 +14,20 @@ module.exports = function (grunt) {
                 dest: 'src/css/styles.css',
             },
         },
+        autoprefixer: {
+            options: {
+                // Task-specific options go here.
+            },
+            your_target: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/css',
+                    src: ['**/*.css'],
+                    dest: 'src/css',
+                    ext: '.css'
+                }],
+            },
+        },
         sass: {
             options: {
                 implementation: sass,

@@ -171,36 +171,38 @@
 		</section>
 
 		<section class="settings">
-			<h2>Settings</h2>
-			<div class="controller theme">
-				<h4 class="title">Blackround</h4>
-				<div id="background-options">
-					<input type="radio" name="bg-choice" value="local" id="local" class="Local option" checked="checked" >
-					<label for="local">User</label>
-
-					<input type="radio" name="bg-choice" value="flicker" id="flicker" class="Flicker option">
-					<label for="flicker">Flicker</label>
-
-					<input type="radio" name="bg-choice" value="pexels" id="pexels" class="Pexels option">
-					<label for="pexels">Pexels</label>
+			<section class="settings-wrap">
+				<h2 class="settings-tab">Settings</h2>
+				<div class="controller theme">
+					<h4 class="title">Blackround</h4>
+					<div id="background-options">
+						<input type="radio" name="bg-choice" value="local" id="local" class="Local option" checked="checked" >
+						<label for="local">Local</label>
+	
+						<input type="radio" name="bg-choice" value="flickr" id="flickr" class="Flickr option">
+						<label for="flickr">Flickr</label>
+	
+						<input type="radio" name="bg-choice" value="pexels" id="pexels" class="Pexels option">
+						<label for="pexels">Pexels</label>
+					</div>
+					<div id="background-switch" class="control">
+						<button class="prev button bg"> < </button> 
+								<button class="next button bg"> > </button>
+					</div>
+					<span id="background-name"></span>
 				</div>
-				<div id="background-switch" class="control">
-					<button class="prev button bg"> < </button> 
-							<button class="next button bg"> > </button>
+	
+				<div class="controller theme">
+					<h4 class="title">Theme Color</h4>
+					<div id="theme-switch" class="control">
+						<button class="prev button tm">
+							< </button> <button class="next button tm"> >
+						</button>
+					</div>
+					<span id="theme-name"></span>
 				</div>
-				<span id="background-name"></span>
-			</div>
-
-			<div class="controller theme">
-				<h4 class="title">Theme</h4>
-				<div id="theme-switch" class="control">
-					<button class="prev button tm">
-						< </button> <button class="next button tm"> >
-					</button>
-				</div>
-				<span id="theme-name"></span>
-			</div>
-
+	
+			</section>
 		</section>
 	</main>
 

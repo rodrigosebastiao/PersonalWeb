@@ -29,6 +29,7 @@ body {
 body {
   background: url(../../src/img/bg-beach-bird.jpg) no-repeat;
   background-size: cover;
+  overflow-x: hidden;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0; }
 
@@ -79,7 +80,7 @@ body {
           padding: 15px 20px 15px 50px;
           white-space: nowrap;
           position: absolute;
-          top: 72px;
+          top: 75px;
           left: -25%; }
         .header .right li a:hover .tooltip {
           position: absolute;
@@ -89,17 +90,17 @@ body {
           .header .right li a:hover .tooltip::before {
             content: "";
             position: absolute;
-            bottom: -15px;
-            left: -13px;
-            border-width: 20px;
+            bottom: -5px;
+            left: -5px;
+            border-width: 10px;
             border-style: solid;
             border-color: transparent transparent #222 transparent;
             border-color: transparent transparent rgba(0, 0, 0, 0.6) transparent; }
           .header .right li a:hover .tooltip::after {
             content: "\f0c5";
             position: absolute;
-            bottom: -30px;
-            left: -20px;
+            bottom: -36px;
+            left: -18px;
             font-size: 14px;
             color: #bebebe;
             font-family: "FontAwesome";
@@ -335,7 +336,8 @@ body {
             display: none; }
           .main .start-menu__skills--group li.title a {
             padding-right: 0;
-            padding-left: 0; }
+            padding-left: 0;
+            cursor: auto; }
         .main .start-menu__skills--group li a {
           vertical-align: sub;
           padding-left: 10px; }
@@ -347,7 +349,6 @@ body {
         margin: 4px;
         cursor: pointer; }
         .main .start-menu__info--box .box li:hover:not(.title) {
-          -webkit-filter: brightness(130%) opacity(0.9);
           filter: brightness(130%) opacity(0.9); }
         .main .start-menu__info--box .box li.title {
           display: block;
@@ -357,7 +358,8 @@ body {
           .main .start-menu__info--box .box li.title .icon {
             display: none; }
           .main .start-menu__info--box .box li.title a {
-            font-size: 16px; }
+            font-size: 16px;
+            cursor: auto; }
         .main .start-menu__info--box .box li a {
           font-size: 0;
           text-indent: -9999px; }
@@ -497,92 +499,105 @@ body {
 .settings {
   position: absolute;
   top: 50%;
-  transform: translate(108%, -80%);
-  right: 20px;
-  z-index: 20;
-  /* margin-right: 20px; */
-  border: 2px solid #222;
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  padding: 15px 10px;
-  transition: all 1s; }
-  .settings.active {
-    transform: translate(0, -80%); }
-  .settings h2 {
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    background: #222;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(15px);
-    display: inline-block;
-    padding: 5px 20px;
-    transform: rotate(-90deg) translate(-110px, -122px); }
-  .settings .controller {
-    background: #222;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(15px);
-    color: #fff;
-    padding: 10px 20px; }
-    .settings .controller:not(:last-child) {
-      margin-bottom: 30px; }
-  .settings .title {
-    font-size: 14px;
-    line-height: 1.8;
-    letter-spacing: 0.1em;
-    margin-bottom: 15px;
-    text-align: center;
-    border-bottom: 1px solid #9199a2; }
-  .settings .control {
-    text-align: center; }
-  .settings .button {
-    background: #222;
-    background: transparent;
-    color: #fff;
-    margin: 20px 0 10px;
-    padding: 0 40px;
-    transform: scale(1, 1.5);
-    border: none;
-    outline: none;
-    display: inline-block;
-    user-select: none;
-    font-size: 0;
-    cursor: pointer; }
-    .settings .button:before, .settings .button:after {
-      font-size: 40px;
+  right: 0;
+  padding-left: 80px;
+  overflow: hidden; }
+  .settings-wrap {
+    transform: translate(105%, 0);
+    z-index: 20;
+    transition: all 0.4s; }
+    .settings-wrap.active {
+      transform: translate(-5%, 0); }
+      .settings-wrap.active .settings-tab {
+        transition: 0.4s; }
+    .settings-wrap .settings-tab {
       color: #fff;
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900; }
-    .settings .button.prev:before {
-      content: "\f104"; }
-    .settings .button.next:before {
-      content: "\f105"; }
-  .settings #background-options {
-    padding: 10px 0; }
-    .settings #background-options input[type="radio"] {
-      position: absolute;
-      margin: 15px 30px;
-      height: 1px;
-      width: 1px;
-      border: 0;
-      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      background: #222;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(15px);
+      display: inline-block;
+      padding: 5px 16px;
+      transform: rotate(-90deg) translate(-108px, -115px);
       cursor: pointer; }
-      .settings #background-options input[type="radio"]:checked + label {
-        background: #fff; }
-    .settings #background-options label {
+    .settings-wrap .controller {
+      background: #222;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(15px);
+      color: #fff;
+      padding: 10px 20px; }
+      .settings-wrap .controller:not(:last-child) {
+        margin-bottom: 30px; }
+    .settings-wrap .title {
       font-size: 14px;
-      font-weight: 700;
-      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-      transform: scale(1);
-      float: left;
-      padding: 5px 15px;
-      margin: 0 0 5px;
-      border: 1px solid #444;
-      color: #818181;
-      background: #313131;
-      -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-      user-select: none;
+      line-height: 1.8;
+      letter-spacing: 0.1em;
+      margin-bottom: 15px;
+      text-align: center;
+      border-bottom: 1px solid #9199a2; }
+    .settings-wrap .control {
+      text-align: center; }
+    .settings-wrap .button {
+      background: #222;
+      background: transparent;
+      color: #fff;
+      margin: 20px 0 10px;
+      padding: 0 40px;
+      transform: scale(1, 1.5);
+      border: none;
+      outline: none;
+      display: inline-block;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+      font-size: 0;
       cursor: pointer; }
+      .settings-wrap .button:before, .settings-wrap .button:after {
+        font-size: 40px;
+        color: #fff;
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900; }
+      .settings-wrap .button.prev:before {
+        content: "\f104"; }
+      .settings-wrap .button.next:before {
+        content: "\f105"; }
+    .settings-wrap #background-options {
+      padding: 10px 0; }
+      .settings-wrap #background-options input[type="radio"] {
+        position: absolute;
+        margin: 15px 30px;
+        height: 1px;
+        width: 1px;
+        border: 0;
+        overflow: hidden;
+        cursor: pointer; }
+        .settings-wrap #background-options input[type="radio"]:checked + label {
+          color: #222;
+          background: #fff;
+          box-shadow: 1px 0 4px 0px rgba(0, 0, 0, 0.2), -1px 0 4px 0px rgba(0, 0, 0, 0.2);
+          font-weight: 700;
+          position: relative;
+          z-index: 1; }
+      .settings-wrap #background-options label {
+        font-size: 14px;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        transform: scale(1);
+        float: left;
+        padding: 5px 0;
+        min-width: 70px;
+        text-align: center;
+        margin: 0 0 5px;
+        border: 1px solid #444;
+        color: #818181;
+        background: #313131;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+        cursor: pointer; }
 
 .footer {
   position: fixed;
@@ -630,5 +645,3 @@ body {
         font-weight: 900; }
       .footer ul li a {
         font-size: 0; }
-
-/*# sourceMappingURL=styles.css.map */

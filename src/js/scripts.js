@@ -43,7 +43,6 @@ function choseAllMenus() {
         });
     }
 }
-
 choseAllMenus();
 
 
@@ -87,13 +86,7 @@ function customMenuChoosen(event) {
 }
 
 
-
-/* html2canvas(document.body).then(function(canvas) {
-    document.body.appendChild(canvas);
-}); */
-
-
-function clock() {
+(function clock() {
     var hour = document.querySelector("#hour");
     var date = document.querySelector("#date");
     var time = new Date();
@@ -121,8 +114,8 @@ function clock() {
     date.innerHTML = DD + "/" + MM + "/" + YYYY;
 
     setTimeout(clock, 60000); //update every minute instead of second
-}
-clock();
+})();
+
 
 
 function expand(element) {
@@ -183,43 +176,158 @@ function copyInfo(copyText) {
 copyInfo(".right li a");
 
 
-function activateSettings(){
-    document.querySelector(".settings");
+function activateSettings() {
+    var tab = document.querySelector(".settings-tab");
+    tab.addEventListener("click", function () {
+        this.parentElement.classList.toggle("active");
+    });
 }
 activateSettings();
 
-var checkedInput = document.querySelectorAll("#background-options input");
-console.log(checkedInput);
+
 
 function backgroundControl() {
-    var backgroundList = ["bg-sky.png", "bg-sky.png", "bg-wavetube.jpg", "bg-tree.jpg", "bg-wave.jpg", "bg-alone-beach.jpg",
-        "bg-alpine-alps-autumn.jpg", "bg-beach-bird.jpg", "bg-beach-bora-bora.jpg", "bg-beach-calm.jpg",
-        "bg-beautiful-daylight-environment.jpg", "bg-bird-s-eye-view.jpg", "bg-bridge-clouds-cloudy.jpg",
-        "bg-clouds-daylight-environment.jpg", "bg-clouds-daylight.jpg", "bg-daylight-environment-forest.jpg",
-        "bg-tree.jpg", "bg-wave.jpg", "bg-wavetube.jpg", "bg-stone-beach.jpg", "bg-wave-jump.jpg"
-    ];
-    var prev = document.querySelector(".prev");
-    var next = document.querySelector(".next");
-    var bgImage = window.getComputedStyle(document.body, null).getPropertyValue("background-image");
-    var i = Math.floor( Math.random()* backgroundList.length);//rand * ( max - min ) + min;
 
-    document.body.style.backgroundImage = "url(src/img/"+backgroundList[i]+")";// first run: random load
+    var backgroundList = [
+        "bg-sky.png",
+        "bg-wavetube.jpg",
+        "bg-alone-beach.jpg",
+        "bg-alpine-alps-autumn.jpg",
+        "bg-beach-bird.jpg",
+        "bg-beach-bora-bora.jpg",
+        "bg-beach-calm.jpg",
+        "bg-beautiful-daylight-environment.jpg",
+        "bg-bird-s-eye-view.jpg",
+        "bg-bridge-clouds-cloudy.jpg",
+        "bg-clouds-daylight-environment.jpg",
+        "bg-clouds-daylight.jpg",
+        "bg-daylight-environment-forest.jpg",
+        "bg-stone-beach.jpg",
+        "bg-tree.jpg",
+        "bg-wave-jump.jpg",
+        "bg-wave.jpg",
+    ]
 
-    prev.addEventListener("click", function () {
-        if(i > 1 && i != null){
-            document.body.style.backgroundImage = "url(src/img/"+backgroundList[i]+")";
-            i--;
+    var flickrList = [];
+
+    function flickerJSONApi() {
+        var apiKey = "d77ba6c50acac4e12b8c60c42772eac3";
+        var gallery_id = "72157704831299001";
+        var user_id = "98083080@N00";
+        var url = "https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg";
+        var flickrRes = "https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=" + apiKey + "&gallery_id=" + gallery_id + "&format=json&nojsoncallback=1";
+
+        var xmlhttp = new XMLHttpRequest();
+        var result;
+        xmlhttp.open("GET", flickrRes);
+
+        result = xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var result = JSON.parse(this.responseText);
+                flickrList = result.photos.photo; //store resources
+            }
         }
+        xmlhttp.send();
+    }
+    flickerJSONApi(); //load resources
+
+
+    var rand = Math.floor(Math.random() * backgroundList.length); //rand * ( max - min ) + min;
+    var res;
+    document.body.style.backgroundImage = "url(src/img/" + backgroundList[rand] + ")"; // first run: random load
+
+    var input = document.querySelectorAll("#background-options input");
+    var option = "local"; //first time for load
+
+
+    input.forEach(function (index) {
+        index.addEventListener("click", function () { //listener for toggle options
+            option = index.value;
+            var isChecked = index.checked;
+            if (isChecked) {
+                switch (option) { //verify the value
+                    case "local":
+                        resource(option, backgroundList); //pass array
+                        break;
+
+                    case "flickr":
+                        resource(option, flickrList); //pass array flickr
+                        break;
+
+                    case "pexels":
+                        resource(option, "");
+                        break;
+                    default:
+                        document.body.style.backgroundImage = "/src/img/bg-beach-bird.jpg"; //if all 3 fails
+                        break;
+                }
+            }
+        });
     });
 
-    next.addEventListener("click", function () {
-        if(i < backgroundList.length - 1){
-            document.body.style.backgroundImage = "url(src/img/"+backgroundList[i]+")";
-            i++;
-        }
-    });
+
+
+    var path = "";
+    var i = j = k = 0; //for unique position in the array
+
+    resource(option, backgroundList); //first run to access button next/prev
+
+    function resource(option, arr) { //arr = chosen array
+        var prev = document.querySelector(".prev");
+        var next = document.querySelector(".next");
+        //path = "src/img/" + arr[0];
+
+        next.addEventListener("click", function () {
+            if (option == "local") { // confirm choise
+                if (arr.length > 1 && i < arr.length - 1) { //verify lower and upper limits
+                    i++;
+                    console.log(i)
+                    path = "src/img/" + arr[i];
+                }
+            }
+            if (option == "flickr") {
+                if (arr.length > 1 && j < arr.length - 1) {
+                    j++;
+                    path = "https://farm" + arr[i].farm + ".staticflickr.com/" + arr[i].server + "/" + arr[i].id + "_" + arr[i].secret + ".jpg";
+                }
+            }
+            if (option == "pexel") {
+                if (arr.length > 1 && k < arr.length - 1) {
+                    k++;
+                    path = "";
+                }
+            }
+            document.cookie = option;
+            document.body.style.backgroundImage = "url(" + path + ")";
+            console.log(document.body.style.backgroundImage);
+        });
+
+        prev.addEventListener("click", function () {
+            if (option == "local") { // confirm choise
+                if (arr.length > 1 && i >= 1) { //verify lower and upper limits
+                    i--;
+                    path = "src/img/" + arr[i];
+                }
+            }
+            if (option == "flickr") {
+                if (arr.length > 1 && j >= 1) {
+                    j--;
+                    path = "https://farm" + arr[i].farm + ".staticflickr.com/" + arr[i].server + "/" + arr[i].id + "_" + arr[i].secret + ".jpg";
+                }
+            }
+            if (option == "pexel") {
+                if (arr.length > 1 && k >= 1) {
+                    k--;
+                    path = "";
+                }
+            }
+            document.cookie = option;
+            document.body.style.backgroundImage = "url(" + path + ")";
+        });
+    }
 }
 backgroundControl();
+
 
 
 function themeControl() {
@@ -235,3 +343,8 @@ window.takeScreenShot = function () {
         //height: 220;
     });
 }
+
+
+/* html2canvas(document.body).then(function(canvas) {
+    document.body.appendChild(canvas);
+}); */
