@@ -561,8 +561,12 @@ body {
         font-weight: 900; }
       .settings-wrap .button.prev:before {
         content: "\f104"; }
+        .settings-wrap .button.prev:before:active {
+          font-size: 37px; }
       .settings-wrap .button.next:before {
         content: "\f105"; }
+        .settings-wrap .button.next:before:active {
+          font-size: 37px; }
     .settings-wrap #background-options {
       padding: 10px 0; }
       .settings-wrap #background-options input[type="radio"] {
@@ -575,7 +579,7 @@ body {
         cursor: pointer; }
         .settings-wrap #background-options input[type="radio"]:checked + label {
           color: #222;
-          background: #fff;
+          background: #d8d8d8;
           box-shadow: 1px 0 4px 0px rgba(0, 0, 0, 0.2), -1px 0 4px 0px rgba(0, 0, 0, 0.2);
           font-weight: 700;
           position: relative;
@@ -597,7 +601,8 @@ body {
            -moz-user-select: none;
             -ms-user-select: none;
                 user-select: none;
-        cursor: pointer; }
+        cursor: pointer;
+        transition: 0.1s; }
 
 .footer {
   position: fixed;

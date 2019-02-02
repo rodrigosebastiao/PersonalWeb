@@ -182,7 +182,10 @@ function activateSettings() {
         this.parentElement.classList.toggle("active");
     });
 }
-activateSettings();
+
+window.onload = function () {
+    activateSettings();
+}
 
 
 
@@ -210,35 +213,56 @@ function backgroundControl() {
 
     var flickrList = [];
 
-    function flickerJSONApi() {
+    function flickrAPI() {
         var apiKey = "d77ba6c50acac4e12b8c60c42772eac3";
         var gallery_id = "72157704831299001";
         var user_id = "98083080@N00";
-        var url = "https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg";
-        var flickrRes = "https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=" + apiKey + "&gallery_id=" + gallery_id + "&format=json&nojsoncallback=1";
+        var urlSeach = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+apiKey+"&text=Nature+Landscape&format=json&nojsoncallback=1";
+        var url = "https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=" + apiKey + "&gallery_id=" + gallery_id + "&format=json&nojsoncallback=1";
 
-        var xmlhttp = new XMLHttpRequest();
+        var XMLHttp = new XMLHttpRequest();
         var result;
-        xmlhttp.open("GET", flickrRes);
+        XMLHttp.open("GET", url, true);
 
-        result = xmlhttp.onreadystatechange = function () {
+        XMLHttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                var result = JSON.parse(this.responseText);
-                flickrList = result.photos.photo; //store resources
+                var results = JSON.parse(this.responseText);
+                flickrList = results.photos.photo; //store resources globally
             }
         }
-        xmlhttp.send();
+        XMLHttp.send();
     }
-    flickerJSONApi(); //load resources
+    flickrAPI(); //load resources
+
+    var pexelsList = [];
+
+    function pexelsAPI() {
+        var apiKey = "563492ad6f917000010000010f1bfbd230064102918116227730ba4a";
+        var url = "https://api.pexels.com/v1/search?query=landscape+nature&per_page=15&page=1";
+
+        var XMLHttp = new XMLHttpRequest();
+        XMLHttp.open("GET", url, true);
+        XMLHttp.setRequestHeader("Authorization", apiKey);
+
+        XMLHttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var results = JSON.parse(this.responseText);
+                pexelsList = results.photos;
+            }
+        }
+        XMLHttp.send();
+    }
+    pexelsAPI();
 
 
     var rand = Math.floor(Math.random() * backgroundList.length); //rand * ( max - min ) + min;
-    var res;
     document.body.style.backgroundImage = "url(src/img/" + backgroundList[rand] + ")"; // first run: random load
 
-    var input = document.querySelectorAll("#background-options input");
-    var option = "local"; //first time for load
 
+    var option = "local"; //first load
+    var selectedArray = backgroundList; //first load
+
+    var input = document.querySelectorAll("#background-options input");
 
     input.forEach(function (index) {
         index.addEventListener("click", function () { //listener for toggle options
@@ -247,18 +271,19 @@ function backgroundControl() {
             if (isChecked) {
                 switch (option) { //verify the value
                     case "local":
-                        resource(option, backgroundList); //pass array
+                        selectedArray = backgroundList;
                         break;
 
                     case "flickr":
-                        resource(option, flickrList); //pass array flickr
+                        selectedArray = flickrList;
                         break;
 
                     case "pexels":
-                        resource(option, "");
+                        selectedArray = pexelsList;
                         break;
+
                     default:
-                        document.body.style.backgroundImage = "/src/img/bg-beach-bird.jpg"; //if all 3 fails
+                        document.body.style.backgroundImage = "/src/img/bg-beach-bird.jpg"; //if all 3 fail
                         break;
                 }
             }
@@ -266,65 +291,55 @@ function backgroundControl() {
     });
 
 
-
     var path = "";
-    var i = j = k = 0; //for unique position in the array
+    var i = j = k = 0; //for unique position in the selectedArrayay
 
-    resource(option, backgroundList); //first run to access button next/prev
+    var prev = document.querySelector(".prev");
+    var next = document.querySelector(".next");
 
-    function resource(option, arr) { //arr = chosen array
-        var prev = document.querySelector(".prev");
-        var next = document.querySelector(".next");
-        //path = "src/img/" + arr[0];
 
-        next.addEventListener("click", function () {
-            if (option == "local") { // confirm choise
-                if (arr.length > 1 && i < arr.length - 1) { //verify lower and upper limits
-                    i++;
-                    console.log(i)
-                    path = "src/img/" + arr[i];
-                }
-            }
-            if (option == "flickr") {
-                if (arr.length > 1 && j < arr.length - 1) {
-                    j++;
-                    path = "https://farm" + arr[i].farm + ".staticflickr.com/" + arr[i].server + "/" + arr[i].id + "_" + arr[i].secret + ".jpg";
-                }
-            }
-            if (option == "pexel") {
-                if (arr.length > 1 && k < arr.length - 1) {
-                    k++;
-                    path = "";
-                }
-            }
-            document.cookie = option;
+    next.addEventListener("click", function () {
+        if (option == "local" && selectedArray.length > 0 && i < selectedArray.length - 1) { //verify lower and upper limits
+            i++;
+            path = "src/img/" + selectedArray[i];
             document.body.style.backgroundImage = "url(" + path + ")";
-            console.log(document.body.style.backgroundImage);
-        });
+        }
 
-        prev.addEventListener("click", function () {
-            if (option == "local") { // confirm choise
-                if (arr.length > 1 && i >= 1) { //verify lower and upper limits
-                    i--;
-                    path = "src/img/" + arr[i];
-                }
-            }
-            if (option == "flickr") {
-                if (arr.length > 1 && j >= 1) {
-                    j--;
-                    path = "https://farm" + arr[i].farm + ".staticflickr.com/" + arr[i].server + "/" + arr[i].id + "_" + arr[i].secret + ".jpg";
-                }
-            }
-            if (option == "pexel") {
-                if (arr.length > 1 && k >= 1) {
-                    k--;
-                    path = "";
-                }
-            }
-            document.cookie = option;
+        if (option == "flickr" && selectedArray.length > 0 && j < selectedArray.length - 1) {
+            j++;
+            path = "https://farm" + selectedArray[j].farm + ".staticflickr.com/" + selectedArray[j].server + "/" + selectedArray[j].id + "_" + selectedArray[j].secret + ".jpg";
             document.body.style.backgroundImage = "url(" + path + ")";
-        });
-    }
+        }
+
+        k = Math.floor(Math.random() * selectedArray.length);
+        if (option == "pexels" && selectedArray.length > 0 && k < selectedArray.length - 1) {
+            path = selectedArray[k].src.large; //large for 1920x1...
+            document.body.style.backgroundImage = "url(" + path + ")";
+        }
+    });
+
+    prev.addEventListener("click", function () {
+        if (option == "local" && selectedArray.length > 0 && i > 0) { //verify lower and upper limits
+            i--;
+            path = "src/img/" + selectedArray[i];
+            document.body.style.backgroundImage = "url(" + path + ")";
+        }
+
+        if (option == "flickr" && selectedArray.length > 0 && j > 0) {
+            j--;
+            path = "https://farm" + selectedArray[j].farm + ".staticflickr.com/" + selectedArray[j].server + "/" + selectedArray[j].id + "_" + selectedArray[j].secret + ".jpg";
+            document.body.style.backgroundImage = "url(" + path + ")";
+        }
+
+        k = Math.floor(Math.random() * selectedArray.length);
+        if (option == "pexels" && selectedArray.length > 0 && k > 0) {
+            path = selectedArray[k].src.large; //large for 1920x1...
+            document.body.style.backgroundImage = "url(" + path + ")";
+        }
+
+    });
+
+    document.cookie = option;
 }
 backgroundControl();
 
