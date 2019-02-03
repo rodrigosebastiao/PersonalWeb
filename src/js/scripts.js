@@ -365,8 +365,8 @@ function backgroundControl() {
             }
             path = "src/img/" + selectedArray[i];
             document.body.style.backgroundImage = "url(" + path + ")";
-            var text = selectedArray[i].replace(/bg-|.jpg|.png|(\-)/gi, " ").trim();//remoev tags, dashs and extensions jpg, png etc
-            infoBG.innerHTML = text;
+            var imgTitle = selectedArray[i].replace(/bg-|.jpg|.png|(\-)/gi, " ").trim();//remoev tags, dashs and extensions jpg, png etc
+            infoBG.innerHTML = imgTitle;
             infoBGFurther.innerHTML =  (parseInt(i + 1)) + " / " + selectedArray.length;
         }
 
@@ -384,17 +384,16 @@ function backgroundControl() {
             path = "https://farm" + selectedArray[j].farm + ".staticflickr.com/" + selectedArray[j].server + "/" + selectedArray[j].id + "_" + selectedArray[j].secret + "_c.jpg"; // _b for Large _c for medium _o for original
             document.body.style.backgroundImage = "url(" + path + ")";
 
-            if(!selectedArray[j].title || selectedArray[j].title == "" || selectedArray[j].title == " "){
+            /* if(!selectedArray[j].title || selectedArray[j].title == "" || selectedArray[j].title == " "){
                 selectedArray[j].title = "Untitled";
-            }
+            } */
             infoBG.innerHTML = selectedArray[j].title; 
-            infoBGFurther.innerHTML = (parseInt(j + 1)) + " / " + selectedArray.length + "<br>" + "page " + selectedArray[j].page; log(flickrList.page);
+            infoBGFurther.innerHTML = (parseInt(j + 1)) + " / " + selectedArray.length //+ "<br>" + "page " + selectedArray[j].page; log(flickrList.page);
 
             count_j++;
             if (count_j == selectedArray.length) { //if the number of selected images in page end call another page
                 flickrAPI();
             }
-
         }
 
 
@@ -410,11 +409,14 @@ function backgroundControl() {
             path = selectedArray[k].src.large; //large for 1920x1...
             document.body.style.backgroundImage = "url(" + path + ")";
             
-            if(!selectedArray[j].title || selectedArray[j].title == "" || selectedArray[j].title == " "){
-                selectedArray[j].title = "Untitled";
-            }
-            infoBG.innerHTML = selectedArray[j].title; 
-            infoBGFurther.innerHTML =  (parseInt(k + 1)) + " / " + selectedArray.length + "<br>" + "page " + selectedArray.pages;
+            /* if(!selectedArray[j].url || selectedArray[j].url == "" || selectedArray[j].url == " "){
+                selectedArray[j].url = "Untitled";
+            } */
+
+
+            var imgTitle = selectedArray[j].url.replace(/https:\/\/www.pexels.com\/photo|-|\d{3,8}$/gi, " ");
+            infoBG.innerHTML = imgTitle;
+            infoBGFurther.innerHTML =  (parseInt(k + 1)) + " / " + selectedArray.length //+ "<br>" + "page " + selectedArray.pages;
 
             count_k++;
             if (count_k == selectedArray.length) { //if the number of selected images in page end call another page

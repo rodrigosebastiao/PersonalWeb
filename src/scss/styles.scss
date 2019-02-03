@@ -710,6 +710,7 @@ body {
     position: absolute;
     top: 30%;
     right: 0;
+    z-index: 20;
     padding-left: 80px;
     overflow: hidden;
 
@@ -783,6 +784,7 @@ body {
                 max-width: 215px;
                 height: 75px;
                 -webkit-line-clamp: 2;
+                white-space: nowrap;
                 text-overflow: ellipsis;
                 overflow: hidden;
                 text-align: center;
