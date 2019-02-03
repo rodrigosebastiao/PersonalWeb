@@ -496,21 +496,21 @@ body {
   .footer .icon:before {
     color: #fff; }
 
-.settings {
+.settings-background {
   position: absolute;
-  top: 50%;
+  top: 30%;
   right: 0;
   padding-left: 80px;
   overflow: hidden; }
-  .settings-wrap {
+  .settings-background-wrap {
     transform: translate(105%, 0);
     z-index: 20;
     transition: all 0.4s; }
-    .settings-wrap.active {
+    .settings-background-wrap.active {
       transform: translate(-5%, 0); }
-      .settings-wrap.active .settings-tab {
+      .settings-background-wrap.active .settings-background-tab {
         transition: 0.4s; }
-    .settings-wrap .settings-tab {
+    .settings-background-wrap .settings-background-tab {
       color: #fff;
       text-transform: uppercase;
       letter-spacing: 0.2em;
@@ -521,24 +521,24 @@ body {
       padding: 5px 16px;
       transform: rotate(-90deg) translate(-108px, -115px);
       cursor: pointer; }
-    .settings-wrap .controller {
+    .settings-background-wrap .controller {
       background: #222;
       background: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(15px);
       color: #fff;
       padding: 10px 20px; }
-      .settings-wrap .controller:not(:last-child) {
+      .settings-background-wrap .controller:not(:last-child) {
         margin-bottom: 30px; }
-    .settings-wrap .title {
+    .settings-background-wrap .title {
       font-size: 14px;
       line-height: 1.8;
       letter-spacing: 0.1em;
       margin-bottom: 15px;
       text-align: center;
       border-bottom: 1px solid #9199a2; }
-    .settings-wrap .control {
+    .settings-background-wrap .control {
       text-align: center; }
-    .settings-wrap .button {
+    .settings-background-wrap .button {
       background: #222;
       background: transparent;
       color: #fff;
@@ -554,22 +554,22 @@ body {
               user-select: none;
       font-size: 0;
       cursor: pointer; }
-      .settings-wrap .button:before, .settings-wrap .button:after {
+      .settings-background-wrap .button:before, .settings-background-wrap .button:after {
         font-size: 40px;
         color: #fff;
         font-family: 'Font Awesome 5 Free';
         font-weight: 900; }
-      .settings-wrap .button.prev:before {
+      .settings-background-wrap .button.prev:before {
         content: "\f104"; }
-        .settings-wrap .button.prev:before:active {
+        .settings-background-wrap .button.prev:before:active {
           font-size: 37px; }
-      .settings-wrap .button.next:before {
+      .settings-background-wrap .button.next:before {
         content: "\f105"; }
-        .settings-wrap .button.next:before:active {
+        .settings-background-wrap .button.next:before:active {
           font-size: 37px; }
-    .settings-wrap #background-options {
+    .settings-background-wrap #background-options {
       padding: 10px 0; }
-      .settings-wrap #background-options input[type="radio"] {
+      .settings-background-wrap #background-options input[type="radio"] {
         position: absolute;
         margin: 15px 30px;
         height: 1px;
@@ -577,14 +577,14 @@ body {
         border: 0;
         overflow: hidden;
         cursor: pointer; }
-        .settings-wrap #background-options input[type="radio"]:checked + label {
+        .settings-background-wrap #background-options input[type="radio"]:checked + label {
           color: #222;
           background: #d8d8d8;
           box-shadow: 1px 0 4px 0px rgba(0, 0, 0, 0.2), -1px 0 4px 0px rgba(0, 0, 0, 0.2);
           font-weight: 700;
           position: relative;
           z-index: 1; }
-      .settings-wrap #background-options label {
+      .settings-background-wrap #background-options label {
         font-size: 14px;
         font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
         transform: scale(1);

@@ -706,9 +706,9 @@ body {
     }
 }
 
-.settings {
+.settings-background {
     position: absolute;
-    top: 50%;
+    top: 30%;
     right: 0;
     padding-left: 80px;
     overflow: hidden;
@@ -721,12 +721,12 @@ body {
         &.active {
             transform: translate(-5%, 0);
 
-            .settings-tab {
+            .settings-background-tab {
                 transition: 0.4s;
             }
         }
 
-        .settings-tab {
+        .settings-background-tab {
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 0.2em;
