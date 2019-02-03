@@ -38,7 +38,7 @@ body {
 body {
     background: url(../../src/img/bg-beach-bird.jpg) no-repeat;
     background-size: cover;
-    //background-position: center center;
+    background-position: center;
     overflow-x: hidden;
     font-family: $fontMain;
     margin: 0;
@@ -364,14 +364,14 @@ body {
         background: rgba(0, 0, 0, 0.6);
         backdrop-filter: blur(15px);
         color: #fff;
-        padding: 50px 0;
-        width: 70%;
+        padding: 50px 0 10px;
+        width: 56%;
         @include clearfix;
         position: relative;
         z-index: 30;
 
         &--group {
-            margin-top: -40px;
+            margin-top: -10px;
             transition: all 0.4s;
         }
 
@@ -398,7 +398,7 @@ body {
         }
 
         &__user {
-            width: 12%;
+            width: 10%;
             padding-left: 0;
             padding-right: 0;
 
@@ -410,7 +410,7 @@ body {
                 border: 2px solid #979797;
                 position: relative;
                 left: 0;
-                top: -100px;
+                top: -95px;
             }
 
             &--img {
@@ -479,7 +479,7 @@ body {
         }
 
         &__info {
-            width: 57%;
+            width: 65%;
             padding-right: 0;
 
             &--box {
@@ -730,13 +730,22 @@ body {
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 0.2em;
+            font-size: 20px;
             background: #222;
             background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(15px);
             display: inline-block;
-            padding: 5px 16px;
+            padding: 5px 11px 7px;
             transform: rotate(-90deg) translate(-108px, -115px);
             cursor: pointer;
+
+            &:after {
+                content: "\f013";
+                color: #fff;
+                font-family: 'Font Awesome 5 Free';
+                font-weight: 900;
+                margin-left: 10px;
+            }
         }
 
         .controller {
@@ -764,6 +773,28 @@ body {
             text-align: center;
         }
 
+        #info {
+            &-background,
+            &-theme,
+            &-further {
+                display: block;
+                width: 100%;
+                margin: 10px auto 0;
+                max-width: 215px;
+                height: 75px;
+                -webkit-line-clamp: 2;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                text-align: center;
+                font-size: 13px;
+                font-style: italic;
+                font-weight: 300;
+                line-height: 2;
+                letter-spacing: 0.15em;
+                text-transform: capitalize;
+            }
+        }
+
         .button {
             background: #222;
             background: transparent;
@@ -789,7 +820,8 @@ body {
             &.prev {
                 &:before {
                     content: "\f104";
-                    &:active{
+
+                    &:active {
                         font-size: 37px;
                     }
                 }
@@ -798,7 +830,8 @@ body {
             &.next {
                 &:before {
                     content: "\f105";
-                    &:active{
+
+                    &:active {
                         font-size: 37px;
                     }
                 }
@@ -815,7 +848,7 @@ body {
                 width: 1px;
                 border: 0;
                 overflow: hidden;
-                cursor: pointer;                
+                cursor: pointer;
 
                 &:checked+label {
                     color: #222;

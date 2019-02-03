@@ -1,3 +1,8 @@
+var log = function (val) {
+    console.log(val);
+}
+
+
 function openAndClose(button, element) {
     var button = document.querySelector(button);
     var element = document.querySelector(element);
@@ -223,7 +228,7 @@ function backgroundControl() {
         var gallery_id = "72157704831299001";
         var user_id = "98083080@N00";
         var urlGallery = "https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=" + apiKey + "&gallery_id=" + gallery_id + "&format=json&nojsoncallback=1";
-        var urlSearch = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + apiKey + "&text=Nature+Landscape&format=json&nojsoncallback=1";
+        var urlSearch = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + apiKey + "&text=landscape+water&page=&format=json&nojsoncallback=1";
         var randPage = [];
 
         function getAllPages(getRandomPage) {
@@ -245,7 +250,7 @@ function backgroundControl() {
         function getFinalURL(hasRandomPage) {
             hasRandomPage = rnd(hasRandomPage); //choose random page with return of random function
 
-            var urlRandPage = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + apiKey + "&text=Nature+Landscape&page=" + hasRandomPage + "&format=json&nojsoncallback=1";
+            var urlRandPage = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + apiKey + "&text=landscape+water&page=" + hasRandomPage + "&format=json&nojsoncallback=1";
             var XMLHttp = new XMLHttpRequest();
             XMLHttp.open("GET", urlRandPage, true);
             XMLHttp.onreadystatechange = function () {
@@ -259,7 +264,6 @@ function backgroundControl() {
         }
         getAllPages(getFinalURL);
     }
-
     flickrAPI(); //load resources
 
 
@@ -267,9 +271,9 @@ function backgroundControl() {
     var pexelsList = [];
 
     function pexelsAPI() {
-        var apiKey = "563492ad6f917000010000010f1bfbd230064102918116227730ba4a";
+        var apiKey = "563492ad6f917000010000010f1bfbd230064102918116227730ba4a"; // used for AUTH header
         var randomPage = rnd(100); //chosee random page of total size
-        var urlSearch = "https://api.pexels.com/v1/search?query=landscape+nature&per_page=80&page=" + randomPage;
+        var urlSearch = "https://api.pexels.com/v1/search?query=landscape+water&per_page=80&page=" + randomPage;
 
         var XMLHttp = new XMLHttpRequest();
         XMLHttp.open("GET", urlSearch, true);
@@ -286,13 +290,12 @@ function backgroundControl() {
     pexelsAPI();
 
     //load with page, before any click
-    var rand = rnd(backgroundList.length); //rand * ( max - min ) + min;
-    document.body.style.backgroundImage = "url(src/img/" + backgroundList[rand] + ")"; // first run: random load
+    //document.body.style.backgroundImage = "url(src/img/" + backgroundList[rand] + ")"; // first run: random load
 
 
     var option = "local"; //first load
     var selectedArray = backgroundList; //first load
-    var firstP = 0;
+
     var input = document.querySelectorAll("#background-options input");
     input.forEach(function (index) {
         index.addEventListener("click", function () { //listener for toggle options
@@ -330,6 +333,12 @@ function backgroundControl() {
 
     var prev = document.querySelector(".prev");
     var next = document.querySelector(".next");
+    var infoBG = document.querySelector("#info-background");
+    var infoBGFurther = document.querySelector("#info-bg-further");
+    var infoTheme = document.querySelector("#info-theme");
+    var infoTmFurther = document.querySelector("#info-tm-further");
+
+    changeBackground(0);
 
     document.cookie = "option=" + option; //trying to set cookie to remember user choice
 
@@ -341,39 +350,57 @@ function backgroundControl() {
         changeBackground(-1);
     });
 
+
     function changeBackground(inc) {
-        if (option == "local" && selectedArray.length > 0 && i < selectedArray.length - 1 && i >= 0) { //verify lower and upper limits for negative/positive numbers
-            if (inc == 1) {
+        if (option == "local" && selectedArray.length > 0) { //verify lower and upper limits for negative/positive numbers
+            if (inc == 1 && i < selectedArray.length - 1) {
                 i++;
             }
 
             if (inc == -1 && i > 0) { //reduce if i has size
                 i--;
             }
+            if (inc == 0) { //reduce if i has size
+                i = rnd(backgroundList.length);
+            }
             path = "src/img/" + selectedArray[i];
             document.body.style.backgroundImage = "url(" + path + ")";
+            var text = selectedArray[i].replace(/bg-|.jpg|.png|(\-)/gi, " ").trim();//remoev tags, dashs and extensions jpg, png etc
+            infoBG.innerHTML = text;
+            infoBGFurther.innerHTML =  (parseInt(i + 1)) + " / " + selectedArray.length;
         }
-        
-        if (option == "flickr" && selectedArray.length > 0 && j < selectedArray.length - 1) {
-            if (inc == 1) {
+
+
+        if (option == "flickr" && selectedArray.length > 0) {
+            j = rnd(selectedArray.length);
+            if (inc == 1 && j < selectedArray.length - 1) {
                 j = rnd(selectedArray.length); //get random image from a page verify size then change
             }
 
             if (inc == -1 && j > 0) { //reduce if i has size
                 j = rnd(selectedArray.length); //get random image from a page verify size then change
             }
-            
+
             path = "https://farm" + selectedArray[j].farm + ".staticflickr.com/" + selectedArray[j].server + "/" + selectedArray[j].id + "_" + selectedArray[j].secret + "_c.jpg"; // _b for Large _c for medium _o for original
             document.body.style.backgroundImage = "url(" + path + ")";
+
+            if(!selectedArray[j].title || selectedArray[j].title == "" || selectedArray[j].title == " "){
+                selectedArray[j].title = "Untitled";
+            }
+            infoBG.innerHTML = selectedArray[j].title; 
+            infoBGFurther.innerHTML = (parseInt(j + 1)) + " / " + selectedArray.length + "<br>" + "page " + selectedArray[j].page; log(flickrList.page);
 
             count_j++;
             if (count_j == selectedArray.length) { //if the number of selected images in page end call another page
                 flickrAPI();
             }
+
         }
 
-        if (option == "pexels" && selectedArray.length > 0  && k < selectedArray.length - 1) {
-            if (inc == 1) {
+
+        if (option == "pexels" && selectedArray.length > 0) {
+            k = rnd(selectedArray.length);
+            if (inc == 1 && k < selectedArray.length - 1) {
                 k = rnd(selectedArray.length); //get random image from a page verify size then change
             }
 
@@ -382,6 +409,12 @@ function backgroundControl() {
             }
             path = selectedArray[k].src.large; //large for 1920x1...
             document.body.style.backgroundImage = "url(" + path + ")";
+            
+            if(!selectedArray[j].title || selectedArray[j].title == "" || selectedArray[j].title == " "){
+                selectedArray[j].title = "Untitled";
+            }
+            infoBG.innerHTML = selectedArray[j].title; 
+            infoBGFurther.innerHTML =  (parseInt(k + 1)) + " / " + selectedArray.length + "<br>" + "page " + selectedArray.pages;
 
             count_k++;
             if (count_k == selectedArray.length) { //if the number of selected images in page end call another page

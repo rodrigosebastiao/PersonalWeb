@@ -29,6 +29,7 @@ body {
 body {
   background: url(../../src/img/bg-beach-bird.jpg) no-repeat;
   background-size: cover;
+  background-position: center;
   overflow-x: hidden;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0; }
@@ -251,8 +252,8 @@ body {
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(15px);
     color: #fff;
-    padding: 50px 0;
-    width: 70%;
+    padding: 50px 0 10px;
+    width: 56%;
     position: relative;
     z-index: 30; }
     .main .start-menu:before, .main .start-menu:after {
@@ -260,7 +261,7 @@ body {
       display: table;
       clear: both; }
     .main .start-menu--group {
-      margin-top: -40px;
+      margin-top: -10px;
       transition: all 0.4s; }
     .main .start-menu.active {
       height: 0;
@@ -285,7 +286,7 @@ body {
         display: table;
         clear: both; }
     .main .start-menu__user {
-      width: 12%;
+      width: 10%;
       padding-left: 0;
       padding-right: 0; }
       .main .start-menu__user .tooltip {
@@ -300,7 +301,7 @@ body {
         border: 2px solid #979797;
         position: relative;
         left: 0;
-        top: -100px; }
+        top: -95px; }
       .main .start-menu__user--img {
         padding: 10px;
         width: 40%;
@@ -342,7 +343,7 @@ body {
           vertical-align: sub;
           padding-left: 10px; }
     .main .start-menu__info {
-      width: 57%;
+      width: 65%;
       padding-right: 0; }
       .main .start-menu__info--box .box li {
         float: left;
@@ -514,13 +515,20 @@ body {
       color: #fff;
       text-transform: uppercase;
       letter-spacing: 0.2em;
+      font-size: 20px;
       background: #222;
       background: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(15px);
       display: inline-block;
-      padding: 5px 16px;
+      padding: 5px 11px 7px;
       transform: rotate(-90deg) translate(-108px, -115px);
       cursor: pointer; }
+      .settings-background-wrap .settings-background-tab:after {
+        content: "\f013";
+        color: #fff;
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        margin-left: 10px; }
     .settings-background-wrap .controller {
       background: #222;
       background: rgba(0, 0, 0, 0.6);
@@ -538,6 +546,22 @@ body {
       border-bottom: 1px solid #9199a2; }
     .settings-background-wrap .control {
       text-align: center; }
+    .settings-background-wrap #info-background, .settings-background-wrap #info-theme, .settings-background-wrap #info-further {
+      display: block;
+      width: 100%;
+      margin: 10px auto 0;
+      max-width: 215px;
+      height: 75px;
+      -webkit-line-clamp: 2;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      text-align: center;
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 2;
+      letter-spacing: 0.15em;
+      text-transform: capitalize; }
     .settings-background-wrap .button {
       background: #222;
       background: transparent;
