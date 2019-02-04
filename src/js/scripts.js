@@ -1,8 +1,3 @@
-var log = function (val) {
-    console.log(val);
-}
-
-
 function openAndClose(button, element) {
     var button = document.querySelector(button);
     var element = document.querySelector(element);
@@ -295,6 +290,7 @@ function backgroundControl() {
 
     var option = "local"; //first load
     var selectedArray = backgroundList; //first load
+    
 
     var input = document.querySelectorAll("#background-options input");
     input.forEach(function (index) {
@@ -309,13 +305,13 @@ function backgroundControl() {
                         break;
 
                     case "flickr":
-                        selectedArray = flickrList;
-                        changeBackground(); //for very first load - set to array[0]
+                        selectedArray = flickrList;    
+                        changeBackground(0);
                         break;
 
                     case "pexels":
                         selectedArray = pexelsList;
-                        changeBackground();
+                        changeBackground(0);
                         break;
 
                     default:
@@ -329,7 +325,8 @@ function backgroundControl() {
 
     var path = "";
     var i = j = k = 0; //for unique position in the selectedArrayay
-    var count_i, count_j, count_k = 0; // number of selected images 
+    var more_pages_i = more_pages_j = more_pages_k = 0; // number of selected images     
+    var once_i = once_j = once_k = 0;
 
     var prev = document.querySelector(".prev");
     var next = document.querySelector(".next");
@@ -350,7 +347,6 @@ function backgroundControl() {
         changeBackground(-1);
     });
 
-
     function changeBackground(inc) {
         if (option == "local" && selectedArray.length > 0) { //verify lower and upper limits for negative/positive numbers
             if (inc == 1 && i < selectedArray.length - 1) {
@@ -360,25 +356,32 @@ function backgroundControl() {
             if (inc == -1 && i > 0) { //reduce if i has size
                 i--;
             }
-            if (inc == 0) { //reduce if i has size
-                i = rnd(backgroundList.length);
+
+            if (inc == 0 && once_i <= 0) {  //run only once
+                i = rnd(selectedArray.length);
+                once_i++;
             }
+
             path = "src/img/" + selectedArray[i];
             document.body.style.backgroundImage = "url(" + path + ")";
-            var imgTitle = selectedArray[i].replace(/bg-|.jpg|.png|(\-)/gi, " ").trim();//remoev tags, dashs and extensions jpg, png etc
+            var imgTitle = selectedArray[i].replace(/bg-|.jpg|.png|(\-)/gi, " ").trim(); //remoev tags, dashs and extensions jpg, png etc
             infoBG.innerHTML = imgTitle;
-            infoBGFurther.innerHTML =  (parseInt(i + 1)) + " / " + selectedArray.length;
+            infoBGFurther.innerHTML = (parseInt(i + 1)) + " / " + selectedArray.length;
         }
 
 
-        if (option == "flickr" && selectedArray.length > 0) {
-            j = rnd(selectedArray.length);
+        if (option == "flickr" && selectedArray.length > 0) { //verify lower and upper limits for negative/positive numbers
             if (inc == 1 && j < selectedArray.length - 1) {
-                j = rnd(selectedArray.length); //get random image from a page verify size then change
+                j = rnd(selectedArray.length);
             }
 
-            if (inc == -1 && j > 0) { //reduce if i has size
-                j = rnd(selectedArray.length); //get random image from a page verify size then change
+            if (inc == -1 && j > 0) { //reduce if j has size
+                j = rnd(selectedArray.length);
+            }
+
+            if (inc == 0) {  //run only once
+                j = rnd(selectedArray.length);
+                return
             }
 
             path = "https://farm" + selectedArray[j].farm + ".staticflickr.com/" + selectedArray[j].server + "/" + selectedArray[j].id + "_" + selectedArray[j].secret + "_c.jpg"; // _b for Large _c for medium _o for original
@@ -387,39 +390,44 @@ function backgroundControl() {
             /* if(!selectedArray[j].title || selectedArray[j].title == "" || selectedArray[j].title == " "){
                 selectedArray[j].title = "Untitled";
             } */
-            infoBG.innerHTML = selectedArray[j].title; 
+            infoBG.innerHTML = selectedArray[j].title;
             infoBGFurther.innerHTML = (parseInt(j + 1)) + " / " + selectedArray.length //+ "<br>" + "page " + selectedArray[j].page; log(flickrList.page);
 
-            count_j++;
-            if (count_j == selectedArray.length) { //if the number of selected images in page end call another page
+            more_pages_j++;
+            if (more_pages_j == selectedArray.length) { //if the number of selected images in page end, call another page
                 flickrAPI();
             }
         }
 
 
-        if (option == "pexels" && selectedArray.length > 0) {
-            k = rnd(selectedArray.length);
+        if (option == "pexels" && selectedArray.length > 0) { //verify lower and upper limits for negative/positive numbers
             if (inc == 1 && k < selectedArray.length - 1) {
-                k = rnd(selectedArray.length); //get random image from a page verify size then change
+                k = rnd(selectedArray.length);
             }
 
             if (inc == -1 && k > 0) { //reduce if i has size
-                k = rnd(selectedArray.length); //get random image from a page verify size then change
+                k = rnd(selectedArray.length);
             }
+
+            if (inc == 0 && once_k <= 0) {  //run only once
+                k = rnd(selectedArray.length);
+                once_k++;
+            }
+
             path = selectedArray[k].src.large; //large for 1920x1...
             document.body.style.backgroundImage = "url(" + path + ")";
-            
+
             /* if(!selectedArray[j].url || selectedArray[j].url == "" || selectedArray[j].url == " "){
                 selectedArray[j].url = "Untitled";
             } */
 
-
             var imgTitle = selectedArray[j].url.replace(/https:\/\/www.pexels.com\/photo|-|\d{3,8}$/gi, " ");
             infoBG.innerHTML = imgTitle;
-            infoBGFurther.innerHTML =  (parseInt(k + 1)) + " / " + selectedArray.length //+ "<br>" + "page " + selectedArray.pages;
+            infoBGFurther.innerHTML = (parseInt(k + 1)) + " / " + selectedArray.length //+ "<br>" + "page " + selectedArray.pages;
 
-            count_k++;
-            if (count_k == selectedArray.length) { //if the number of selected images in page end call another page
+
+            more_pages_k++;
+            if (more_pages_k == selectedArray.length) { //if the number of selected images in page end, call another page
                 pexelsAPI();
             }
         }

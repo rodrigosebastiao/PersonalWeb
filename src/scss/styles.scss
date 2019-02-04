@@ -37,8 +37,9 @@ body {
 
 body {
     background: url(../../src/img/bg-beach-bird.jpg) no-repeat;
-    background-size: cover;
+    //background-size: cover;
     background-position: center;
+    background-size: cover;
     overflow-x: hidden;
     font-family: $fontMain;
     margin: 0;
@@ -368,7 +369,7 @@ body {
         width: 56%;
         @include clearfix;
         position: relative;
-        z-index: 30;
+        z-index: 100;
 
         &--group {
             margin-top: -10px;
@@ -415,7 +416,7 @@ body {
 
             &--img {
                 padding: 10px;
-                width: 40%;
+                width: 80%;
                 position: relative;
                 cursor: pointer;
 
@@ -482,6 +483,10 @@ body {
             width: 65%;
             padding-right: 0;
 
+            @include breakpoint(1800) {
+                width: 50%;
+            }
+
             &--box {
                 .box {
                     li {
@@ -513,6 +518,14 @@ body {
                         a {
                             font-size: 0;
                             text-indent: -9999px;
+                        }
+
+                        @include breakpoint(1800) {
+                            .icon-md {
+                                width: 70px;
+                                height: 70px;
+                                background-size: 40%;
+                            }
                         }
                     }
                 }
@@ -557,7 +570,7 @@ body {
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 50;
+        z-index: 200;
 
         &.active {
             @include slideToggle;
@@ -699,6 +712,7 @@ body {
 .footer {
     .icon {
         display: inline-block;
+        vertical-align: middle;
 
         &:before {
             color: #fff;
@@ -775,17 +789,16 @@ body {
         }
 
         #info {
+
             &-background,
             &-theme,
             &-further {
-                display: block;
+                display: -webkit-box;
                 width: 100%;
-                margin: 10px auto 0;
+                margin: 10px auto 5px;
                 max-width: 215px;
-                height: 75px;
                 -webkit-line-clamp: 2;
-                white-space: nowrap;
-                text-overflow: ellipsis;
+                -webkit-box-orient: vertical;
                 overflow: hidden;
                 text-align: center;
                 font-size: 13px;
@@ -794,6 +807,10 @@ body {
                 line-height: 2;
                 letter-spacing: 0.15em;
                 text-transform: capitalize;
+
+                &:active {
+                    -webkit-line-clamp: 4;
+                }
             }
         }
 

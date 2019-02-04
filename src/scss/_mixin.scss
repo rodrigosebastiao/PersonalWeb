@@ -1,9 +1,20 @@
 $icon-size-md: 30px;
 
-$fontMain: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-$fontSupport: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+$fontMain: 'Segoe UI',
+Tahoma,
+Geneva,
+Verdana,
+sans-serif;
+$fontSupport: 'Lucida Sans',
+'Lucida Sans Regular',
+'Lucida Grande',
+'Lucida Sans Unicode',
+Geneva,
+Verdana,
+sans-serif;
 
 @mixin clearfix {
+
     &:before,
     &:after {
         content: "";
@@ -27,13 +38,41 @@ $fontSupport: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida San
     transition: 0.4s top 0s left 0s;
 }
 
-@mixin transparency{
+@mixin transparency {
     background: #111;
     backdrop-filter: blur(10px);
     //padding: 5px 40px 25px 20px;
 }
 
-@mixin shadow{
-    box-shadow: 5px 2px 15px 2px #000;/*fall back*/
-    box-shadow: 5px 2px 15px 2px rgba(0,0,0,0.2);
+@mixin shadow {
+    box-shadow: 5px 2px 15px 2px #000;
+    /*fall back*/
+    box-shadow: 5px 2px 15px 2px rgba(0, 0, 0, 0.2);
+}
+
+$mobile: 375;
+$tablet: 738;
+$notebook: 1280;
+$desktop: 1366;
+$desktop2: 1980;
+
+$breakpoints: (
+    'xsmall': 375px,
+    'small': 768px,
+    'medium': 992px,
+    'large': 1280px,
+    'xlarge': 1366px
+) !default;
+
+
+@mixin breakpoint($size) {
+    @if map-has-key($breakpoints, $size) {
+        @media screen and (max-width: map-get($breakpoints, $size)) {
+            @content;
+        }
+    }@else{
+        @media screen and (max-width: $size+"px") {//custom
+            @content;
+        }
+    }
 }

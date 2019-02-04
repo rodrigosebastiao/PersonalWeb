@@ -28,8 +28,8 @@ body {
 
 body {
   background: url(../../src/img/bg-beach-bird.jpg) no-repeat;
-  background-size: cover;
   background-position: center;
+  background-size: cover;
   overflow-x: hidden;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0; }
@@ -255,7 +255,7 @@ body {
     padding: 50px 0 10px;
     width: 56%;
     position: relative;
-    z-index: 30; }
+    z-index: 100; }
     .main .start-menu:before, .main .start-menu:after {
       content: "";
       display: table;
@@ -304,7 +304,7 @@ body {
         top: -95px; }
       .main .start-menu__user--img {
         padding: 10px;
-        width: 40%;
+        width: 80%;
         position: relative;
         cursor: pointer; }
         .main .start-menu__user--img:hover {
@@ -345,6 +345,9 @@ body {
     .main .start-menu__info {
       width: 65%;
       padding-right: 0; }
+      @media screen and (max-width: 1800px) {
+        .main .start-menu__info {
+          width: 50%; } }
       .main .start-menu__info--box .box li {
         float: left;
         margin: 4px;
@@ -364,6 +367,11 @@ body {
         .main .start-menu__info--box .box li a {
           font-size: 0;
           text-indent: -9999px; }
+        @media screen and (max-width: 1800px) {
+          .main .start-menu__info--box .box li .icon-md {
+            width: 70px;
+            height: 70px;
+            background-size: 40%; } }
     .main .start-menu .icon {
       background-color: #202020; }
     .main .start-menu .icon-xsm {
@@ -398,7 +406,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 50; }
+    z-index: 200; }
     .main .projects-modal.active {
       height: auto;
       opacity: 1;
@@ -492,7 +500,8 @@ body {
     transform: scale(1.1); } }
 .right-click-menu .icon,
 .footer .icon {
-  display: inline-block; }
+  display: inline-block;
+  vertical-align: middle; }
   .right-click-menu .icon:before,
   .footer .icon:before {
     color: #fff; }
@@ -548,14 +557,12 @@ body {
     .settings-background-wrap .control {
       text-align: center; }
     .settings-background-wrap #info-background, .settings-background-wrap #info-theme, .settings-background-wrap #info-further {
-      display: block;
+      display: -webkit-box;
       width: 100%;
-      margin: 10px auto 0;
+      margin: 10px auto 5px;
       max-width: 215px;
-      height: 75px;
       -webkit-line-clamp: 2;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
       overflow: hidden;
       text-align: center;
       font-size: 13px;
@@ -564,6 +571,8 @@ body {
       line-height: 2;
       letter-spacing: 0.15em;
       text-transform: capitalize; }
+      .settings-background-wrap #info-background:active, .settings-background-wrap #info-theme:active, .settings-background-wrap #info-further:active {
+        -webkit-line-clamp: 4; }
     .settings-background-wrap .button {
       background: #222;
       background: transparent;
