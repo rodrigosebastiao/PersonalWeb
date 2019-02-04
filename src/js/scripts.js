@@ -379,9 +379,9 @@ function backgroundControl() {
                 j = rnd(selectedArray.length);
             }
 
-            if (inc == 0) {  //run only once
+            if (inc == 0 && once_j <= 0) {  //run only once
                 j = rnd(selectedArray.length);
-                return
+                once_j++;
             }
 
             path = "https://farm" + selectedArray[j].farm + ".staticflickr.com/" + selectedArray[j].server + "/" + selectedArray[j].id + "_" + selectedArray[j].secret + "_c.jpg"; // _b for Large _c for medium _o for original
