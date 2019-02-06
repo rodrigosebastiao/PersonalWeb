@@ -522,9 +522,9 @@ body {
 
                         @include breakpoint(1800) {
                             .icon-md {
-                                width: 70px;
-                                height: 70px;
-                                background-size: 40%;
+                                width: 80px;
+                                height: 0;//aspect ratio
+                                padding-top: 100%;
                             }
                         }
                     }

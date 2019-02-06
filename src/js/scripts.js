@@ -209,6 +209,9 @@ function backgroundControl() {
         "bg-tree.jpg",
         "bg-wave-jump.jpg",
         "bg-wave.jpg",
+        "bg-pool-beach.jpg",
+        "bg-clouds-conifer-daylight.jpg",
+        "bg-stone-river.jpg",
     ]
 
 

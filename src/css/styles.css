@@ -369,9 +369,9 @@ body {
           text-indent: -9999px; }
         @media screen and (max-width: 1800px) {
           .main .start-menu__info--box .box li .icon-md {
-            width: 70px;
-            height: 70px;
-            background-size: 40%; } }
+            width: 80px;
+            height: 0;
+            padding-top: 100%; } }
     .main .start-menu .icon {
       background-color: #202020; }
     .main .start-menu .icon-xsm {
