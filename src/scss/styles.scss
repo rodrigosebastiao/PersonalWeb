@@ -67,14 +67,17 @@ body {
                 margin-right: 0;
             }
 
-            &:hover {
-                background: #eee;
-                background: rgba(255, 255, 255, 0.3);
-            }
-
             a {
                 display: inline-block;
                 text-indent: 0;
+                user-select: none;
+
+                &:hover,
+                &:active,
+                &.active {
+                    background: #eee;
+                    background: rgba(255, 255, 255, 0.3);
+                }
             }
         }
     }
@@ -270,10 +273,36 @@ body {
     position: relative;
     top: 0;
     padding: 22px 10px;
+
+    .tooltip {
+        font-size: 12px;
+
+        &:before,
+        &:after {
+            content: none !important;
+        }
+    }
+
+    &:after {
+        content: none !important;
+    }
 }
 
 .clock.icon.icon-xsm {
     padding: 10px;
+
+    .tooltip {
+        font-size: 12px;
+
+        &:before,
+        &:after {
+            content: none !important;
+        }
+    }
+
+    &:after {
+        content: none !important;
+    }
 
     .timer {
         display: block;
@@ -281,6 +310,27 @@ body {
         letter-spacing: 0.1em;
         font-size: 14px;
         line-height: 1.6;
+    }
+
+    #time-zone {
+        position: absolute;
+        top: 63px;
+        left: -67px;
+        line-height: 2;
+        font-size: 14px;
+        background: #000;
+        padding: 5px 0;
+
+        li {
+            display: block;
+            padding: 0 20px;
+            cursor: pointer;
+
+            &:active,
+            &.active {
+                background: #8b8b8b;
+            }
+        }
     }
 }
 
@@ -360,7 +410,7 @@ body {
     height: 100%;
 
     .start-menu {
-        @include slideToggle;
+        @include slideToggleHidden;
         background: #000;
         background: rgba(0, 0, 0, 0.6);
         backdrop-filter: blur(15px);
@@ -378,16 +428,12 @@ body {
 
         &.active {
             //reverse active particular case
-            @include slideToggleHidden;
+            @include slideToggle;
 
             .start-menu--group {
                 margin-top: 0;
                 transition: all 0.4s;
             }
-        }
-
-        &.inactive {
-            @include slideToggleHidden;
         }
 
         &__user,
@@ -420,7 +466,9 @@ body {
                 position: relative;
                 cursor: pointer;
 
-                &:hover {
+                &:hover,
+                &:active,
+                &.active {
                     background: #eee;
                     background: rgba(255, 255, 255, 0.3);
 
@@ -523,7 +571,7 @@ body {
                         @include breakpoint(1800) {
                             .icon-md {
                                 width: 80px;
-                                height: 0;//aspect ratio
+                                height: 0; //aspect ratio
                                 padding-top: 100%;
                             }
                         }
@@ -609,14 +657,14 @@ body {
                     border: 2px solid transparent;
                     overflow: hidden;
 
-                    &:hover {
-                        border: 2px solid #fff;
-                    }
-
                     .tile {
                         display: block;
                         width: 250px;
                         height: 200px;
+
+                        &:hover {
+                            border: 2px solid #fff;
+                        }
                     }
 
                     h3 {

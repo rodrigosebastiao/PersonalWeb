@@ -1,9 +1,18 @@
+function activateElement(elm) { //elements that should activate at first
+    elm = document.querySelectorAll(elm);
+    elm.forEach(function (item) {
+        item.classList.toggle("active");
+    });
+}
+
+activateElement(".start, .start-menu");
+
 function openAndClose(button, element) {
     var button = document.querySelector(button);
     var element = document.querySelector(element);
     button.onclick = function () {
         element.classList.toggle("active");
-        //element.classList.toggle("inactive");
+        button.classList.toggle("active");
     };
 }
 
@@ -33,18 +42,17 @@ function clickOffElementClose(element) {
 clickOffElementClose(".right-click-menu");
 
 
-function choseAllMenus() {
-    var button = document.querySelector(".home");
-    button.onclick = function () {
-        var allOpenedElements = document.querySelectorAll(".start-menu, .projects-modal, .right-click-menu");
+function choseClearAllItems() {
+    var homeButton = document.querySelector(".home");
+    homeButton.onclick = function () {
+        var allOpenedElements = document.querySelectorAll(".start-menu, .projects-modal, .right-click-menu, .start, .projects, .settings-background-wrap");
 
-        allOpenedElements.forEach(function (index) {
-            index.classList.remove("active");
+        allOpenedElements.forEach(function (item) {
+            item.classList.remove("active");
         });
     }
 }
-choseAllMenus();
-
+choseClearAllItems();
 
 
 var rcMenuTarget = document.querySelector(".right-click-target");
@@ -86,34 +94,84 @@ function customMenuChoosen(event) {
 }
 
 
-(function clock() {
-    var hour = document.querySelector("#hour");
-    var date = document.querySelector("#date");
-    var time = new Date();
-    var mm = time.getMinutes();
-    var hh = time.getHours(); //time.toLocaleTimeString() hh/mm/ss;
-    var ss = time.getSeconds();
-    var DD = time.getDate();
-    var MM = time.getMonth() + 1;
-    var YYYY = time.getFullYear();
+(function () { //clock
 
-    if (hh < 10) {
-        hh = '0' + hh;
-    }
-    if (mm < 10) {
-        mm = '0' + mm;
-    }
-    if (DD < 10) {
-        DD = '0' + DD;
-    }
-    if (MM < 10) {
-        MM = '0' + MM;
-    }
+    var clock = document.querySelector(".clock");
+    var time_zones = document.createElement("UL");
+    time_zones.setAttribute("id", "time-zone");
+    time_zones.innerHTML = "<li class='zone' id='zone_0'>São Paulo/Brasil</li>" +
+        "<li class='zone' id='zone_1'>Amsterdam/Netherlands</li>" +
+        "<li class='zone' id='zone_2'>Berlin/Germany</li>" +
+        "<li class='zone' id='zone_3'>Tokyo/Japan</li>";
 
-    hour.innerHTML = hh + ":" + mm;
-    date.innerHTML = DD + "/" + MM + "/" + YYYY;
+    clock.appendChild(time_zones);
 
-    setTimeout(clock, 60000); //update every minute instead of second
+    var clock = document.querySelectorAll(".zone");
+    var zoneList = ["America/Sao_Paulo", "Europe/Amsterdam", "Europe/Berlin", "Asia/Tokyo"];
+    var i = 0;
+    clock[i].classList.add("active");//first load
+
+    clock.forEach(function (item, index) {
+        item.onclick = function (event) {
+            for (i = 0; i <= clock.length - 1; i++) {
+                clock[i].classList.remove("active");
+            }
+
+            item.classList.add("active"); //visual style only
+
+            set_zone = item.id; //clock zones setted from here
+            switch (set_zone) {
+                case "zone_0":
+                    set_zone = zoneList[0]
+                    break;
+                case "zone_1":
+                    set_zone = zoneList[1]
+                    break;
+                case "zone_2":
+                    set_zone = zoneList[2]
+                    break;
+                case "zone_3":
+                    set_zone = zoneList[3]
+                    break;
+            }
+            clockTimer(set_zone);
+        }
+    });
+
+    function clockTimer(set_zone) {
+        var hour = document.querySelector("#hour");
+        var date = document.querySelector("#date");
+        var set_zone = new Date().toLocaleString("pt-BR", {
+            timeZone: set_zone
+        });
+
+        var time = new Date(set_zone);
+        var mm = time.getMinutes();
+        var hh = time.getHours(); //time.toLocaleTimeString() hh/mm/ss;
+        var ss = time.getSeconds();
+        var DD = time.getDate();
+        var MM = time.getMonth() + 1;
+        var YYYY = time.getFullYear();
+
+        if (hh < 10) {
+            hh = '0' + hh;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        if (DD < 10) {
+            DD = '0' + DD;
+        }
+        if (MM < 10) {
+            MM = '0' + MM;
+        }
+
+        hour.innerHTML = hh + ":" + mm;
+        date.innerHTML = DD + "/" + MM + "/" + YYYY;
+
+        var clockInterval = setTimeout(clockTimer, 60000); //update every minute instead of second
+    };
+    clockTimer("America/Sao_Paulo");
 })();
 
 
@@ -121,13 +179,13 @@ function customMenuChoosen(event) {
 function expand(element) {
     var element = document.querySelectorAll(element);
 
-    element.forEach(function (index, item) {
-        index.addEventListener("mouseenter", function () {
-            index.classList.add("active");
+    element.forEach(function (item) {
+        item.addEventListener("mouseenter", function () {
+            item.classList.add("active");
         }, true);
-        index.addEventListener("mouseleave", function () {
+        item.addEventListener("mouseleave", function () {
             setTimeout(function () {
-                index.classList.remove("active");
+                item.classList.remove("active");
             }, 1000);
         }, true);
     });
@@ -136,19 +194,20 @@ function expand(element) {
 expand(".set li");
 
 
+
 function copyInfo(copyText) {
     var copyText = document.querySelectorAll(copyText);
 
-    copyText.forEach(function (index) {
-        index.addEventListener("click", function (event) {
+    copyText.forEach(function (item) {
+        item.addEventListener("click", function (event) {
             event.preventDefault();
             var allowCopy = document.createElement("TEXTAREA");
-            allowCopy.value = index.getAttribute("data-title");
+            allowCopy.value = item.getAttribute("data-title");
             document.documentElement.appendChild(allowCopy);
             allowCopy.select();
             document.execCommand("copy");
             document.documentElement.removeChild(allowCopy);
-            if (allowCopy) { //Feedback for copied
+            if (allowCopy && !item.classList.contains("clock, eng")) { //Feedback for copied string, except a few elements
                 var feedBack = document.createElement("SPAN");
                 feedBack.classList.add("feedback");
                 feedBack.style.position = "absolute";
@@ -293,13 +352,13 @@ function backgroundControl() {
 
     var option = "local"; //first load
     var selectedArray = backgroundList; //first load
-    
+
 
     var input = document.querySelectorAll("#background-options input");
-    input.forEach(function (index) {
-        index.addEventListener("click", function () { //listener for toggle options
-            option = index.value;
-            var isChecked = index.checked;
+    input.forEach(function (item) {
+        item.addEventListener("click", function () { //listener for toggle options
+            option = item.value;
+            var isChecked = item.checked;
             if (isChecked) {
                 switch (option) { //verify the value
                     case "local":
@@ -308,7 +367,7 @@ function backgroundControl() {
                         break;
 
                     case "flickr":
-                        selectedArray = flickrList;    
+                        selectedArray = flickrList;
                         changeBackground(0);
                         break;
 
@@ -329,7 +388,7 @@ function backgroundControl() {
     var path = "";
     var i = j = k = 0; //for unique position in the selectedArrayay
     var more_pages_i = more_pages_j = more_pages_k = 0; // number of selected images     
-    var once_i = once_j = once_k = 0;
+    var once = true;
 
     var prev = document.querySelector(".prev");
     var next = document.querySelector(".next");
@@ -360,16 +419,16 @@ function backgroundControl() {
                 i--;
             }
 
-            if (inc == 0 && once_i <= 0) {  //run only once
+            if (inc == 0) { //run only once
                 i = rnd(selectedArray.length);
-                once_i++;
+                once = false;
             }
 
             path = "src/img/" + selectedArray[i];
             document.body.style.backgroundImage = "url(" + path + ")";
             var imgTitle = selectedArray[i].replace(/bg-|.jpg|.png|(\-)/gi, " ").trim(); //remoev tags, dashs and extensions jpg, png etc
             infoBG.innerHTML = imgTitle;
-            infoBGFurther.innerHTML = (parseInt(i + 1)) + " / " + selectedArray.length;
+            infoBGFurther.innerHTML = (+(i + 1)) + " / " + selectedArray.length;
         }
 
 
@@ -382,9 +441,9 @@ function backgroundControl() {
                 j = rnd(selectedArray.length);
             }
 
-            if (inc == 0 && once_j <= 0) {  //run only once
+            if (inc == 0) { //run only once
                 j = rnd(selectedArray.length);
-                once_j++;
+                once = false;
             }
 
             path = "https://farm" + selectedArray[j].farm + ".staticflickr.com/" + selectedArray[j].server + "/" + selectedArray[j].id + "_" + selectedArray[j].secret + "_c.jpg"; // _b for Large _c for medium _o for original
@@ -394,7 +453,7 @@ function backgroundControl() {
                 selectedArray[j].title = "Untitled";
             } */
             infoBG.innerHTML = selectedArray[j].title;
-            infoBGFurther.innerHTML = (parseInt(j + 1)) + " / " + selectedArray.length //+ "<br>" + "page " + selectedArray[j].page; log(flickrList.page);
+            infoBGFurther.innerHTML = (+(j + 1)) + " / " + selectedArray.length //+ "<br>" + "page " + selectedArray[j].page; log(flickrList.page);
 
             more_pages_j++;
             if (more_pages_j == selectedArray.length) { //if the number of selected images in page end, call another page
@@ -412,9 +471,9 @@ function backgroundControl() {
                 k = rnd(selectedArray.length);
             }
 
-            if (inc == 0 && once_k <= 0) {  //run only once
+            if (inc == 0) { //run only once
                 k = rnd(selectedArray.length);
-                once_k++;
+                once = false;
             }
 
             path = selectedArray[k].src.large; //large for 1920x1...
@@ -426,7 +485,7 @@ function backgroundControl() {
 
             var imgTitle = selectedArray[j].url.replace(/https:\/\/www.pexels.com\/photo|-|\d{3,8}$/gi, " ");
             infoBG.innerHTML = imgTitle;
-            infoBGFurther.innerHTML = (parseInt(k + 1)) + " / " + selectedArray.length //+ "<br>" + "page " + selectedArray.pages;
+            infoBGFurther.innerHTML = (+(k + 1)) + " / " + selectedArray.length //+ "<br>" + "page " + selectedArray.pages;
 
 
             more_pages_k++;

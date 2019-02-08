@@ -54,12 +54,16 @@ body {
       cursor: pointer; }
       .header .list li:last-child {
         margin-right: 0; }
-      .header .list li:hover {
-        background: #eee;
-        background: rgba(255, 255, 255, 0.3); }
       .header .list li a {
         display: inline-block;
-        text-indent: 0; }
+        text-indent: 0;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none; }
+        .header .list li a:hover, .header .list li a:active, .header .list li a.active {
+          background: #eee;
+          background: rgba(255, 255, 255, 0.3); }
   .header .left {
     float: left; }
     .header .left li {
@@ -180,15 +184,41 @@ body {
   position: relative;
   top: 0;
   padding: 22px 10px; }
+  .eng.icon-xsm.icon .tooltip {
+    font-size: 12px; }
+    .eng.icon-xsm.icon .tooltip:before, .eng.icon-xsm.icon .tooltip:after {
+      content: none !important; }
+  .eng.icon-xsm.icon:after {
+    content: none !important; }
 
 .clock.icon.icon-xsm {
   padding: 10px; }
+  .clock.icon.icon-xsm .tooltip {
+    font-size: 12px; }
+    .clock.icon.icon-xsm .tooltip:before, .clock.icon.icon-xsm .tooltip:after {
+      content: none !important; }
+  .clock.icon.icon-xsm:after {
+    content: none !important; }
   .clock.icon.icon-xsm .timer {
     display: block;
     text-align: center;
     letter-spacing: 0.1em;
     font-size: 14px;
     line-height: 1.6; }
+  .clock.icon.icon-xsm #time-zone {
+    position: absolute;
+    top: 63px;
+    left: -67px;
+    line-height: 2;
+    font-size: 14px;
+    background: #000;
+    padding: 5px 0; }
+    .clock.icon.icon-xsm #time-zone li {
+      display: block;
+      padding: 0 20px;
+      cursor: pointer; }
+      .clock.icon.icon-xsm #time-zone li:active, .clock.icon.icon-xsm #time-zone li.active {
+        background: #8b8b8b; }
 
 .css3 {
   background-image: url(../../src/img/icon-css3.png); }
@@ -244,10 +274,11 @@ body {
 .main {
   height: 100%; }
   .main .start-menu {
-    height: auto;
-    opacity: 1;
-    visibility: visible;
-    transition: 0.4s top 0s left 0s;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition-delay: 0.2s;
     background: #000;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(15px);
@@ -264,20 +295,13 @@ body {
       margin-top: -10px;
       transition: all 0.4s; }
     .main .start-menu.active {
-      height: 0;
-      opacity: 0;
-      visibility: hidden;
-      overflow: hidden;
-      transition-delay: 0.2s; }
+      height: auto;
+      opacity: 1;
+      visibility: visible;
+      transition: 0.4s top 0s left 0s; }
       .main .start-menu.active .start-menu--group {
         margin-top: 0;
         transition: all 0.4s; }
-    .main .start-menu.inactive {
-      height: 0;
-      opacity: 0;
-      visibility: hidden;
-      overflow: hidden;
-      transition-delay: 0.2s; }
     .main .start-menu__user, .main .start-menu__skills, .main .start-menu__info {
       float: left;
       padding: 0 20px; }
@@ -307,10 +331,10 @@ body {
         width: 80%;
         position: relative;
         cursor: pointer; }
-        .main .start-menu__user--img:hover {
+        .main .start-menu__user--img:hover, .main .start-menu__user--img:active, .main .start-menu__user--img.active {
           background: #eee;
           background: rgba(255, 255, 255, 0.3); }
-          .main .start-menu__user--img:hover + .tooltip {
+          .main .start-menu__user--img:hover + .tooltip, .main .start-menu__user--img:active + .tooltip, .main .start-menu__user--img.active + .tooltip {
             height: auto;
             opacity: 1;
             visibility: visible;
@@ -434,12 +458,12 @@ body {
         padding: 0 10px;
         border: 2px solid transparent;
         overflow: hidden; }
-        .main .projects-modal .projects-group li.project:hover {
-          border: 2px solid #fff; }
         .main .projects-modal .projects-group li.project .tile {
           display: block;
           width: 250px;
           height: 200px; }
+          .main .projects-modal .projects-group li.project .tile:hover {
+            border: 2px solid #fff; }
         .main .projects-modal .projects-group li.project h3 {
           font-size: 14px;
           font-weight: normal;
