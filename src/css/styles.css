@@ -206,6 +206,11 @@ body {
     font-size: 14px;
     line-height: 1.6; }
   .clock.icon.icon-xsm #time-zone {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition-delay: 0.2s;
     position: absolute;
     top: 63px;
     left: -67px;
@@ -213,6 +218,11 @@ body {
     font-size: 14px;
     background: #000;
     padding: 5px 0; }
+    .clock.icon.icon-xsm #time-zone:active, .clock.icon.icon-xsm #time-zone.active {
+      height: auto;
+      opacity: 1;
+      visibility: visible;
+      transition: 0.4s top 0s left 0s; }
     .clock.icon.icon-xsm #time-zone li {
       display: block;
       padding: 0 20px;

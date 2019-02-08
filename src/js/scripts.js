@@ -95,7 +95,6 @@ function customMenuChoosen(event) {
 
 
 (function () { //clock
-
     var clock = document.querySelector(".clock");
     var time_zones = document.createElement("UL");
     time_zones.setAttribute("id", "time-zone");
@@ -106,17 +105,20 @@ function customMenuChoosen(event) {
 
     clock.appendChild(time_zones);
 
-    var clock = document.querySelectorAll(".zone");
+    var zone = document.querySelectorAll(".zone");
     var zoneList = ["America/Sao_Paulo", "Europe/Amsterdam", "Europe/Berlin", "Asia/Tokyo"];
     var i = 0;
-    clock[i].classList.add("active");//first load
+    zone[i].classList.add("active");//first load
 
-    clock.forEach(function (item, index) {
+    clock.onclick = function(){
+        time_zones.classList.toggle("active");
+    };
+
+    zone.forEach(function (item, index) {
         item.onclick = function (event) {
-            for (i = 0; i <= clock.length - 1; i++) {
-                clock[i].classList.remove("active");
+            for (i = 0; i <= zone.length - 1; i++) {
+                zone[i].classList.remove("active");
             }
-
             item.classList.add("active"); //visual style only
 
             set_zone = item.id; //clock zones setted from here
@@ -141,7 +143,7 @@ function customMenuChoosen(event) {
     function clockTimer(set_zone) {
         var hour = document.querySelector("#hour");
         var date = document.querySelector("#date");
-        var set_zone = new Date().toLocaleString("pt-BR", {
+        var set_zone = new Date().toLocaleString("en-US", {
             timeZone: set_zone
         });
 
@@ -207,7 +209,10 @@ function copyInfo(copyText) {
             allowCopy.select();
             document.execCommand("copy");
             document.documentElement.removeChild(allowCopy);
-            if (allowCopy && !item.classList.contains("clock, eng")) { //Feedback for copied string, except a few elements
+
+            if (allowCopy && !item.classList.includes("clock", "eng")) { //Feedback for copied string, except a few elements
+                console.log("allow copy");
+                
                 var feedBack = document.createElement("SPAN");
                 feedBack.classList.add("feedback");
                 feedBack.style.position = "absolute";
@@ -221,7 +226,7 @@ function copyInfo(copyText) {
                 feedBack.style.top = 30 + event.clientY + "px"; //show close to element position clicked
                 feedBack.innerHTML = "Copied to Clipboard!";
                 document.body.appendChild(feedBack);
-                var timer = 2000;
+                var timer = 1500;
                 setTimeout(function () {
                     document.body.removeChild(feedBack);
                     timer -= 100;
@@ -229,7 +234,6 @@ function copyInfo(copyText) {
             }
         });
     });
-
 }
 
 copyInfo(".right li a");
