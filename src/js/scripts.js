@@ -210,9 +210,8 @@ function copyInfo(copyText) {
             document.execCommand("copy");
             document.documentElement.removeChild(allowCopy);
 
-            if (allowCopy && !item.classList.includes("clock", "eng")) { //Feedback for copied string, except a few elements
-                console.log("allow copy");
-                
+            if (allowCopy && !item.classList.contains("clock") && !item.classList.contains("eng") ) { //Feedback for copied string, except a few elements
+                console.log("allow copy");                
                 var feedBack = document.createElement("SPAN");
                 feedBack.classList.add("feedback");
                 feedBack.style.position = "absolute";
