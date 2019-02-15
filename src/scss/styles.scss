@@ -209,6 +209,12 @@ body {
         height: 25px;
         background-size: 25px;
         background-position: 50%;
+        @include breakpoint('xsmall'){
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+        background-size: 20px;
+        }
     }
 }
 
