@@ -55,9 +55,11 @@ body {
     @include clearfix;
     position: relative;
     z-index: 100;
-    @include breakpoint('small'){
+
+    @include breakpoint('small') {
         padding: 0;
     }
+
     .list {
         height: 100%;
 
@@ -87,9 +89,11 @@ body {
 
     .left {
         float: left;
-        @include breakpoint('small'){
+
+        @include breakpoint('small') {
             width: 100%;
         }
+
         li {
             margin-right: 0%;
         }
@@ -97,14 +101,18 @@ body {
 
     .right {
         float: right;
-        @include breakpoint('small'){
+
+        @include breakpoint('small') {
             width: 100%;
-            ul{
+
+            ul {
                 text-align: center;
             }
         }
+
         li {
-            margin-right: 0;            
+            margin-right: 0;
+
             a {
                 position: relative;
 
@@ -163,8 +171,9 @@ body {
                     }
                 }
             }
-            @include breakpoint('small'){
-                &#clock{
+
+            @include breakpoint('small') {
+                &#clock {
                     float: right;
                     position: absolute;
                     top: 0;
@@ -209,11 +218,12 @@ body {
         height: 25px;
         background-size: 25px;
         background-position: 50%;
-        @include breakpoint('xsmall'){
-        font-size: 20px;
-        width: 20px;
-        height: 20px;
-        background-size: 20px;
+
+        @include breakpoint('xsmall') {
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+            background-size: 20px;
         }
     }
 }
@@ -221,9 +231,11 @@ body {
 .icon-xsm {
     padding: 0 20px;
     vertical-align: middle;
-    @include breakpoint('xsmall'){
+
+    @include breakpoint('xsmall') {
         padding: 0 10px;
     }
+
     &:before {
         font-size: 20px;
         padding: 25px 0 20px;
@@ -451,9 +463,11 @@ body {
         @include clearfix;
         position: relative;
         z-index: 100;
-        @include breakpoint('small'){
+
+        @include breakpoint('small') {
             padding: 0;
         }
+
         &--group {
             margin-top: -10px;
             transition: all 0.4s;
@@ -475,7 +489,8 @@ body {
             float: left;
             padding: 0 20px;
             @include clearfix;
-            @include breakpoint('small'){
+
+            @include breakpoint('small') {
                 float: none;
                 width: 100%;
             }
@@ -485,12 +500,15 @@ body {
             width: 10%;
             padding-left: 0;
             padding-right: 0;
-            @include breakpoint('small'){
+
+            @include breakpoint('small') {
                 width: 20%;
             }
-            @include breakpoint('small'){
-                width: 50%;
+
+            @include breakpoint('small') {
+                width: 40%;
             }
+
             .tooltip {
                 @include slideToggleHidden;
                 white-space: nowrap;
@@ -507,7 +525,7 @@ body {
                 width: 80%;
                 position: relative;
                 cursor: pointer;
-                
+
                 &:hover,
                 &:active,
                 &.active {
@@ -572,9 +590,11 @@ body {
         &__info {
             width: 65%;
             padding-right: 0;
+
             @include breakpoint(1800) {
                 width: 100%;
             }
+
             &--box {
                 .box {
                     li {
@@ -615,6 +635,7 @@ body {
                                 padding-top: 100%;
                             }
                         }
+
                         @include breakpoint('xsmall') {
                             .icon-md {
                                 width: 40px;
@@ -665,9 +686,17 @@ body {
         left: 0;
         z-index: 200;
 
+        @include breakpoint('small') {
+            padding: 40px 10px 100px 10px;
+        }
+
         &.active {
             @include slideToggle;
             height: 100%;
+
+            @include breakpoint('mobile') {
+                overflow: scroll;
+            }
         }
 
         .projects-group {
@@ -1009,10 +1038,12 @@ body {
         margin-bottom: 20px;
         transition: all 0.4s;
         transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-        @include breakpoint('small'){
+
+        @include breakpoint('small') {
             padding: 0 10px;
             margin-bottom: 10px;
         }
+
         li {
             display: inline-block;
             padding: 20px;
@@ -1020,12 +1051,15 @@ body {
             transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
             cursor: pointer;
             position: relative;
-            @include breakpoint('small'){
+
+            @include breakpoint('small') {
                 padding: 10px;
             }
-            @include breakpoint('xsmall'){
+
+            @include breakpoint('xsmall') {
                 padding: 5px;
             }
+
             &:hover {
                 background: #eee;
                 background: rgba(255, 255, 255, 0.3);

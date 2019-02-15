@@ -484,12 +484,18 @@ body {
     top: 0;
     left: 0;
     z-index: 200; }
+    @media screen and (max-width: 768px) {
+      .main .projects-modal {
+        padding: 40px 10px 100px 10px; } }
     .main .projects-modal.active {
       height: auto;
       opacity: 1;
       visibility: visible;
       transition: 0.4s top 0s left 0s;
       height: 100%; }
+      @media screen and (max-width: mobilepx) {
+        .main .projects-modal.active {
+          overflow: scroll; } }
     .main .projects-modal .projects-group li {
       display: inline-block;
       position: relative;
