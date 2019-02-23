@@ -362,7 +362,7 @@ body {
           width: 20%; } }
       @media screen and (max-width: 768px) {
         .main .start-menu__user {
-          width: 50%; } }
+          width: 40%; } }
       .main .start-menu__user .tooltip {
         height: 0;
         opacity: 0;
