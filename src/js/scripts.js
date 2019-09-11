@@ -317,7 +317,7 @@ function backgroundControl() {
                 if (this.readyState == 4 && this.status == 200) {
                     var results = JSON.parse(this.responseText);
                     flickrList = results.photos.photo; //store resources globally
-                    console.log(results);
+                    // console.log(results);
                 }
             }
             XMLHttp.send();
@@ -342,7 +342,7 @@ function backgroundControl() {
             if (this.readyState == 4 && this.status == 200) {
                 var results = JSON.parse(this.responseText);
                 pexelsList = results.photos;
-                console.log(results);
+                // console.log(results);
             }
         }
         XMLHttp.send();
@@ -356,8 +356,8 @@ function backgroundControl() {
     var option = "local"; //first load
     var selectedArray = backgroundList; //first load
 
-
     var input = document.querySelectorAll("#background-options input");
+
     input.forEach(function (item) {
         item.addEventListener("click", function () { //listener for toggle options
             option = item.value;
@@ -397,8 +397,6 @@ function backgroundControl() {
     var next = document.querySelector(".next");
     var infoBG = document.querySelector("#info-background");
     var infoBGFurther = document.querySelector("#info-bg-further");
-    var infoTheme = document.querySelector("#info-theme");
-    var infoTmFurther = document.querySelector("#info-tm-further");
 
     changeBackground(0);
 
@@ -503,7 +501,57 @@ backgroundControl();
 
 
 function themeControl() {
+    var prev = document.querySelector(".prev.tm");
+    var next = document.querySelector(".next.tm");
+    var infoTheme = document.querySelector("#info-theme");
+    var infoTmFurther = document.querySelector("#info-tm-further");
+    var option = "";
+    var i = j = k = 0;
+    
+    var themeList = {
+        basic: ["Default Theme", "Green", "Yellow"],
+        shiny: ["Sun Shiny in Bright", "Black Tarantula", "VS Code"],
+        psycho: ["Go with flow"],
+    };
 
+    
+    var input = document.querySelectorAll("#theme-options input");
+
+    input.forEach(function (item) {
+        item.addEventListener("click", function () { //listener for toggle options
+            option = item.value;
+            var isChecked = item.checked;
+            if(isChecked) {
+                changeItem(0);
+            }
+        });
+    });
+
+    function changeItem(val){
+       
+        switch(val){
+            case -1:
+                i--;
+                break;
+            case 0:
+                i = 0;
+                break;           
+            case 1 :
+                i++;
+                break;            
+        }
+        infoTheme.innerHTML = themeList[option][i];
+    }    
+    
+    next.addEventListener("click", function () {
+        changeItem(1);
+    });
+
+    prev.addEventListener("click", function () {
+        changeItem(-1);
+    });
+
+    
 }
 themeControl();
 
