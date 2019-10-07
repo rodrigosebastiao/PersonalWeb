@@ -1,5 +1,6 @@
 # player with spotify api
 # api news
+# chat
 
 <!-- Ideas -->
 

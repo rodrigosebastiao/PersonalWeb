@@ -98,7 +98,8 @@ function customMenuChoosen(event) {
     var clock = document.querySelector(".clock");
     var time_zones = document.createElement("UL");
     time_zones.setAttribute("id", "time-zone");
-    time_zones.innerHTML = "<li class='zone' id='zone_0'>São Paulo/Brasil</li>" +
+    time_zones.innerHTML =
+        "<li class='zone' id='zone_0'>São Paulo/Brasil</li>" +
         "<li class='zone' id='zone_1'>Amsterdam/Netherlands</li>" +
         "<li class='zone' id='zone_2'>Berlin/Germany</li>" +
         "<li class='zone' id='zone_3'>Tokyo/Japan</li>";
@@ -108,9 +109,9 @@ function customMenuChoosen(event) {
     var zone = document.querySelectorAll(".zone");
     var zoneList = ["America/Sao_Paulo", "Europe/Amsterdam", "Europe/Berlin", "Asia/Tokyo"];
     var i = 0;
-    zone[i].classList.add("active");//first load
+    zone[i].classList.add("active"); //first load
 
-    clock.onclick = function(){
+    clock.onclick = function () {
         time_zones.classList.toggle("active");
     };
 
@@ -121,7 +122,7 @@ function customMenuChoosen(event) {
             }
             item.classList.add("active"); //visual style only
 
-            set_zone = item.id; //clock zones setted from here
+            set_zone = getCookie("set_zone") || item.id; //clock zones setted from here
             switch (set_zone) {
                 case "zone_0":
                     set_zone = zoneList[0]
@@ -141,6 +142,7 @@ function customMenuChoosen(event) {
     });
 
     function clockTimer(set_zone) {
+        setCookie("set_zone", set_zone);
         var hour = document.querySelector("#hour");
         var date = document.querySelector("#date");
         var set_zone = new Date().toLocaleString("en-US", {
@@ -210,8 +212,8 @@ function copyInfo(copyText) {
             document.execCommand("copy");
             document.documentElement.removeChild(allowCopy);
 
-            if (allowCopy && !item.classList.contains("clock") && !item.classList.contains("eng") ) { //Feedback for copied string, except a few elements
-                console.log("allow copy");                
+            if (allowCopy && !item.classList.contains("clock") && !item.classList.contains("eng")) { //Feedback for copied string, except a few elements
+                console.log("allow copy");
                 var feedBack = document.createElement("SPAN");
                 feedBack.classList.add("feedback");
                 feedBack.style.position = "absolute";
@@ -360,7 +362,7 @@ function backgroundControl() {
 
     input.forEach(function (item) {
         item.addEventListener("click", function () { //listener for toggle options
-            option = item.value;
+            option = getCookie("option", option) || item.value;
             var isChecked = item.checked;
             if (isChecked) {
                 switch (option) { //verify the value
@@ -399,8 +401,7 @@ function backgroundControl() {
     var infoBGFurther = document.querySelector("#info-bg-further");
 
     changeBackground(0);
-
-    document.cookie = "option=" + option; //trying to set cookie to remember user choice
+    setCookie("option", option);
 
     next.addEventListener("click", function () {
         changeBackground(1);
@@ -507,42 +508,57 @@ function themeControl() {
     var infoTmFurther = document.querySelector("#info-tm-further");
     var option = "";
     var i = j = k = 0;
-    
+
     var themeList = {
-        basic: ["Default Theme", "Green", "Yellow"],
-        shiny: ["Sun Shiny in Bright", "Black Tarantula", "VS Code"],
-        psycho: ["Go with flow"],
+        basic: ["default_theme", "dark", "light"],
+        color: ["green", "yellow", "red"],
+        shiny: ["sun_shiny_in_bright", "black_tarantula", "vs_code_default"],
+        psycho: ["go_with_flow"],
     };
 
-    
     var input = document.querySelectorAll("#theme-options input");
 
+    //first run before click
+    var isChecked = getCookie("themeChecked") || input[0].checked;
+    option = input[0].value;
+    if (isChecked) {
+        changeItem(0);
+    }
+
     input.forEach(function (item) {
-        item.addEventListener("click", function () { //listener for toggle options
+
+        item.addEventListener("click", function () { //listener for every toggle options
             option = item.value;
-            var isChecked = item.checked;
-            if(isChecked) {
+            isChecked = item.checked;
+            setCookie("themeChecked", option);
+            if (isChecked) {
                 changeItem(0);
             }
         });
     });
 
-    function changeItem(val){
-       
-        switch(val){
+    function changeItem(val) {
+        getCookie("themeOptionPos");
+        switch (val) {
             case -1:
-                i--;
-                break;
-            case 0:
-                i = 0;
-                break;           
-            case 1 :
-                i++;
-                break;            
+                if (i > 0) {
+                    i--;
+                    break;
+                }
+                case 0:
+                    i = 0;
+                    break;
+                case 1:
+                    if (i < themeList[option].length - 1) {
+                        i++;
+                        break;
+                    }
         }
-        infoTheme.innerHTML = themeList[option][i];
-    }    
-    
+        setCookie("themeOptionPos", i);
+        document.body.className = themeList[option][i];
+        infoTheme.innerHTML = themeList[option][i].split("_").join(" ").captalize();
+    }
+
     next.addEventListener("click", function () {
         changeItem(1);
     });
@@ -550,8 +566,6 @@ function themeControl() {
     prev.addEventListener("click", function () {
         changeItem(-1);
     });
-
-    
 }
 themeControl();
 

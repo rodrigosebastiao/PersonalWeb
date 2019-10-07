@@ -1,14 +1,36 @@
 @import 'mixin';
 
-$mainColorFB: #222;
-$mainColor: rgba(0, 0, 0, 0.6);
-$hovers: rgba(255, 255, 255, 0.3);
+:root {
+    --mainColorFB: #223;
+    --mainColor: rgba(0, 0, 0, 0.6);
+    --hovers: rgba(255, 255, 255, 0.3);
 
-$mainColorFB_Chill: #222;
-$mainColor_Chill: rgba(0, 0, 0, 0.6);
-$hovers_Chill: rgba(255, 255, 255, 0.3);
+    --mainColorFB_Chill: #222;
+    --mainColor_Chill: rgba(0, 0, 0, 0.6);
+    --hovers_Chill: rgba(255, 255, 255, 0.3);
 
-$secondaryColor: rgba(0, 0, 0, 0.6);
+    --secondaryColor: rgba(0, 0, 0, 0.6);
+}
+
+$mainColorFB: var(--mainColorFB);
+$mainColor: var(--mainColor);
+$hovers: var(--mainColor);
+
+$mainColorFB_Chill: var(--mainColorFB_Chill);
+$mainColor_Chill: var(--mainColor_Chill);
+$hovers_Chill: var(--hovers_Chill);
+
+$secondaryColor: var(--secondaryColor);
+
+// $mainColorFB: #222;
+// $mainColor: rgba(0, 0, 0, 0.6);
+// $hovers: rgba(255, 255, 255, 0.3);
+
+// $mainColorFB_Chill: #222;
+// $mainColor_Chill: rgba(0, 0, 0, 0.6);
+// $hovers_Chill: rgba(255, 255, 255, 0.3);
+
+// $secondaryColor: rgba(0, 0, 0, 0.6);
 
 //Defaults | Resets
 ul,
@@ -404,6 +426,11 @@ main{
     background-image: url(../../src/img/icon-jquery.png);
 }
 
+.react {
+    background-image: url(../../src/img/icon-react.png);
+}
+
+
 .gimp {
     background-image: url(../../src/img/icon-gimp.png);
 }
@@ -619,6 +646,7 @@ main{
 
             &--box {
                 .box {
+                    overflow: hidden;
                     li {
                         float: left;
                         margin: 4px;
@@ -704,7 +732,7 @@ main{
         width: 100%;
         height: 100%;
         padding: 40px 40px 6vw 40px;
-        margin-top: 65px;
+        margin-top: 0;
         position: absolute;
         top: 0;
         left: 0;
