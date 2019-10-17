@@ -1,6 +1,7 @@
 @import 'mixin';
-
+ 
 :root {
+    content:"It Works=";
     --mainColorFB: #223;
     --mainColor: rgba(0, 0, 0, 0.6);
     --hovers: rgba(255, 255, 255, 0.3);
@@ -914,13 +915,17 @@ main{
             text-transform: uppercase;
             letter-spacing: 0.2em;
             font-size: 20px;
-            background: $mainColorFB;
-            background: $mainColor;
+            // background: var(--mainColorFB);
+            background: var(--mainColor);
             backdrop-filter: blur(15px);
             display: inline-block;
-            padding: 5px 11px 7px;
+            height: 40px;
+            line-height: 40px;
+            min-width: 170px;
+            text-align: center;
             transform: rotate(-90deg) translate(-108px, -115px);
             cursor: pointer;
+            transition: 1s;
 
             &:after {
                 content: "\f013";
@@ -1060,9 +1065,10 @@ main{
         &.active {
             transform: translate(0, 0);
             .settings-background-tab {
-                transition: 0.6s;
                 transform: initial;
-                width: 100%;
+                // width: 100%;
+                transform: rotate(0deg) translate(0, -4px);
+                transition: 0.6s;
 
                 &:after {}
             }

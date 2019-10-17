@@ -1,3 +1,4 @@
+
 function activateElement(elm) { //elements that should activate at first
     elm = document.querySelectorAll(elm);
     elm.forEach(function (item) {
@@ -98,16 +99,17 @@ function customMenuChoosen(event) {
     var clock = document.querySelector(".clock");
     var time_zones = document.createElement("UL");
     time_zones.setAttribute("id", "time-zone");
-    time_zones.innerHTML =
-        "<li class='zone' id='zone_0'>São Paulo/Brasil</li>" +
-        "<li class='zone' id='zone_1'>Amsterdam/Netherlands</li>" +
-        "<li class='zone' id='zone_2'>Berlin/Germany</li>" +
-        "<li class='zone' id='zone_3'>Tokyo/Japan</li>";
+
+    var zoneList = ["America/Sao_Paulo", "Europe/Amsterdam", "Europe/Berlin", "Asia/Tokyo"];
+
+    for (i = 0; i <= zoneList.length - 1; i++) {
+        time_zones.innerHTML += "<li class='zone' id='zone_"+i+"'>"+zoneList[i]+"</li>"
+    }
 
     clock.appendChild(time_zones);
 
     var zone = document.querySelectorAll(".zone");
-    var zoneList = ["America/Sao_Paulo", "Europe/Amsterdam", "Europe/Berlin", "Asia/Tokyo"];
+
     var i = 0;
     zone[i].classList.add("active"); //first load
 
@@ -118,35 +120,20 @@ function customMenuChoosen(event) {
     zone.forEach(function (item, index) {
         item.onclick = function (event) {
             for (i = 0; i <= zone.length - 1; i++) {
-                zone[i].classList.remove("active");
+                zone[i].classList.remove("active");//clean active
             }
             item.classList.add("active"); //visual style only
-
-            set_zone = getCookie("set_zone") || item.id; //clock zones setted from here
-            switch (set_zone) {
-                case "zone_0":
-                    set_zone = zoneList[0]
-                    break;
-                case "zone_1":
-                    set_zone = zoneList[1]
-                    break;
-                case "zone_2":
-                    set_zone = zoneList[2]
-                    break;
-                case "zone_3":
-                    set_zone = zoneList[3]
-                    break;
-            }
+            set_zone = zoneList[index];//clock zones setted from here / conditional position
+            setCookie("set_zone", set_zone);
             clockTimer(set_zone);
         }
     });
 
     function clockTimer(set_zone) {
-        setCookie("set_zone", set_zone);
         var hour = document.querySelector("#hour");
         var date = document.querySelector("#date");
         var set_zone = new Date().toLocaleString("en-US", {
-            timeZone: set_zone
+            timeZone:  getCookie("set_zone") || set_zone
         });
 
         var time = new Date(set_zone);
@@ -173,7 +160,7 @@ function customMenuChoosen(event) {
         hour.innerHTML = hh + ":" + mm;
         date.innerHTML = DD + "/" + MM + "/" + YYYY;
 
-        var clockInterval = setTimeout(clockTimer, 60000); //update every minute instead of second
+        var clockInterval = setTimeout(clockTimer, 60000); //update every minute
     };
     clockTimer("America/Sao_Paulo");
 })();
@@ -555,7 +542,8 @@ function themeControl() {
                     }
         }
         setCookie("themeOptionPos", i);
-        document.body.className = themeList[option][i];
+        document.body.className = themeList[option][i];                
+        // pickTheme.themeList[option][i]
         infoTheme.innerHTML = themeList[option][i].split("_").join(" ").captalize();
     }
 
