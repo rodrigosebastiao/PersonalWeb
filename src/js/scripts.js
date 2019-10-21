@@ -1,3 +1,9 @@
+/*Global Functions */
+var rnd = function (val) {
+    return Math.floor(Math.random() * val);
+}
+/* -- */
+
 
 function activateElement(elm) { //elements that should activate at first
     elm = document.querySelectorAll(elm);
@@ -96,14 +102,20 @@ function customMenuChoosen(event) {
 
 
 (function () { //clock
+    /*Set clock based on UTC time zone, independent of system
+    Full zone lists: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones or https://www.zeitverschiebung.net/en/all-countries.html*/
     var clock = document.querySelector(".clock");
     var time_zones = document.createElement("UL");
     time_zones.setAttribute("id", "time-zone");
 
-    var zoneList = ["America/Sao_Paulo", "Europe/Amsterdam", "Europe/Berlin", "Asia/Tokyo"];
+    //Double dimension array: Array[x][] = time zone, Array[][1] = friendly name
+    var zoneList = [["America/Sao_Paulo", "São Paulo"], ["Europe/Amsterdam"], ["Africa/Johannesburg", "South Africa"], "Europe/Berlin", ["Asia/Tokyo", "Japan"]];
 
-    for (i = 0; i <= zoneList.length - 1; i++) {
-        time_zones.innerHTML += "<li class='zone' id='zone_"+i+"'>"+zoneList[i]+"</li>"
+    for (var i = 0; i <= zoneList.length - 1; i++) {
+        var zoneName = typeof zoneList[i] == "object" && zoneList[i].length > 1 && zoneList[i][1].length > 1 ? zoneList[i][1] : zoneList[i];
+        var zoneString = typeof zoneList[i] == "object" && zoneList[i].length > 1 ? zoneList[i][0] : zoneList[i];
+        
+        time_zones.innerHTML += "<li class='zone' id='zone_"+i+"' data-zone='"+zoneString+"'>" +zoneName+ "</li>"
     }
 
     clock.appendChild(time_zones);
@@ -117,26 +129,37 @@ function customMenuChoosen(event) {
         time_zones.classList.toggle("active");
     };
 
+
+    var defined_zone;
+
+    function checkActiveZone(set_zone){
+        for (i = 0; i <= zone.length - 1; i++) {
+            zone[i].classList.remove("active");//clean active
+            if( set_zone == zone[i].getAttribute("data-zone")){
+                zone[i].classList.add("active")
+            }
+        }
+    }
+
     zone.forEach(function (item, index) {
         item.onclick = function (event) {
-            for (i = 0; i <= zone.length - 1; i++) {
-                zone[i].classList.remove("active");//clean active
-            }
-            item.classList.add("active"); //visual style only
-            set_zone = zoneList[index];//clock zones setted from here / conditional position
+            checkActiveZone();
+            set_zone = item.getAttribute("data-zone");//clock zones setted from here / conditional position
             setCookie("set_zone", set_zone);
             clockTimer(set_zone);
         }
-    });
+    });    
 
     function clockTimer(set_zone) {
         var hour = document.querySelector("#hour");
         var date = document.querySelector("#date");
-        var set_zone = new Date().toLocaleString("en-US", {
-            timeZone:  getCookie("set_zone") || set_zone
+        set_zone = getCookie("set_zone") || set_zone
+        defined_zone = new Date().toLocaleString("en-US", {
+            timeZone: getCookie("set_zone") || set_zone
         });
+        checkActiveZone(set_zone);
 
-        var time = new Date(set_zone);
+        var time = new Date(defined_zone);
         var mm = time.getMinutes();
         var hh = time.getHours(); //time.toLocaleTimeString() hh/mm/ss;
         var ss = time.getSeconds();
@@ -161,7 +184,7 @@ function customMenuChoosen(event) {
         date.innerHTML = DD + "/" + MM + "/" + YYYY;
 
         var clockInterval = setTimeout(clockTimer, 60000); //update every minute
-    };
+    };    
     clockTimer("America/Sao_Paulo");
 })();
 
@@ -268,10 +291,6 @@ function backgroundControl() {
 
     var flickrList = [];
 
-    var rnd = function (val) {
-        return Math.floor(Math.random() * val);
-    }
-
     function flickrAPI() {
         var apiKey = "d77ba6c50acac4e12b8c60c42772eac3";
         var gallery_id = "72157704831299001";
@@ -316,7 +335,6 @@ function backgroundControl() {
     flickrAPI(); //load resources
 
 
-
     var pexelsList = [];
 
     function pexelsAPI() {
@@ -342,15 +360,16 @@ function backgroundControl() {
     //document.body.style.backgroundImage = "url(src/img/" + backgroundList[rand] + ")"; // first run: random load
 
 
-    var option = "local"; //first load
+    var option = "local";
     var selectedArray = backgroundList; //first load
 
     var input = document.querySelectorAll("#background-options input");
 
     input.forEach(function (item) {
         item.addEventListener("click", function () { //listener for toggle options
-            option = getCookie("option", option) || item.value;
+            option = item.value;
             var isChecked = item.checked;
+            setCookie("option", item.value);
             if (isChecked) {
                 switch (option) { //verify the value
                     case "local":
@@ -388,7 +407,6 @@ function backgroundControl() {
     var infoBGFurther = document.querySelector("#info-bg-further");
 
     changeBackground(0);
-    setCookie("option", option);
 
     next.addEventListener("click", function () {
         changeBackground(1);

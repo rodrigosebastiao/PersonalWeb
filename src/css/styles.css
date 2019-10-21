@@ -656,9 +656,10 @@ main {
       font-size: 14px;
       line-height: 1.8;
       letter-spacing: 0.1em;
-      margin-bottom: 10px;
       text-align: center;
-      border-bottom: 1px solid #9199a2; }
+      border-bottom: 1px solid #9199a2;
+      margin-bottom: 10px;
+      padding-bottom: 10px; }
     .settings-background-wrap .control {
       text-align: center; }
     .settings-background-wrap #info-background, .settings-background-wrap #info-theme, .settings-background-wrap #info-further {
@@ -666,6 +667,7 @@ main {
       width: 100%;
       margin: 10px auto 5px;
       max-width: 215px;
+      max-height: 110px;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
