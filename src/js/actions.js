@@ -1,8 +1,6 @@
 /*Global Functions */
-var rnd = function (val) {
-    return Math.floor(Math.random() * val);
-}
-/* -- */
+window.activateElement = activateElement;
+window.openAndClose = openAndClose;
 
 
 function activateElement(elm) { //elements that should activate at first
@@ -12,8 +10,6 @@ function activateElement(elm) { //elements that should activate at first
     });
 }
 
-activateElement(".start, .start-menu");
-
 function openAndClose(button, element) {
     var button = document.querySelector(button);
     var element = document.querySelector(element);
@@ -22,6 +18,11 @@ function openAndClose(button, element) {
         button.classList.toggle("active");
     };
 }
+
+/* -- */
+
+
+activateElement(".start, .start-menu");
 
 openAndClose(".start", ".start-menu");
 openAndClose(".projects", ".projects-modal");
@@ -101,12 +102,13 @@ function customMenuChoosen(event) {
 }
 
 
-(function () { //clock
+(function clock () { //clock
     /*Set clock based on UTC time zone, independent of system
     Full zone lists: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones or https://www.zeitverschiebung.net/en/all-countries.html*/
     var clock = document.querySelector(".clock");
-    var time_zones = document.createElement("UL");
-    time_zones.setAttribute("id", "time-zone");
+    var time_zone = document.createElement("UL");
+    time_zone.setAttribute("id", "time-zone");
+    time_zone.setAttribute("class", "drop-down-option");
 
     //Double dimension array: Array[x][] = time zone, Array[][1] = friendly name
     var zoneList = [["America/Sao_Paulo", "São Paulo"], ["Europe/Amsterdam"], ["Africa/Johannesburg", "South Africa"], "Europe/Berlin", ["Asia/Tokyo", "Japan"]];
@@ -115,18 +117,18 @@ function customMenuChoosen(event) {
         var zoneName = typeof zoneList[i] == "object" && zoneList[i].length > 1 && zoneList[i][1].length > 1 ? zoneList[i][1] : zoneList[i];
         var zoneString = typeof zoneList[i] == "object" && zoneList[i].length > 1 ? zoneList[i][0] : zoneList[i];
         
-        time_zones.innerHTML += "<li class='zone' id='zone_"+i+"' data-zone='"+zoneString+"'>" +zoneName+ "</li>"
+        time_zone.innerHTML += "<li class='zone' id='zone_"+i+"' data-zone='"+zoneString+"'>" +zoneName+ "</li>"
     }
 
-    clock.appendChild(time_zones);
+    clock.appendChild(time_zone);
 
     var zone = document.querySelectorAll(".zone");
 
-    var i = 0;
-    zone[i].classList.add("active"); //first load
+    var opt = 0;
+    zone[opt].classList.add("active"); //first load
 
-    clock.onclick = function () {
-        time_zones.classList.toggle("active");
+    clock.onclick = function () {//main button
+        time_zone.classList.toggle("active");
     };
 
 
@@ -134,7 +136,7 @@ function customMenuChoosen(event) {
 
     function checkActiveZone(set_zone){
         for (i = 0; i <= zone.length - 1; i++) {
-            zone[i].classList.remove("active");//clean active
+            zone[i].classList.remove("active");//clear active
             if( set_zone == zone[i].getAttribute("data-zone")){
                 zone[i].classList.add("active")
             }
@@ -143,8 +145,8 @@ function customMenuChoosen(event) {
 
     zone.forEach(function (item, index) {
         item.onclick = function (event) {
-            checkActiveZone();
             set_zone = item.getAttribute("data-zone");//clock zones setted from here / conditional position
+            checkActiveZone();
             setCookie("set_zone", set_zone);
             clockTimer(set_zone);
         }
@@ -190,6 +192,63 @@ function customMenuChoosen(event) {
 
 
 
+(function languageSetting () { //language
+    var language = document.querySelector(".language");
+    var languageGroup = document.createElement("UL");
+    languageGroup.setAttribute("id", "language-list");
+    languageGroup.setAttribute("class", "drop-down-option");
+
+    // var languageList = ["ENG", "PORT"];
+    var languageKeys = Object.keys(languageList);
+    
+    for (var i = 0; i <= languageKeys.length - 1; i++) {
+        languageGroup.innerHTML += "<li class='language-item' id='lang_"+i+"' data-language='"+languageKeys[i]+"'>" +languageKeys[i]+ "</li>"
+    }
+    
+    language.appendChild(languageGroup);
+    
+    var languageItems = document.querySelectorAll(".language-item");
+    
+    var optLang = 0;
+    languageItems[optLang].classList.add("active"); //first load
+    
+    language.onclick = function () {//main button drop down
+        languageGroup.classList.toggle("active");
+    };
+    
+    
+    function checkActiveLanguage(set_language){
+        for (i = 0; i <= languageItems.length - 1; i++) {
+            languageItems[i].classList.remove("active");//clear active
+            if( set_language == languageItems[i].getAttribute("data-language")){
+                languageItems[i].classList.add("active");
+                var langActive = document.querySelector("#language-list .language-item.active")
+                                            .getAttribute("data-language");
+                document.querySelector(".language .current").innerHTML = langActive;
+
+                window.langActive = langActive;
+                translateLanguage();//external function
+                setCookie("language", langActive)
+            }
+        }
+    }
+
+    var current = elementCreate("SPAN", "current");
+    document.querySelector("#language > a").insertAdjacentElement("afterbegin", current);
+
+    languageItems.forEach(function (item, index) {
+        item.onclick = function (event) {
+            var langActive = item.getAttribute("data-language");
+            checkActiveLanguage(langActive);
+        }
+    });
+
+    var firstLoad = getCookie("language") || "eng"
+    checkActiveLanguage(firstLoad); //first activation
+    
+})();
+
+
 function expand(element) {
     var element = document.querySelectorAll(element);
 
@@ -227,6 +286,7 @@ function copyInfo(copyText) {
                 var feedBack = document.createElement("SPAN");
                 feedBack.classList.add("feedback");
                 feedBack.style.position = "absolute";
+                feedBack.style.zIndex = "100";
                 feedBack.style.display = "block";
                 feedBack.style.fontSize = "12px";
                 feedBack.style.color = "#fff";
@@ -235,19 +295,28 @@ function copyInfo(copyText) {
                 feedBack.style.padding = "15px 30px";
                 feedBack.style.left = event.clientX + "px"; //show close to element position clicked
                 feedBack.style.top = 30 + event.clientY + "px"; //show close to element position clicked
+                feedBack.style.opacity = "1";
+                feedBack.style.animation = "5s";
                 feedBack.innerHTML = "Copied to Clipboard!";
                 document.body.appendChild(feedBack);
-                var timer = 1500;
+                var timer = 2500;
+                var op = 1;
                 setTimeout(function () {
-                    document.body.removeChild(feedBack);
-                    timer -= 100;
-                }, timer);
+                    var fadeOut = setInterval(function () {
+                        feedBack.style.opacity = op;
+                        op-=0.01;
+                        if(op <= 0){
+                            clearInterval(fadeOut);
+                            document.body.removeChild(feedBack);
+                        }
+                    }, 10);
+                }, timer)
             }
         });
     });
 }
 
-copyInfo(".right li a");
+copyInfo(".right li a.copy");
 
 
 function activateSettings() {
@@ -510,18 +579,29 @@ function themeControl() {
     var prev = document.querySelector(".prev.tm");
     var next = document.querySelector(".next.tm");
     var infoTheme = document.querySelector("#info-theme");
-    var infoTmFurther = document.querySelector("#info-tm-further");
+    var themeFormItems = document.querySelector("#theme-items");
+    
     var option = "";
     var i = j = k = 0;
 
-    var themeList = {
-        basic: ["default_theme", "dark", "light"],
-        color: ["green", "yellow", "red"],
-        shiny: ["sun_shiny_in_bright", "black_tarantula", "vs_code_default"],
-        psycho: ["go_with_flow"],
-    };
+    // var pickTheme = {
+    //     basic: ["default_theme", "dark", "light"],
+    //     color: ["green", "yellow", "red"],
+    //     shiny: ["sun_shiny_in_bright", "black_tarantula", "vs_code_default"],
+    //     psycho: ["go_with_flow"],
+    // };
+
+    
+    var themeKeys = Object.keys(themeList);
+
+    for(var i = 0; i < themeKeys.length; i++){
+        themeFormItems.innerHTML += 
+        "<input type='radio' name='tm-choice' value='"+themeKeys[i]+"' id='"+themeKeys[i]+"' class='"+themeKeys[i]+" option'>"+
+        "<label for='basic'>"+themeKeys[i]+"</label>";
+    }
 
     var input = document.querySelectorAll("#theme-options input");
+    input[0].checked = true
 
     //first run before click
     var isChecked = getCookie("themeChecked") || input[0].checked;
@@ -531,8 +611,8 @@ function themeControl() {
     }
 
     input.forEach(function (item) {
-
         item.addEventListener("click", function () { //listener for every toggle options
+            console.log("click")
             option = item.value;
             isChecked = item.checked;
             setCookie("themeChecked", option);
@@ -550,19 +630,19 @@ function themeControl() {
                     i--;
                     break;
                 }
-                case 0:
-                    i = 0;
+            case 0:
+                i = 0;
+                break;
+            case 1:
+                if (i < themeList[option].length - 1) {
+                    i++;
                     break;
-                case 1:
-                    if (i < themeList[option].length - 1) {
-                        i++;
-                        break;
-                    }
+                }
         }
         setCookie("themeOptionPos", i);
-        document.body.className = themeList[option][i];                
-        // pickTheme.themeList[option][i]
-        infoTheme.innerHTML = themeList[option][i].split("_").join(" ").captalize();
+        document.body.className = themeList[option][i];
+        // themeList[themeList[option][i]]();
+        infoTheme.innerHTML = themeList[option][i];//.split("_").join(" ").captalize();
     }
 
     next.addEventListener("click", function () {
@@ -574,6 +654,21 @@ function themeControl() {
     });
 }
 themeControl();
+
+
+function spotifyAPI(){
+    /* window.onSpotifyWebPlaybackSDKReady = () => {
+        // const url = "https://api.spotify.com/v1/playlists/7eowpl0Ta8ZXz7fkBCMgeS/tracks/";
+
+        const token = "4fcaf58575a84c60bbaf5b0a4977572a";
+        const webPlayback = new Spotify.Player({
+            name: "Spotify Web Playback SDK",
+            getOAuthToken: callback => { callback(token)}
+        });
+        webPlayback.connect();
+    } */
+}
+// spotifyAPI();
 
 
 window.takeScreenShot = function () {

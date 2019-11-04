@@ -1,13 +1,14 @@
 @import 'mixin';
  
 :root {
-    content:"It Works=";
     --mainColorFB: #223;
     --mainColor: rgba(0, 0, 0, 0.6);
-    --hovers: rgba(255, 255, 255, 0.3);
+    --hoverColor: rgba(255, 255, 255, 0.3);
 
     --mainColorFB_Chill: #222;
     --mainColor_Chill: rgba(0, 0, 0, 0.6);
+
+    --mainColorBGSolid: #000;
     --hovers_Chill: rgba(255, 255, 255, 0.3);
 
     --secondaryColor: rgba(0, 0, 0, 0.6);
@@ -15,17 +16,18 @@
 
 $mainColorFB: var(--mainColorFB);
 $mainColor: var(--mainColor);
-$hovers: var(--mainColor);
+$hoverColor: var(--mainColor);
 
 $mainColorFB_Chill: var(--mainColorFB_Chill);
 $mainColor_Chill: var(--mainColor_Chill);
 $hovers_Chill: var(--hovers_Chill);
 
 $secondaryColor: var(--secondaryColor);
+$mainColorBGSolid: var(--mainColorBGSolid);
 
 // $mainColorFB: #222;
 // $mainColor: rgba(0, 0, 0, 0.6);
-// $hovers: rgba(255, 255, 255, 0.3);
+// $hoverColor: rgba(255, 255, 255, 0.3);
 
 // $mainColorFB_Chill: #222;
 // $mainColor_Chill: rgba(0, 0, 0, 0.6);
@@ -91,7 +93,7 @@ main{
     padding: 0 10px 0 20px;
     @include clearfix;
     position: relative;
-    z-index: 100;
+    z-index: 150;
 
     @include breakpoint('small') {
         padding: 0;
@@ -99,26 +101,27 @@ main{
 
     .list {
         height: 100%;
-
-        li {
-            display: inline-block;
-            margin-right: 0%;
-            cursor: pointer;
-
-            &:last-child {
-                margin-right: 0;
-            }
-
-            a {
+        > ul{
+           > li {
                 display: inline-block;
-                text-indent: 0;
-                user-select: none;
-
-                &:hover,
-                &:active,
-                &.active {
-                    background: #eee;
-                    background: $hovers;
+                margin-right: 0%;
+                cursor: pointer;
+    
+                &:last-child {
+                    margin-right: 0;
+                }
+    
+                a {
+                    display: inline-block;
+                    text-indent: 0;
+                    user-select: none;
+    
+                    &:hover,
+                    &:active,
+                    &.active {
+                        background: #eee;
+                        background: $hoverColor;
+                    }
                 }
             }
         }
@@ -146,75 +149,76 @@ main{
                 text-align: center;
             }
         }
-
-        li {
-            margin-right: 0;
-
-            a {
-                position: relative;
-
-                &.icon {
+        >ul{
+            > li {
+                margin-right: 0;
+    
+                a {
                     position: relative;
-                }
-
-                &:hover {
-
-                    &:after {
-                        //@include slideToggleHidden;
-                        content: " "attr(data-title)" "; //tooltip
-                        font-size: 16px;
-                        background: $mainColorFB;
-                        background: $mainColor;
-                        backdrop-filter: blur(15px);
-                        padding: 15px 20px 15px 50px;
-                        white-space: nowrap;
-                        position: absolute;
-                        top: 75px;
-                        left: -25%;
+    
+                    &.icon {
+                        position: relative;
                     }
-
-                    // @include slideToggle;
-                    .tooltip {
-                        //empity element
-                        position: absolute;
-                        top: 70px;
-                        display: block;
-                        z-index: 10;
-
-                        &::before {
-                            //arrow icon| created only on hover
-                            content: "";
+    
+                    &:hover {
+    
+                        &:after {
+                            //@include slideToggleHidden;
+                            content: " "attr(data-title)" "; //tooltip
+                            font-size: 16px;
+                            background: $mainColorFB;
+                            background: $mainColor;
+                            backdrop-filter: blur(15px);
+                            padding: 15px 20px 15px 50px;
+                            white-space: nowrap;
                             position: absolute;
-                            bottom: -5px;
-                            left: -5px;
-                            border-width: 10px;
-                            border-style: solid;
-                            border-color: transparent transparent $mainColorFB transparent;
-                            border-color: transparent transparent $mainColor transparent;
+                            top: 75px;
+                            left: -25%;
                         }
-
-                        &::after {
-                            //copy icon| created only on hover
-                            content: "\f0c5";
+    
+                        // @include slideToggle;
+                        .tooltip {
+                            //empity element
                             position: absolute;
-                            bottom: -36px;
-                            left: -18px;
-                            font-size: 14px;
-                            color: #bebebe;
-                            font-family: "FontAwesome";
-                            font-weight: 900;
+                            top: 70px;
                             display: block;
+                            z-index: 100;
+    
+                            &::before {
+                                //arrow icon| created only on hover
+                                content: "";
+                                position: absolute;
+                                bottom: -5px;
+                                left: -5px;
+                                border-width: 10px;
+                                border-style: solid;
+                                border-color: transparent transparent $mainColorFB transparent;
+                                border-color: transparent transparent $mainColor transparent;
+                            }
+    
+                            &::after {
+                                //copy icon| created only on hover
+                                content: "\f0c5";
+                                position: absolute;
+                                bottom: -36px;
+                                left: -18px;
+                                font-size: 14px;
+                                color: #bebebe;
+                                font-family: "FontAwesome";
+                                font-weight: 900;
+                                display: block;
+                            }
                         }
                     }
                 }
-            }
-
-            @include breakpoint('small') {
-                &#clock {
-                    float: right;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
+    
+                @include breakpoint('small') {
+                    &#clock {
+                        float: right;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                    }
                 }
             }
         }
@@ -226,6 +230,9 @@ main{
     //text-indent: -9999px;
     font-size: 0;
     display: block;
+    min-width: 25px;
+    min-height: 25px;
+    background-size: contain;
 
     &:before {
         font-family: "FontAwesome";
@@ -339,30 +346,17 @@ main{
     }
 }
 
-.eng.icon-xsm.icon {
+.language {
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     padding-top: 45px;
     position: relative;
-    top: 0;
+    top: 5px;
     padding: 22px 10px;
-
-    .tooltip {
-        font-size: 12px;
-
-        &:before,
-        &:after {
-            content: none !important;
-        }
-    }
-
-    &:after {
-        content: none !important;
-    }
 }
 
-.clock.icon.icon-xsm {
+.option {
     padding: 10px;
 
     .tooltip {
@@ -386,15 +380,16 @@ main{
         line-height: 1.6;
     }
 
-    #time-zone {
+    .drop-down-option {
         @include slideToggleHidden;
         position: absolute;
-        top: 63px;
-        left: -67px;
+        top: 60px;
+        // left: -67px;
+        right: 0;
         line-height: 2;
         font-size: 14px;
-        background: #000;
-        padding: 5px 0;
+        background: $mainColorBGSolid;
+        padding: 0;
 
         &:active,
         &.active {
@@ -407,6 +402,7 @@ main{
             cursor: pointer;
 
             &:active,
+            &:hover,
             &.active {
                 background: #8b8b8b;
             }
@@ -431,6 +427,9 @@ main{
     background-image: url(../../src/img/icon-react.png);
 }
 
+.nodejs {
+    background-image: url(../../src/img/icon-nodejs.png);
+}
 
 .gimp {
     background-image: url(../../src/img/icon-gimp.png);
@@ -494,30 +493,50 @@ main{
     background-image: url(../../src/img/icon-mysql.png);
 }
 
+.spotify {
+    background-image: url(../../src/img/icon-spotify.png);
+    filter: grayscale(1) invert(1);
+}
+
+.spotify:hover {
+    filter: none;
+}
+
+
 
 .main {
+    overflow-x: hidden;
     height: 100%;
 
     .start-menu {
         @include slideToggleHidden;
-        background: #000;
+        background: $mainColorBGSolid;
         background: $mainColor;
         backdrop-filter: blur(15px);
         color: #fff;
         // padding: 50px 0 10px;
         padding: 4vh 0 10px;
-        max-width: 70vw;
+        width: 70vw;
+        max-width: 1160px;
         @include clearfix;
         position: relative;
         z-index: 100;
+        @include breakpoint('medium') {
+            width: 75vw;
+        }
+
+        @include breakpoint('820') {
+            width: auto;
+        }
 
         @include breakpoint('small') {
+            
             padding: 0;
         }
 
         &--group {
             margin-top: -10px;
-            transition: all 0.6s;
+            transition: 0.3s;
         }
 
         &.active {
@@ -526,7 +545,8 @@ main{
 
             .start-menu--group {
                 margin-top: 0;
-                transition: all 0.6s;
+                transition: 0.3s;
+                @include clearfix;
             }
         }
 
@@ -537,7 +557,7 @@ main{
             padding: 0 1vw;
             @include clearfix;
 
-            @include breakpoint('small') {
+            @include breakpoint('xsmall') {
                 float: none;
                 width: 100%;
             }
@@ -570,6 +590,7 @@ main{
 
             &--img {
                 // padding: 10px;
+                max-width: 110px;
                 width: 100%;
                 position: relative;
                 cursor: pointer;
@@ -578,7 +599,7 @@ main{
                 &:active,
                 &.active {
                     background: #eee;
-                    background: $hovers;
+                    background: $hoverColor;
 
                     +.tooltip {
                         @include slideToggle;
@@ -607,7 +628,7 @@ main{
 
                     &:hover:not(.title) {
                         background: #eee;
-                        background: $hovers;
+                        background: $hoverColor;
                     }
 
                     &.title {
@@ -641,9 +662,13 @@ main{
         &__info {
             max-width: 40vw;
             padding-right: 0;
-            /* @include breakpoint(1800) {
-                width: 100%;
-            } */
+            
+            @include breakpoint("655") {
+                max-width: 30vw;
+                padding-right: 0;
+                float: left;
+                margin: 0 3vw;
+            }
 
             &--box {
                 .box {
@@ -832,7 +857,7 @@ main{
 
                     &:hover {
                         background: #eee;
-                        background: $hovers;
+                        background: $hoverColor;
                     }
 
                     .icon {
@@ -848,7 +873,7 @@ main{
 
         &-target {
             opacity: 0;
-            transition: opacity 0.6s;
+            transition: opacity 0.3s;
             position: absolute;
             top: 0;
             left: 0;
@@ -865,7 +890,7 @@ main{
                 font-size: 30px;
                 font-family: 'Font Awesome 5 Free';
                 font-weight: 900;
-                animation: animate 0.6s alternate infinite ease-in-out;
+                animation: animate 0.3s alternate infinite ease-in-out;
             }
         }
     }
@@ -908,20 +933,21 @@ main{
     &-wrap {
         transform: translate(105%, 0);
         z-index: 20;
-        transition: all 0.6s;
+        transition: all 0.7s;
 
         .settings-background-tab {
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 0.2em;
-            font-size: 20px;
+            font-size: 90%;
             // background: var(--mainColorFB);
             background: var(--mainColor);
             backdrop-filter: blur(15px);
             display: inline-block;
             height: 40px;
-            line-height: 40px;
+            line-height: 35px;
             min-width: 170px;
+            padding: 0 5px;
             text-align: center;
             transform: rotate(-90deg) translate(-108px, -115px);
             cursor: pointer;
@@ -1023,6 +1049,7 @@ main{
         #background-options,
         #theme-options {
             padding: 10px 0;
+            @include clearfix;
 
             input[type="radio"] {
                 position: absolute;
@@ -1051,6 +1078,7 @@ main{
                 padding: 5px 0;
                 min-width: 70px;
                 text-align: center;
+                text-transform: capitalize;
                 margin: 0 0 5px;
                 border: 1px solid #444;
                 color: #818181;
@@ -1070,8 +1098,7 @@ main{
                 transform: initial;
                 // width: 100%;
                 transform: rotate(0deg) translate(0, -4px);
-                transition: 0.6s;
-
+                transition: 0.5s;
                 &:after {}
             }
 
@@ -1138,9 +1165,9 @@ main{
         background: $mainColorFB;
         background: $mainColor;
         backdrop-filter: blur(15px);
-        padding: 0 20px;
-        margin-bottom: 20px;
-        transition: all 0.6s;
+        padding: 0;
+        margin-bottom: 5px;
+        transition: all 0.3s;
         transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 
         @include breakpoint('small') {
@@ -1149,9 +1176,9 @@ main{
         }
 
         li {
-            display: inline-block;
-            padding: 20px;
-            transition: all 0.6s;
+            float: left;
+            padding: 15px 20px;
+            transition: all 0.3s;
             transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
             cursor: pointer;
             position: relative;
@@ -1166,28 +1193,28 @@ main{
 
             &:hover {
                 background: #eee;
-                background: $hovers;
+                background: $hoverColor;
             }
 
             &.active {
-                padding: 20px 40px;
-                transition: 0.6s;
+                // padding: 20px 40px;
+                transition: 0.3s;
 
                 .icon-sm {
                     &:before {
-                        font-size: 45px;
-                        width: 45px;
-                        height: 45px;
-                        background-size: 45px;
-                        transition: 0.6s;
+                        // font-size: 45px;
+                        // width: 45px;
+                        // height: 45px;
+                        // background-size: 45px;
+                        transition: 0.3s;
                     }
 
                     +a {
-                        font-size: 16px;
+                        // font-size: 16px;
                         position: relative;
                         display: block;
-                        bottom: -15px;
-                        transition: 0.6s;
+                        // bottom: -15px;
+                        transition: 0.3s;
                     }
                 }
             }

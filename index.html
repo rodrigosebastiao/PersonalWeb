@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br, en">
 
 <head>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -12,16 +12,19 @@
 		gtag('js', new Date());
 		gtag('config', 'UA-43685815-4');
 	</script>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="src/css/styles.css" rel="stylesheet" type="text/css" />
-	<link href="src/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+
+	<meta charset="utf-8"/>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="description" content="Personal Web Site mocking Windows interface, events and actions"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link href="main/css/styles.css" rel="stylesheet" type="text/css" />
+	<link href="main/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.1/css/all.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<title>Rodrigo Sebastião</title>
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"/>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.1/css/all.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+	<title>Rodrigo Sebastião Dev</title>
 </head>
 
 <body>
@@ -37,7 +40,7 @@
 		<nav class="right list">
 			<ul>
 				<li><a href="http://www.github.com/rodrigosebastiao" data-title="http://www.github.com/rodrigosebastiao"
-						data-role="start" class="github icon-xsm icon">
+						data-role="start" class="github icon-xsm icon copy">
 						<span class="tooltip"></span>GitHub</a></li>
 				<li><a href="http://www.codepen.com/rodrigosebastiao"
 						data-title="http://www.codepen.com/rodrigosebastiao" data-role="start"
@@ -45,17 +48,20 @@
 						<span class="tooltip"></span>CodePen</a></li>
 				<li><a href="http://www.linkedin.com/in/rodrigosebastiao"
 						data-title="http://www.linkedin.com/in/rodrigosebastiao" data-role="start"
-						class="linkedin icon-xsm icon">
+						class="linkedin icon-xsm icon copy">
 						<span class="tooltip"></span>Linkedin</a></li>
 				<li><a href="tel:11933572137" data-title="(11) 9 3357-2137" data-role="start"
-						class="whatsapp icon-xsm icon">
+						class="whatsapp icon-xsm icon copy">
 						<span class="tooltip"></span>Whatsapp</a></li>
 				<li><a href="mailto:rodrigodanielss@gmail.com" data-title="rodrigodanielss@gmail.com" data-role="start"
-						class="email icon-xsm icon">
-						<span class="tooltip"></span>Email</a></li>
-				<li><a href="#" data-title="Eng" data-role="start" class="eng icon-xsm icon">
-						<span class="tooltip"></span>Eng</a></li>
-				<li id="clock"><a href="#" data-title="Time" data-role="start" class="clock icon-xsm icon">
+						class="email icon-xsm icon copy">
+						<span class="tooltip"></span>Whatsapp</a></li>
+				<li id="language">
+					<a href="#" data-title="language" data-role="start" class="language option">
+						<span class="tooltip"></span>
+					</a>
+				</li>
+				<li id="clock"><a href="#" data-title="time" data-role="start" class="clock option icon-xsm icon">
 						<span class="tooltip"></span>
 						<span class="timer hour" id="hour">00:00</span>
 						<span class="timer date" id="date">00/00/0000</span>
@@ -70,7 +76,9 @@
 			<div class="start-menu--group">
 				<div class="start-menu__user">
 					<div class="start-menu__user--img">
-						<img src="src/img/picture.jpg" alt="me">
+						<a href="http://www.linkedin.com/in/rodrigosebastiao">
+							<img src="src/img/picture.jpg" alt="me">
+						</a>
 					</div>
 					<span class="tooltip">Rodrigo Sebastião</span>
 				</div>
@@ -78,17 +86,20 @@
 					<ul class="start-menu__skills--group g-1">
 						<li class="title title-1">
 							<span class="icon-xsm icon"></span>
-							<a href="#">Main Strengths:</a>
+							<a class="profile-title" href="#">Main Strengths:</a>
 						</li>
-						<li><a href="#">
-								<span class="css3 icon-xsm icon"></span>
-								<span class="text">CSS</span></a></li>
 						<li><a href="#">
 								<span class="js icon-xsm icon"></span>
 								<span class="text">Javascript</span></a></li>
 						<li><a href="#">
+							<span class="sass icon-xsm icon"></span>
+							<span class="text">SCSS</span></a></li>
+						<li><a href="#">
 								<span class="jquery icon-xsm icon"></span>
 								<span class="text">jQuery</span></a></li>
+						<!-- <li><a href="#">
+								<span class="css3 icon-xsm icon"></span>
+								<span class="text">CSS</span></a></li> -->
 					</ul>
 
 					<ul class="start-menu__skills--group g-3">
@@ -98,6 +109,9 @@
 						</li>
 						<li>
 							<a href="#"><span class="react icon-xsm icon"></span><span class="text">React</span></a>
+						</li>
+						<li>
+							<a href="#"><span class="nodejs icon-xsm icon"></span><span class="text">Nodejs</span></a>
 						</li>
 						<li>
 							<a href="#"><span class="python icon-xsm icon"></span><span class="text">Python</span></a>
@@ -134,13 +148,13 @@
 							<li class="title title-2"><a href="#"><span class="title icon-xsm icon">Front-end
 										Deveveloper:</span></a></li>
 							<li><a href="#"><span class="html5 icon-md icon">HTML5</span></a></li>
-							<li><a href="#"><span class="css3 icon-md icon">CSS3</span></a></li>
+							<li><a href="#"><span class="sass icon-md icon">SASS</span></a></li>
 							<li><a href="#"><span class="js icon-md icon">JS</span></a></li>
 							<li><a href="#"><span class="es6 icon-md icon">ES6</span></a></li>
 							<li><a href="#"><span class="react icon-md icon">React</span></a></li>
 							<li><a href="#"><span class="jquery icon-md icon">jQuery</span></a></li>
+							<li><a href="#"><span class="css3 icon-md icon">CSS3</span></a></li>
 							<li><a href="#"><span class="git icon-md icon">Git</span></a></li>
-							<li><a href="#"><span class="sass icon-md icon">SASS</span></a></li>
 							<li><a href="#"><span class="grunt icon-md icon">Grunt</span></a></li>
 							<li><a href="#"><span class="gulp icon-md icon">Gulp</span></a></li>
 							<li><a href="#"><span class="adobe-photoshop icon-md icon">Adobe Photoshop</span></a></li>
@@ -233,10 +247,10 @@
 							<input type="radio" name="bg-choice" value="local" id="local" class="Local option"
 								checked="checked">
 							<label for="local">Local</label>
-	
+
 							<input type="radio" name="bg-choice" value="flickr" id="flickr" class="Flickr option">
 							<label for="flickr">Flickr</label>
-	
+
 							<input type="radio" name="bg-choice" value="pexels" id="pexels" class="Pexels option">
 							<label for="pexels">Pexels</label>
 						</form>
@@ -254,18 +268,10 @@
 
 				<div class="controller theme">
 					<h4 class="title">Theme Color</h4>
-					
+
 					<div id="theme-options">
-						<form id="theme-radio" class="theme-radio" name="theme-radio">
-							<input type="radio" name="tm-choice" value="basic" id="basic" class="basic option"
-								checked="checked">
-							<label for="basic">Basic</label>
-
-							<input type="radio" name="tm-choice" value="shiny" id="shiny" class="shiny option">
-							<label for="shiny">Shiny</label>
-
-							<input type="radio" name="tm-choice" value="psycho" id="psycho" class="psycho option">
-							<label for="psycho">Psycho</label>
+						<form id="theme-items" class="theme-radio" name="theme-radio">
+							
 						</form>
 					</div>
 
@@ -289,23 +295,25 @@
 			<li><a href="#"><span class="info icon-sm icon"></span>Rodrigo Sebastião</a></li>
 			<li><a href="http://www.github.com/rodrigosebastiao"><span
 						class="github icon-sm icon"></span>github.com/rodrigosebastiao</a></li>
+			<li><a href="mailto:rodrigodanielss@gmail.com"><span
+				class="email icon-sm icon"></span>rodrigodanielss@gmail.com</a></li>
 			<li><a href="http://www.codepen.com/rodrigosebastiao"><span
 						class="codepen icon-sm icon"></span>codepen.com/rodrigosebastiao</a></li>
 			<li><a href="http://www.linkedin.com/in/rodrigosebastiao"><span
 						class="linkedin icon-sm icon"></span>linkedin.com/in/rodrigosebastiao</a></li>
 			<li><a href="tel:11933572137"><span class="whatsapp icon-sm icon"></span>(11) 9 3357-2137</a></li>
-			<li><a href="mailto:rodrigodanielss@gmail.com"><span
-						class="email icon-sm icon"></span>rodrigodanielss@gmail.com</a></li>
+			<li><a href="#"><span
+				class="spotify icon-sm icon"></span>Spotify</a></li>
 		</ul>
 	</footer>
 
+	<script src="https://sdk.scdn.co/spotify-player.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</script>
 	<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 	<!-- <script src="node_modules/html2canvas/dist/html2canvas.js"></script> -->
-	<script src="src/js/themes.js"></script>
-	<script src="src/js/helpers.js"></script>
-	<script src="src/js/scripts.js"></script>
+
+	<script src="main/js/scripts.js"></script>
 </body>
 
 </html>

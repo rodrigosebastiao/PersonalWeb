@@ -1,3 +1,11 @@
+window.rnd = rnd;
+window.setCookie = setCookie;
+window.createCookie = setCookie;
+window.getCookie = getCookie;
+window.deleteCoookie = deleteCoookie;
+window.elementCreate = elementCreate;
+
+
 String.prototype.captalize = function () {
     var splited = this.split(" ");
     var word = '';
@@ -8,7 +16,7 @@ String.prototype.captalize = function () {
     return word
 }
 
-var createCookie = setCookie = function (cname, cvalue, cNumDays) {
+function setCookie(cname, cvalue, cNumDays) {
     var d = new Date();
     d.setTime(d.getTime() + (cNumDays * 24 * 60 * 60 * 1000));
     var expires = cNumDays ? "; expires=" + d.toUTCString() : "";
@@ -34,3 +42,15 @@ function deleteCoookie(cname) {
     //document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 };
+
+
+function elementCreate(element, attr_class, attr_id, attr_data){
+    element = document.createElement(element);
+    attr_class ? element.setAttribute("class", attr_class) : null;
+    attr_id ? element.setAttribute("id", attr_id) : null;
+    return element;
+}
+
+function rnd (val) {
+    return Math.floor(Math.random() * val);
+}

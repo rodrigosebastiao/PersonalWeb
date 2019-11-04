@@ -28,14 +28,14 @@ sans-serif;
     opacity: 0;
     visibility: hidden;
     overflow: hidden;
-    transition-delay: 0.2s; // no delay when reversing (hiding)
+    transition: 0.2s;
 }
 
 @mixin slideToggle {
     height: auto;
     opacity: 1;
     visibility: visible;
-    transition: 0.4s top 0s, left 0s;
+    transition: 0.4s, left 0s, right 0s, bottom 0s;
 }
 
 @mixin transparency {
@@ -71,7 +71,7 @@ $breakpoints: (//under this value (max-width)
             @content;
         }
     }@else{
-        @media screen and (max-width: $size+"px") {//custom
+        @media screen and (max-width: $size+"px") {//custom number
             @content;
         }
     }
