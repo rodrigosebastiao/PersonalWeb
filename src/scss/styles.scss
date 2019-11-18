@@ -928,6 +928,7 @@ main{
     right: 0;
     z-index: 20;
     padding-left: 80px;
+    max-width: 337px;
     // overflow: hidden;
 
     &-wrap {
@@ -1053,12 +1054,14 @@ main{
 
             input[type="radio"] {
                 position: absolute;
-                margin: 15px 30px;
-                height: 1px;
-                width: 1px;
+                margin: 0px 25px;
+                height: 30px;
+                width: 30px;
+                opacity: 0;
                 border: 0;
                 overflow: hidden;
                 cursor: pointer;
+                z-index: 2;
 
                 &:checked+label {
                     color: $mainColorFB;

@@ -103,8 +103,8 @@ function rnd (val) {
 
 
 var themeList = {
-        basic1: [{
-            "default_theme": function () {
+        "Basic": {
+            "default theme": function () {
                 document.documentElement.style.setProperty("--mainColorFB", "#222");
                 document.documentElement.style.setProperty("--mainColor", "rgba(0, 0, 0, 0.6)");
                 document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.3)");
@@ -114,7 +114,7 @@ var themeList = {
                 document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.6)");
                 document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
             },
-            "dark": function () {
+            "Night Sky": function () {
                 document.documentElement.style.setProperty("--mainColorFB", "#111");
                 document.documentElement.style.setProperty("--mainColor", "rgba(0, 0, 0, 0.8)");
                 document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.6)");
@@ -124,7 +124,7 @@ var themeList = {
                 document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.8)");
                 document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
             },
-            "light": function () {
+            "Clear Water": function () {
                 document.documentElement.style.setProperty("--mainColorFB", "#999");
                 document.documentElement.style.setProperty("--mainColor", "rgba(90, 90, 90, 0.3)");
                 document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.1)");
@@ -134,13 +134,12 @@ var themeList = {
                 document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.5)");
                 document.documentElement.style.setProperty("--mainColorBGSolid", "#454545");
             }
-        }],
+        },
 
-
-        basic2: {
-            "default_theme": function () {
+        "Colorful": {
+            "Green": function () {
                 document.documentElement.style.setProperty("--mainColorFB", "#222");
-                document.documentElement.style.setProperty("--mainColor", "rgba(0, 0, 0, 0.6)");
+                document.documentElement.style.setProperty("--mainColor", "rgba(5, 61, 9, 0.7)");
                 document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.3)");
                 document.documentElement.style.setProperty("--mainColorFB_Chill", "#222");
                 document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.6)");
@@ -148,9 +147,9 @@ var themeList = {
                 document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.6)");
                 document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
             },
-            "dark": function () {
+            "Red": function () {
                 document.documentElement.style.setProperty("--mainColorFB", "#111");
-                document.documentElement.style.setProperty("--mainColor", "rgba(0, 0, 0, 0.8)");
+                document.documentElement.style.setProperty("--mainColor", "rgba(61, 5, 9, 0.7)");
                 document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.6)");
                 document.documentElement.style.setProperty("--mainColorFB_Chill", "#111");
                 document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.8)");
@@ -158,9 +157,9 @@ var themeList = {
                 document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.8)");
                 document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
             },
-            "light": function () {
+            "Blue": function () {
                 document.documentElement.style.setProperty("--mainColorFB", "#999");
-                document.documentElement.style.setProperty("--mainColor", "rgba(90, 90, 90, 0.3)");
+                document.documentElement.style.setProperty("--mainColor", "rgba(5, 9, 61, 0.6)");
                 document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.1)");
                 document.documentElement.style.setProperty("--mainColorFB_Chill", "#999");
                 document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.5)");
@@ -168,7 +167,174 @@ var themeList = {
                 document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.5)");
                 document.documentElement.style.setProperty("--mainColorBGSolid", "#454545");
             }
-        }
+        },
+
+        "Solid": {
+            "Green": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#222");
+                document.documentElement.style.setProperty("--mainColor", "rgba(5, 61, 9, 1)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 1)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#222");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 1)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(255, 255, 255, 1)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 1)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
+            },
+            "Red": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#111");
+                document.documentElement.style.setProperty("--mainColor", "rgba(61, 5, 9, 1)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255,1)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#111");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0,1)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(200, 200, 200,1)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 1)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
+            },
+            "Blue": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#999");
+                document.documentElement.style.setProperty("--mainColor", "rgba(5, 9, 61, 1)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 1)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#999");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 1)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(255, 255, 255, 1)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 1)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#454545");
+            }
+        },
+
+        "Shinny": {
+            "Green": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#222");
+                document.documentElement.style.setProperty("--mainColor", "rgba(5, 200, 9, 0.7)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.3)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#222");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.6)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(255, 255, 255, 0.3)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.6)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
+            },
+            "Red": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#111");
+                document.documentElement.style.setProperty("--mainColor", "rgba(200, 5, 9, 0.7)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.6)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#111");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.8)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(200, 200, 200, 0.6)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.8)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
+            },
+            "Blue": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#999");
+                document.documentElement.style.setProperty("--mainColor", "rgba(5, 9, 200, 0.6)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.1)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#999");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.5)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(255, 255, 255, 0.3)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.5)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#454545");
+            }
+        },
+
+        "Psychodelic": {
+            "Green": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#222");
+                document.documentElement.style.setProperty("--mainColor", "rgba(5, 200, 9, 0.7)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.3)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#222");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.6)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(255, 255, 255, 0.3)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.6)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
+            },
+            "Red": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#111");
+                document.documentElement.style.setProperty("--mainColor", "rgba(200, 5, 9, 0.7)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.6)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#111");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.8)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(200, 200, 200, 0.6)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.8)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
+            },
+            "Blue": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#999");
+                document.documentElement.style.setProperty("--mainColor", "rgba(5, 9, 200, 0.6)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.1)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#999");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.5)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(255, 255, 255, 0.3)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.5)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#454545");
+            }
+        },
+
+        "Effects": {
+            "Green": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#222");
+                document.documentElement.style.setProperty("--mainColor", "rgba(5, 200, 9, 0.7)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.3)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#222");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.6)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(255, 255, 255, 0.3)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.6)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
+            },
+            "Red": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#111");
+                document.documentElement.style.setProperty("--mainColor", "rgba(200, 5, 9, 0.7)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.6)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#111");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.8)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(200, 200, 200, 0.6)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.8)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
+            },
+            "Blue": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#999");
+                document.documentElement.style.setProperty("--mainColor", "rgba(5, 9, 200, 0.6)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.1)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#999");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.5)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(255, 255, 255, 0.3)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.5)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#454545");
+            }
+        },
+
+        "Animation": {
+            "Green": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#222");
+                document.documentElement.style.setProperty("--mainColor", "rgba(5, 200, 9, 0.7)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.3)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#222");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.6)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(255, 255, 255, 0.3)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.6)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
+                document.documentElement.style.setProperty("@keyframes AnimationName",
+                "0%{background-position:91% 0%} 50%{background-position:10% 100%} 100%{background-position:91% 0%}", );
+            },
+            "Red": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#111");
+                document.documentElement.style.setProperty("--mainColor", "rgba(200, 5, 9, 0.7)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.6)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#111");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.8)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(200, 200, 200, 0.6)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.8)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#000");
+            },
+            "Blue": function () {
+                document.documentElement.style.setProperty("--mainColorFB", "#999");
+                document.documentElement.style.setProperty("--mainColor", "rgba(5, 9, 200, 0.6)");
+                document.documentElement.style.setProperty("--hovers", "rgba(255, 255, 255, 0.1)");
+                document.documentElement.style.setProperty("--mainColorFB_Chill", "#999");
+                document.documentElement.style.setProperty("--mainColor_Chill", "rgba(0, 0, 0, 0.5)");
+                document.documentElement.style.setProperty("--hovers_Chill", "rgba(255, 255, 255, 0.3)");
+                document.documentElement.style.setProperty("--secondaryColor", "rgba(0, 0, 0, 0.5)");
+                document.documentElement.style.setProperty("--mainColorBGSolid", "#454545");
+            }
+        },
     };
 
 /* Translate DOM */
@@ -426,7 +592,7 @@ function customMenuChoosen(event) {
     
     
     function checkActiveLanguage(set_language){
-        for (i = 0; i <= languageItems.length - 1; i++) {
+        for (var i = 0; i <= languageItems.length - 1; i++) {
             languageItems[i].classList.remove("active");//clear active
             if( set_language == languageItems[i].getAttribute("data-language")){
                 languageItems[i].classList.add("active");
@@ -800,12 +966,12 @@ function themeControl() {
     // };
 
     
-    var themeKeys = Object.keys(themeList);
-
-    for(var i = 0; i < themeKeys.length; i++){
+    var themeGroupKeys = Object.keys(themeList);
+    
+    for(var i = 0; i < themeGroupKeys.length; i++){
         themeFormItems.innerHTML += 
-        "<input type='radio' name='tm-choice' value='"+themeKeys[i]+"' id='"+themeKeys[i]+"' class='"+themeKeys[i]+" option'>"+
-        "<label for='basic'>"+themeKeys[i]+"</label>";
+        "<input type='radio' name='tm-choice' value='"+themeGroupKeys[i]+"' id='"+themeGroupKeys[i]+"' class='"+themeGroupKeys[i]+" option'>"+
+        "<label for='"+themeGroupKeys[i]+"'>"+themeGroupKeys[i]+"</label>";
     }
 
     var input = document.querySelectorAll("#theme-options input");
@@ -820,8 +986,7 @@ function themeControl() {
 
     input.forEach(function (item) {
         item.addEventListener("click", function () { //listener for every toggle options
-            console.log("click")
-            option = item.value;
+            option = item.value;            
             isChecked = item.checked;
             setCookie("themeChecked", option);
             if (isChecked) {
@@ -830,6 +995,7 @@ function themeControl() {
         });
     });
 
+    
     function changeItem(val) {
         getCookie("themeOptionPos");
         switch (val) {
@@ -842,15 +1008,20 @@ function themeControl() {
                 i = 0;
                 break;
             case 1:
-                if (i < themeList[option].length - 1) {
+                if (i < Object.keys(themeList[option]).length - 1) {
                     i++;
                     break;
                 }
         }
+
+        var themeNameKeys = Object.keys(themeList[option]);
+
         setCookie("themeOptionPos", i);
-        document.body.className = themeList[option][i];
-        // themeList[themeList[option][i]]();
-        infoTheme.innerHTML = themeList[option][i];//.split("_").join(" ").captalize();
+        //themeList.option.themeNameKeys[i]();//Run as function
+        //themeList[option]["dark"]()
+        themeList[option][themeNameKeys[i]]();
+        document.body.className = themeNameKeys[i];//change body class [UNUSED]
+        infoTheme.innerHTML = themeNameKeys[i];//Print info //.split("_").join(" ").captalize();
     }
 
     next.addEventListener("click", function () {

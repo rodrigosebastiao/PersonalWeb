@@ -641,7 +641,8 @@ main {
   top: calc(20px + 5vh);
   right: 0;
   z-index: 20;
-  padding-left: 80px; }
+  padding-left: 80px;
+  max-width: 337px; }
   .settings-background-wrap {
     transform: translate(105%, 0);
     z-index: 20;
@@ -736,12 +737,14 @@ main {
       .settings-background-wrap #background-options input[type="radio"],
       .settings-background-wrap #theme-options input[type="radio"] {
         position: absolute;
-        margin: 15px 30px;
-        height: 1px;
-        width: 1px;
+        margin: 0px 25px;
+        height: 30px;
+        width: 30px;
+        opacity: 0;
         border: 0;
         overflow: hidden;
-        cursor: pointer; }
+        cursor: pointer;
+        z-index: 2; }
         .settings-background-wrap #background-options input[type="radio"]:checked + label,
         .settings-background-wrap #theme-options input[type="radio"]:checked + label {
           color: var(--mainColorFB);

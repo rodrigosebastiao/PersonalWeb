@@ -218,7 +218,7 @@ function customMenuChoosen(event) {
     
     
     function checkActiveLanguage(set_language){
-        for (i = 0; i <= languageItems.length - 1; i++) {
+        for (var i = 0; i <= languageItems.length - 1; i++) {
             languageItems[i].classList.remove("active");//clear active
             if( set_language == languageItems[i].getAttribute("data-language")){
                 languageItems[i].classList.add("active");
@@ -592,12 +592,12 @@ function themeControl() {
     // };
 
     
-    var themeKeys = Object.keys(themeList);
-
-    for(var i = 0; i < themeKeys.length; i++){
+    var themeGroupKeys = Object.keys(themeList);
+    
+    for(var i = 0; i < themeGroupKeys.length; i++){
         themeFormItems.innerHTML += 
-        "<input type='radio' name='tm-choice' value='"+themeKeys[i]+"' id='"+themeKeys[i]+"' class='"+themeKeys[i]+" option'>"+
-        "<label for='basic'>"+themeKeys[i]+"</label>";
+        "<input type='radio' name='tm-choice' value='"+themeGroupKeys[i]+"' id='"+themeGroupKeys[i]+"' class='"+themeGroupKeys[i]+" option'>"+
+        "<label for='"+themeGroupKeys[i]+"'>"+themeGroupKeys[i]+"</label>";
     }
 
     var input = document.querySelectorAll("#theme-options input");
@@ -612,8 +612,7 @@ function themeControl() {
 
     input.forEach(function (item) {
         item.addEventListener("click", function () { //listener for every toggle options
-            console.log("click")
-            option = item.value;
+            option = item.value;            
             isChecked = item.checked;
             setCookie("themeChecked", option);
             if (isChecked) {
@@ -622,6 +621,7 @@ function themeControl() {
         });
     });
 
+    
     function changeItem(val) {
         getCookie("themeOptionPos");
         switch (val) {
@@ -634,15 +634,20 @@ function themeControl() {
                 i = 0;
                 break;
             case 1:
-                if (i < themeList[option].length - 1) {
+                if (i < Object.keys(themeList[option]).length - 1) {
                     i++;
                     break;
                 }
         }
+
+        var themeNameKeys = Object.keys(themeList[option]);
+
         setCookie("themeOptionPos", i);
-        document.body.className = themeList[option][i];
-        // themeList[themeList[option][i]]();
-        infoTheme.innerHTML = themeList[option][i];//.split("_").join(" ").captalize();
+        //themeList.option.themeNameKeys[i]();//Run as function
+        //themeList[option]["dark"]()
+        themeList[option][themeNameKeys[i]]();
+        document.body.className = themeNameKeys[i];//change body class [UNUSED]
+        infoTheme.innerHTML = themeNameKeys[i];//Print info //.split("_").join(" ").captalize();
     }
 
     next.addEventListener("click", function () {
