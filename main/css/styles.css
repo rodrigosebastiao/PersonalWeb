@@ -252,6 +252,8 @@ main {
     font-size: 14px;
     background: var(--mainColorBGSolid);
     padding: 0; }
+    .option .drop-down-option#language-list {
+      top: 50px; }
     .option .drop-down-option:active, .option .drop-down-option.active {
       height: auto;
       opacity: 1;
@@ -564,6 +566,8 @@ main {
         border: 2px solid transparent;
         overflow: hidden; }
         .main .projects-modal .projects-group li.project .tile {
+          position: relative;
+          overflow: hidden;
           display: block;
           width: 250px;
           height: 200px; }
@@ -575,7 +579,14 @@ main {
           margin-bottom: 10px; }
       .main .projects-modal .projects-group li img {
         width: 100%;
-        height: auto; }
+        height: auto;
+        position: absolute;
+        top: 50%;
+        bottom: 50%;
+        left: 50%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0 auto; }
   .main .right-click-menu {
     height: 0;
     opacity: 0;

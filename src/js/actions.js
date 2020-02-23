@@ -472,6 +472,7 @@ function backgroundControl() {
 
     var prev = document.querySelector(".prev");
     var next = document.querySelector(".next");
+    var area = document.querySelector("MAIN");
     var infoBG = document.querySelector("#info-background");
     var infoBGFurther = document.querySelector("#info-bg-further");
 
@@ -483,6 +484,10 @@ function backgroundControl() {
 
     prev.addEventListener("click", function () {
         changeBackground(-1);
+    });    
+
+    area.addEventListener("dblclick", function () {
+        changeBackground(0);
     });
 
     function changeBackground(inc) {
@@ -577,7 +582,7 @@ backgroundControl();
 
 function themeControl() {
     var prev = document.querySelector(".prev.tm");
-    var next = document.querySelector(".next.tm");
+    var next = document.querySelector(".next.tm");    
     var infoTheme = document.querySelector("#info-theme");
     var themeFormItems = document.querySelector("#theme-items");
     
